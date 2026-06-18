@@ -1,0 +1,252 @@
+[
+  {
+    "id": "ai-guild-master-fyp",
+    "title": "AI Guild Master",
+    "description": "A Phaser.js browser game where NPCs train based on character dreams, guided by Google Gemini AI. Features an AI controller that automates Pokémon-style game mechanics using the Gemini API for intelligent NPC decision-making.",
+    "year": 2026,
+    "category": "ai-game-dev",
+    "skills": ["python", "javascript", "html/css", "phaser.js", "gemini api", "ai/ml", "game dev"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Gemini API integration for NPC decision-making",
+      "Phaser.js game engine for browser-based gameplay",
+      "Python AI controller for game automation",
+      "Character dream system drives NPC training"
+    ]
+  },
+  {
+    "id": "jewel-smash-game",
+    "title": "Jewel Smash Game",
+    "description": "A tile-matching game originally built in Python with PyGame, then ported to run on STM32 microcontroller hardware. Demonstrates cross-platform game logic from PC to embedded systems.",
+    "year": 2025,
+    "category": "game-dev",
+    "skills": ["c", "python", "pygame", "embedded systems", "arm/stm32", "game dev"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010/Jewel-Smash-Game-STM32-Ver.-and-PyGame-Ver.-",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Same game logic running on PC and embedded hardware",
+      "STM32 microcontroller port from Python original",
+      "Tile-matching puzzle mechanics"
+    ]
+  },
+  {
+    "id": "christmas-game-2025",
+    "title": "Christmas New Game Idea 2025",
+    "description": "An exploratory game project built with the Godot engine using GDScript, with Python integration. A creative sandbox for experimenting with game design concepts.",
+    "year": 2025,
+    "category": "game-dev",
+    "skills": ["godot", "gdscript", "python", "game design"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010/Christmas_new_game_idea_2025",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Godot engine with GDScript",
+      "Python integration for game logic",
+      "Experimental game design exploration"
+    ]
+  },
+  {
+    "id": "innoport-board-game",
+    "title": "InnoPort Board Game",
+    "description": "A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer. Protected by an IP agreement with Unplugged Studio.",
+    "year": 2025,
+    "category": "game-design",
+    "skills": ["game design", "graphic design", "affinity designer", "tabletop simulator", "product design"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Complete board/card game with physical assets",
+      "Tabletop Simulator mod for digital playtesting",
+      "Affinity Designer for all card assets",
+      "IP agreement with Unplugged Studio"
+    ]
+  },
+  {
+    "id": "intern-life-2024",
+    "title": "Intern Life 2024",
+    "description": "A ReadTheDocs documentation site chronicling internship experiences from 2024-2025. Also involved setting up websites using Wix and WordPress platforms, covering product setup and branding.",
+    "year": 2024,
+    "category": "documentation",
+    "skills": ["documentation", "readthedocs", "sphinx", "wix", "wordpress", "product/website setup"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010/Intern-Life-2024",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "ReadTheDocs documentation site with Sphinx",
+      "Wix and WordPress website setup experience",
+      "Product setup and branding documentation"
+    ]
+  },
+  {
+    "id": "calculator-project",
+    "title": "Calculator Project",
+    "description": "A Python calculator built with pytest testing, using the uv package manager. Demonstrates test-driven development practices and clean CLI tool design.",
+    "year": 2024,
+    "category": "programming",
+    "skills": ["python", "testing", "pytest", "git", "cli tools"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/ysanne617/calculator-project",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Test-driven development with pytest",
+      "uv package manager for dependency management",
+      "Clean CLI calculator interface"
+    ]
+  },
+  {
+    "id": "greeting-project",
+    "title": "Greeting Project",
+    "description": "A simple Python greeting script forked from an instructor's repository. A foundational programming exercise demonstrating version control and collaborative development.",
+    "year": 2024,
+    "category": "programming",
+    "skills": ["python", "git"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Python scripting fundamentals",
+      "Git fork and collaboration workflow"
+    ]
+  },
+  {
+    "id": "c-programming-university",
+    "title": "C Programming & Embedded Systems",
+    "description": "University coursework in C programming across IERG 3810, 3830, and 3842, focusing on ARM/STM32 microcontrollers and embedded systems development.",
+    "year": 2024,
+    "category": "programming",
+    "skills": ["c", "embedded systems", "arm/stm32", "microcontroller programming"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010/Ed",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "ARM/STM32 microcontroller programming",
+      "Embedded systems coursework (IERG 3810, 3830, 3842)",
+      "Low-level C development"
+    ]
+  },
+  {
+    "id": "ierg-4210-web-project",
+    "title": "IERG 4210 Web Project",
+    "description": "Web technologies coursework covering modern HTML, CSS, and JavaScript development. A full-stack web project demonstrating frontend and backend integration.",
+    "year": 2025,
+    "category": "web-dev",
+    "skills": ["html", "css", "javascript", "web dev"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Modern web development with HTML/CSS/JS",
+      "Full-stack web application coursework"
+    ]
+  },
+  {
+    "id": "infotainment-video-production",
+    "title": "Infotainment Video Production",
+    "description": "A COMM3930B infotainment production project encompassing video production, script writing, and content creation. Additional video editing work includes fine cuts, voice-over recordings, and subtitling.",
+    "year": 2025,
+    "category": "multimedia",
+    "skills": ["video production", "script writing", "content creation", "voice over", "subtitling", "video editing"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Infotainment video production from concept to delivery",
+      "Script writing and content creation",
+      "Voice-over recording and fine-cut editing",
+      "Professional subtitling work"
+    ]
+  },
+  {
+    "id": "film-society-yingto",
+    "title": "Film Society 「映徒」",
+    "description": "Founding cabinet member of the CUHK Film Society 「映徒」. Responsibilities included event planning, poster design, film screenings, budgeting, and membership management for the university film community.",
+    "year": 2024,
+    "category": "leadership",
+    "skills": ["event management", "leadership", "graphic design", "budgeting", "team management"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Founding cabinet member of CUHK Film Society",
+      "Event planning and film screening organization",
+      "Poster design and promotional materials",
+      "Budgeting and membership management"
+    ]
+  },
+  {
+    "id": "pixel-art-graphic-design",
+    "title": "Pixel Art & Graphic Design",
+    "description": "A diverse collection of creative visual work including character sprites, UI assets, logos, posters, and card designs created with Aseprite, Affinity Designer, and Photoshop.",
+    "year": 2025,
+    "category": "creative",
+    "skills": ["pixel art", "aseprite", "affinity designer", "photoshop", "logo design", "graphic design"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Character sprites and UI asset creation",
+      "Logo and poster design",
+      "Card design for board games",
+      "Multi-tool workflow: Aseprite, Affinity Designer, Photoshop"
+    ]
+  },
+  {
+    "id": "dnd-empire-ants",
+    "title": "D&D Campaign: Empire Ants",
+    "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TTRPG content creation skills.",
+    "year": 2025,
+    "category": "creative",
+    "skills": ["creative writing", "ttrpg design", "worldbuilding"],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Custom campaign worldbuilding and lore",
+      "Character sheet and encounter design",
+      "Narrative-driven TTRPG content creation"
+    ]
+  }
+]

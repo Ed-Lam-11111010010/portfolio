@@ -1,0 +1,16 @@
+{
+  "name": "Edwin Lam Portfolio",
+  "short_name": "Edwin Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0071e3",
+  "description": "Portfolio of Lam Chi (Edwin) — Information Engineering student, game designer, and creative technologist.",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

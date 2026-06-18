@@ -1,0 +1,33 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: Array<{
+    id: string;
+    title: string;
+    description: string;
+    year: number;
+    category: string;
+    skills: string[];
+    image: string | null;
+    links: {
+      github: string | null;
+      demo: string | null;
+      video: string | null;
+    };
+    highlights: string[];
+  }>;
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="project-grid" id="projectGrid">
+  {projects.map((project) => (
+    <ProjectCard project={project} />
+  ))}
+</div>
+
+<div id="filterEmpty" class="filter-empty" style="display: none;">
+  <p>No projects match the selected filters.</p>
+</div>

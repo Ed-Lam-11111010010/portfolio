@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import projects from '../../data/projects.json';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const pageTitle = `${project.title} — Edwin Lam Portfolio`;
+---
+
+<BaseLayout title={pageTitle} description={project.description}>
+  <div class="container">
+    <div class="detail-header">
+      <a href="/#projects" class="detail-back">← Back to all projects</a>
+      <h1 class="detail-title">{project.title}</h1>
+      <div class="detail-meta">
+        <span>{project.year}</span>
+        <span>·</span>
+        <span>{project.category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
+      </div>
+    </div>
+
+    <div class="detail-image">
+      {project.image ? (
+        <img src={project.image} alt={project.title} />
+      ) : (
+        <span>📁</span>
+      )}
+    </div>
+
+    <div class="detail-description">
+      <p>{project.description}</p>
+    </div>
+
+    <div class="detail-skills">
+      {project.skills.map((skill) => (
+        <a href={`/#${skill}`} class="filter-tag">{skill}</a>
+      ))}
+    </div>
+
+    {project.highlights.length > 0 && (
+      <div class="detail-highlights">
+        <h3>Highlights</h3>
+        <ul>
+          {project.highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div class="detail-links">
+      {project.links.github && (
+        <a href={project.links.github} target="_blank" rel="noopener noreferrer" class="btn">
+          View on GitHub →
+        </a>
+      )}
+      {project.links.demo && (
+        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" class="btn">
+          Live Demo →
+        </a>
+      )}
+      {project.links.video && (
+        <a href={project.links.video} target="_blank" rel="noopener noreferrer" class="btn">
+          Watch Video →
+        </a>
+      )}
+    </div>
+  </div>
+</BaseLayout>

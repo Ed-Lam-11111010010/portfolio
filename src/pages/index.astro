@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SkillFilter from '../components/SkillFilter.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import projects from '../data/projects.json';
+---
+
+<BaseLayout title="Edwin Lam — Portfolio | Lam Chi">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-name">Lam Chi (Edwin)</h1>
+      <p class="hero-title">Information Engineering Student · Game Designer · Creative Technologist</p>
+      <p class="hero-bio">
+        CUHK Information Engineering student with a passion for game development, AI, creative design,
+        and multimedia production. Building experiences across code, pixels, and paper.
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/Ed-Lam-11111010010" target="_blank" rel="noopener noreferrer">
+          GitHub →
+        </a>
+        <a href="mailto:edwin.lam@example.com">
+          Email →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <div class="about-content">
+        <p>
+          I'm an Information Engineering student at CUHK with a multidisciplinary background spanning
+          AI/game development, embedded systems, web development, game design, and multimedia production.
+          I believe the best work happens at the intersection of technology and creativity.
+        </p>
+        <p>
+          From building AI-powered browser games with Gemini and Phaser.js, to designing board games
+          with professional-grade assets, to producing infotainment videos — I thrive on bringing
+          ideas to life across different mediums. I also served as a founding cabinet member of
+          the CUHK Film Society 「映徒」, organizing screenings and events for the university film community.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Click a skill tag below to filter projects. Click any project for details.</p>
+      <SkillFilter />
+      <ProjectGrid projects={projects} />
+    </div>
+  </section>
+</BaseLayout>

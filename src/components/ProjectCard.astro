@@ -1,0 +1,55 @@
+---
+interface Props {
+  project: {
+    id: string;
+    title: string;
+    description: string;
+    year: number;
+    category: string;
+    skills: string[];
+    image: string | null;
+    links: {
+      github: string | null;
+      demo: string | null;
+      video: string | null;
+    };
+    highlights: string[];
+  };
+}
+
+const { project } = Astro.props;
+const skillList = project.skills.join(',');
+---
+
+<article class="project-card" data-project-skills={skillList}>
+  <a href={`/projects/${project.id}`} class="project-card-link">
+    <div class="project-card-image">
+      {project.image ? (
+        <img src={project.image} alt={project.title} loading="lazy" />
+      ) : (
+        <span>📁</span>
+      )}
+    </div>
+    <div class="project-card-body">
+      <h3 class="project-card-title">{project.title}</h3>
+      <p class="project-card-year">{project.year}</p>
+      <p class="project-card-desc">{project.description}</p>
+      <div class="project-card-skills">
+        {project.skills.slice(0, 4).map((skill) => (
+          <button class="project-card-skill" data-skill={skill} type="button">{skill}</button>
+        ))}
+        {project.skills.length > 4 && (
+          <span class="project-card-skill">+{project.skills.length - 4}</span>
+        )}
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+</style>

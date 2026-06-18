@@ -1,0 +1,66 @@
+---
+import { getAllSkills } from '../data/skills.js';
+
+const allSkills = getAllSkills();
+---
+
+<div class="skill-filter" id="skillFilter">
+  {allSkills.map((skill) => (
+    <button class="filter-tag" data-skill={skill} type="button">{skill}</button>
+  ))}
+  <button class="filter-clear" id="filterClear" type="button">Clear all</button>
+</div>
+
+<script>
+  const filterTags = document.querySelectorAll('.filter-tag');
+  const filterClear = document.getElementById('filterClear');
+  const projectGrid = document.getElementById('projectGrid');
+  const filterEmpty = document.getElementById('filterEmpty');
+  const projectCards = () => document.querySelectorAll('.project-card');
+
+  let activeFilters = new Set();
+
+  function updateFilter() {
+    const cards = projectCards();
+    let visibleCount = 0;
+
+    if (activeFilters.size === 0) {
+      cards.forEach((card) => { card.style.display = ''; });
+      visibleCount = cards.length;
+    } else {
+      cards.forEach((card) => {
+        const skills = (card.dataset.projectSkills || '').split(',');
+        const matches = [...activeFilters].every((filter) => skills.includes(filter));
+        card.style.display = matches ? '' : 'none';
+        if (matches) visibleCount++;
+      });
+    }
+
+    // Update active tag styles
+    filterTags.forEach((tag) => {
+      tag.classList.toggle('active', activeFilters.has(tag.dataset.skill));
+    });
+
+    // Show empty state
+    if (filterEmpty) {
+      filterEmpty.style.display = visibleCount === 0 ? '' : 'none';
+    }
+  }
+
+  filterTags.forEach((tag) => {
+    tag.addEventListener('click', () => {
+      const skill = tag.dataset.skill;
+      if (activeFilters.has(skill)) {
+        activeFilters.delete(skill);
+      } else {
+        activeFilters.add(skill);
+      }
+      updateFilter();
+    });
+  });
+
+  filterClear?.addEventListener('click', () => {
+    activeFilters.clear();
+    updateFilter();
+  });
+</script>

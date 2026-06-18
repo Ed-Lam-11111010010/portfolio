@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (Edwin) — Information Engineering student, game designer, and creative technologist." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0071e3" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="/" class="header-title">Edwin Lam</a>
+        <nav class="header-nav">
+          <a href="/#about">About</a>
+          <a href="/#projects">Projects</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; {new Date().getFullYear()} Edwin Lam (Lam Chi). Built with Astro.</p>
+        <div class="footer-links">
+          <a href="https://github.com/Ed-Lam-11111010010" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:edwin.lam@example.com">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+
+      function getTheme() {
+        return localStorage.getItem('theme') || 'light';
+      }
+
+      function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+
+      // Initialize theme
+      setTheme(getTheme());
+
+      themeToggle.addEventListener('click', () => {
+        const current = getTheme();
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+
+      // Register service worker for PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {
+            // Service worker registration failed silently
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
