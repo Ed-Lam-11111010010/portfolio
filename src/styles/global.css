@@ -386,6 +386,48 @@ img {
   color: var(--color-accent-active-text, #fff);
 }
 
+.project-card--external {
+  border-style: dashed;
+  opacity: 0.92;
+}
+
+.badge-external {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: #fff;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-external-detail {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: var(--color-accent);
+  color: #fff;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: 0.75rem;
+}
+
+.detail-cloud-label {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.btn-cloud {
+  background: var(--color-text-secondary);
+}
+
 .project-card-links {
   display: flex;
   gap: 1rem;

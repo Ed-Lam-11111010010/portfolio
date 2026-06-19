@@ -2,7 +2,7 @@
   {
     "id": "ai-guild-master-fyp",
     "title": "AI Guild Master",
-    "description": "A Phaser.js browser game where NPCs train based on character dreams, guided by Google Gemini AI. Features an AI controller that automates Pokémon-style game mechanics using the Gemini API for intelligent NPC decision-making.",
+    "description": "A Phaser.js browser game where NPCs train based on character dreams, guided by Google Gemini AI. Features an AI controller that automates Pok\u00e9mon-style game mechanics using the Gemini API for intelligent NPC decision-making.",
     "year": 2026,
     "category": "ai-game-dev",
     "skills": ["python", "javascript", "html/css", "phaser.js", "gemini api", "ai/ml", "game dev"],
@@ -17,7 +17,9 @@
       "Phaser.js game engine for browser-based gameplay",
       "Python AI controller for game automation",
       "Character dream system drives NPC training"
-    ]
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010"
   },
   {
     "id": "jewel-smash-game",
@@ -36,7 +38,9 @@
       "Same game logic running on PC and embedded hardware",
       "STM32 microcontroller port from Python original",
       "Tile-matching puzzle mechanics"
-    ]
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010/Jewel-Smash-Game-STM32-Ver.-and-PyGame-Ver.-"
   },
   {
     "id": "christmas-game-2025",
@@ -55,7 +59,9 @@
       "Godot engine with GDScript",
       "Python integration for game logic",
       "Experimental game design exploration"
-    ]
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010/Christmas_new_game_idea_2025"
   },
   {
     "id": "innoport-board-game",
@@ -75,7 +81,9 @@
       "Tabletop Simulator mod for digital playtesting",
       "Affinity Designer for all card assets",
       "IP agreement with Unplugged Studio"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   },
   {
     "id": "intern-life-2024",
@@ -94,7 +102,9 @@
       "ReadTheDocs documentation site with Sphinx",
       "Wix and WordPress website setup experience",
       "Product setup and branding documentation"
-    ]
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010/Intern-Life-2024"
   },
   {
     "id": "calculator-project",
@@ -113,7 +123,9 @@
       "Test-driven development with pytest",
       "uv package manager for dependency management",
       "Clean CLI calculator interface"
-    ]
+    ],
+    "external": false,
+    "source_url": "https://github.com/ysanne617/calculator-project"
   },
   {
     "id": "greeting-project",
@@ -131,7 +143,9 @@
     "highlights": [
       "Python scripting fundamentals",
       "Git fork and collaboration workflow"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   },
   {
     "id": "c-programming-university",
@@ -150,7 +164,9 @@
       "ARM/STM32 microcontroller programming",
       "Embedded systems coursework (IERG 3810, 3830, 3842)",
       "Low-level C development"
-    ]
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010/Ed"
   },
   {
     "id": "ierg-4210-web-project",
@@ -168,7 +184,9 @@
     "highlights": [
       "Modern web development with HTML/CSS/JS",
       "Full-stack web application coursework"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   },
   {
     "id": "infotainment-video-production",
@@ -188,12 +206,14 @@
       "Script writing and content creation",
       "Voice-over recording and fine-cut editing",
       "Professional subtitling work"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   },
   {
     "id": "film-society-yingto",
-    "title": "Film Society 「映徒」",
-    "description": "Founding cabinet member of the CUHK Film Society 「映徒」. Responsibilities included event planning, poster design, film screenings, budgeting, and membership management for the university film community.",
+    "title": "Film Society \u300c\u6620\u5f92\u300d",
+    "description": "Founding cabinet member of the CUHK Film Society \u300c\u6620\u5f92\u300d. Responsibilities included event planning, poster design, film screenings, budgeting, and membership management for the university film community.",
     "year": 2024,
     "category": "leadership",
     "skills": ["event management", "leadership", "graphic design", "budgeting", "team management"],
@@ -208,7 +228,9 @@
       "Event planning and film screening organization",
       "Poster design and promotional materials",
       "Budgeting and membership management"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   },
   {
     "id": "pixel-art-graphic-design",
@@ -228,7 +250,9 @@
       "Logo and poster design",
       "Card design for board games",
       "Multi-tool workflow: Aseprite, Affinity Designer, Photoshop"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   },
   {
     "id": "dnd-empire-ants",
@@ -247,6 +271,8 @@
       "Custom campaign worldbuilding and lore",
       "Character sheet and encounter design",
       "Narrative-driven TTRPG content creation"
-    ]
+    ],
+    "external": false,
+    "source_url": null
   }
 ]

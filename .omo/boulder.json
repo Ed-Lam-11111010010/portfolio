@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "active_work_id": "portfolio-overhaul-wave1",
+  "works": {
+    "portfolio-overhaul-wave1": {
+      "work_id": "portfolio-overhaul-wave1",
+      "active_plan": ".omo/plans/portfolio-overhaul.md",
+      "plan_name": "portfolio-overhaul",
+      "session_ids": ["codex:current"],
+      "status": "active",
+      "worktree_path": null
+    }
+  }
+}

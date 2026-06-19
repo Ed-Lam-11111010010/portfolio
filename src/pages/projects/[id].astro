@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { findGenreForSkill, getSkillSlug } from '../../data/skills.js';
 import projects from '../../data/projects.json';
 
 export function getStaticPaths() {
@@ -17,11 +18,20 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
   <div class="container">
     <div class="detail-header">
       <a href="/#projects" class="detail-back">← Back to all projects</a>
-      <h1 class="detail-title">{project.title}</h1>
+      <h1 class="detail-title">
+        {project.title}
+        {project.external && <span class="badge-external-detail">Cloud Project</span>}
+      </h1>
       <div class="detail-meta">
         <span>{project.year}</span>
         <span>·</span>
         <span>{project.category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
+        {project.external && (
+          <>
+            <span>·</span>
+            <span class="detail-cloud-label">External Project</span>
+          </>
+        )}
       </div>
     </div>
 
@@ -38,9 +48,12 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
     </div>
 
     <div class="detail-skills">
-      {project.skills.map((skill) => (
-        <a href={`/#${skill}`} class="filter-tag">{skill}</a>
-      ))}
+      {project.skills.map((skill) => {
+        const info = findGenreForSkill(skill);
+        return (
+          <a href={`/skills/${info.genreSlug}/${getSkillSlug(skill)}`} class="filter-tag">{skill}</a>
+        );
+      })}
     </div>
 
     {project.highlights.length > 0 && (
@@ -58,6 +71,11 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
       {project.links.github && (
         <a href={project.links.github} target="_blank" rel="noopener noreferrer" class="btn">
           View on GitHub →
+        </a>
+      )}
+      {project.source_url && project.external && !project.links.github && (
+        <a href={project.source_url} target="_blank" rel="noopener noreferrer" class="btn btn-cloud">
+          View on Cloud →
         </a>
       )}
       {project.links.demo && (
