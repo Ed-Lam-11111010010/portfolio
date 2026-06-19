@@ -1,4 +1,6 @@
 ---
+import { findGenreForSkill, getSkillSlug } from '../data/skills.js';
+
 interface Props {
   project: {
     id: string;
@@ -14,14 +16,17 @@ interface Props {
       video: string | null;
     };
     highlights: string[];
+    external?: boolean;
+    source_url?: string | null;
   };
 }
 
 const { project } = Astro.props;
 const skillList = project.skills.join(',');
+const cardClass = project.external ? 'project-card project-card--external' : 'project-card';
 ---
 
-<article class="project-card" data-project-skills={skillList}>
+<article class={cardClass} data-project-skills={skillList}>
   <a href={`/projects/${project.id}`} class="project-card-link">
     <div class="project-card-image">
       {project.image ? (
@@ -31,13 +36,23 @@ const skillList = project.skills.join(',');
       )}
     </div>
     <div class="project-card-body">
-      <h3 class="project-card-title">{project.title}</h3>
+      <h3 class="project-card-title">
+        {project.title}
+        {project.external && <span class="badge-external">Cloud</span>}
+      </h3>
       <p class="project-card-year">{project.year}</p>
       <p class="project-card-desc">{project.description}</p>
       <div class="project-card-skills">
-        {project.skills.slice(0, 4).map((skill) => (
-          <button class="project-card-skill" data-skill={skill} type="button">{skill}</button>
-        ))}
+        {project.skills.slice(0, 4).map((skill) => {
+          const info = findGenreForSkill(skill);
+          return (
+            <a
+              href={`/skills/${info.genreSlug}/${getSkillSlug(skill)}`}
+              class="project-card-skill"
+              data-skill={skill}
+            >{skill}</a>
+          );
+        })}
         {project.skills.length > 4 && (
           <span class="project-card-skill">+{project.skills.length - 4}</span>
         )}

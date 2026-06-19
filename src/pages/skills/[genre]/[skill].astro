@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { getGenres, getSkillGenre, findGenreForSkill, getSkillSlug } from '../../../data/skills.js';
+import projects from '../../../data/projects.json';
+
+export function getStaticPaths() {
+  const paths = [];
+  const genres = getGenres();
+
+  for (const genre of genres) {
+    for (const skill of genre.skills) {
+      paths.push({
+        params: { genre: genre.slug, skill: skill.slug },
+        props: { genre, skill },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { genre, skill } = Astro.props;
+const pageTitle = `${skill.name} — Edwin Lam Portfolio`;
+const pageDesc = `Projects using ${skill.name}`;
+
+// Find all projects that match this skill
+const skillProjects = projects.filter((project) => {
+  return project.skills.some((tag) => getSkillSlug(tag) === skill.slug);
+});
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <div class="container">
+    <div class="skill-detail-header">
+      <a href="/#projects" class="detail-back">← Back to all projects</a>
+      <nav class="skill-breadcrumb">
+        <a href="/#projects">Projects</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href={`/#${genre.slug}`}>{genre.name}</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>{skill.name}</span>
+      </nav>
+      <h1 class="detail-title">{skill.name}</h1>
+      <p class="skill-genre-label">{genre.name}</p>
+    </div>
+
+    {skillProjects.length > 0 ? (
+      <div class="project-grid">
+        {skillProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    ) : (
+      <div class="filter-empty">
+        <p>No projects found for this skill.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .skill-detail-header {
+    padding: 2rem 0 1.5rem;
+  }
+
+  .skill-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .skill-breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .skill-breadcrumb a:hover {
+    color: var(--color-accent);
+  }
+
+  .breadcrumb-sep {
+    color: var(--color-border);
+  }
+
+  .skill-genre-label {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

@@ -1,25 +1,59 @@
 ---
-import { getAllSkills } from '../data/skills.js';
+import { getGenres, findGenreForSkill, getSkillSlug } from '../data/skills.js';
 
-const allSkills = getAllSkills();
+const genres = getGenres();
+const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
 ---
 
 <div class="skill-filter" id="skillFilter">
-  {allSkills.map((skill) => (
-    <button class="filter-tag" data-skill={skill} type="button">{skill}</button>
-  ))}
+  <div class="genre-tabs" id="genreTabs">
+    {allGenres.map((g) => (
+      <button class="genre-tab" data-genre={g.slug} type="button">{g.name}</button>
+    ))}
+  </div>
+  <div class="skill-chips" id="skillChips">
+    {genres.map((genre) => (
+      <div class="skill-chip-group" data-genre={genre.slug} style="display: none;">
+        {genre.skills.map((skill) => (
+          <a
+            href={`/skills/${genre.slug}/${skill.slug}`}
+            class="filter-tag"
+            data-skill={skill.name}
+            data-genre={genre.slug}
+          >{skill.name}</a>
+        ))}
+      </div>
+    ))}
+  </div>
   <button class="filter-clear" id="filterClear" type="button">Clear all</button>
 </div>
 
 <script>
+  const genreTabs = document.querySelectorAll('.genre-tab');
+  const chipGroups = document.querySelectorAll('.skill-chip-group');
   const filterTags = document.querySelectorAll('.filter-tag');
   const filterClear = document.getElementById('filterClear');
-  const projectGrid = document.getElementById('projectGrid');
   const filterEmpty = document.getElementById('filterEmpty');
   const projectCards = () => document.querySelectorAll('.project-card');
 
+  let activeGenre = 'all';
   let activeFilters = new Set();
 
+  // Apply active class to genre tab
+  function updateGenreTabs() {
+    genreTabs.forEach((tab) => {
+      tab.classList.toggle('active', tab.dataset.genre === activeGenre);
+    });
+  }
+
+  // Show/hide skill chip groups based on active genre
+  function updateChips() {
+    chipGroups.forEach((group) => {
+      group.style.display = activeGenre === 'all' || group.dataset.genre === activeGenre ? '' : 'none';
+    });
+  }
+
+  // Filter projects
   function updateFilter() {
     const cards = projectCards();
     let visibleCount = 0;
@@ -47,8 +81,27 @@ const allSkills = getAllSkills();
     }
   }
 
+  // Genre tab click handler
+  genreTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const genre = tab.dataset.genre;
+      if (activeGenre === genre && genre !== 'all') {
+        // Toggle off genre filter (show all)
+        activeGenre = 'all';
+      } else {
+        activeGenre = genre;
+      }
+      activeFilters.clear();
+      updateGenreTabs();
+      updateChips();
+      updateFilter();
+    });
+  });
+
+  // Skill tag click handler (links navigate, but we also filter on click)
   filterTags.forEach((tag) => {
-    tag.addEventListener('click', () => {
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
       const skill = tag.dataset.skill;
       if (activeFilters.has(skill)) {
         activeFilters.delete(skill);
@@ -61,6 +114,93 @@ const allSkills = getAllSkills();
 
   filterClear?.addEventListener('click', () => {
     activeFilters.clear();
+    activeGenre = 'all';
+    updateGenreTabs();
+    updateChips();
     updateFilter();
   });
+
+  // Initialize
+  updateGenreTabs();
+  updateChips();
 </script>
+
+<style>
+  .genre-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .genre-tab {
+    background: var(--color-tag-bg);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .genre-tab:hover {
+    opacity: 0.85;
+  }
+
+  .genre-tab.active {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
+  }
+
+  .skill-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .filter-tag {
+    background: var(--color-tag-bg);
+    color: var(--color-tag-text);
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .filter-tag:hover {
+    opacity: 0.8;
+  }
+
+  .filter-tag.active {
+    background: var(--color-tag-active-bg);
+    color: var(--color-tag-active-text);
+  }
+
+  .filter-clear {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.25rem;
+  }
+
+  .filter-clear:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>
