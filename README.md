@@ -4,7 +4,7 @@ A responsive portfolio website showcasing projects by Lam Chi (Edwin). Built wit
 
 ## Features
 
-- **Project Showcase** — 13 projects with descriptions, skills, and links
+- **Project Showcase** — Various projects with descriptions, skills, and links
 - **Hierarchical Skill Browser** — click a genre tab (e.g. "Programming Languages") to see related skill tags, then click a skill to filter projects or visit its dedicated page
 - **Skill Detail Pages** — dedicated pages at `/skills/{genre}/{skill}` showing all projects using that skill
 - **Project Detail Pages** — dedicated pages for each project
