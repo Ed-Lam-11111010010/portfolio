@@ -4,101 +4,101 @@
       "name": "Programming Languages",
       "slug": "programming",
       "skills": [
-        { "name": "Python", "slug": "python", "projectIds": ["calculator-project", "greeting-project", "ai-guild-master-fyp"] },
-        { "name": "C", "slug": "c", "projectIds": ["c-programming-university", "jewel-smash-game"] },
-        { "name": "JavaScript", "slug": "javascript", "projectIds": ["ierg-4210-web-project"] },
-        { "name": "GDScript", "slug": "gdscript", "projectIds": ["christmas-game-2025"] },
-        { "name": "Testing (pytest)", "slug": "testing", "projectIds": ["calculator-project"] },
-        { "name": "Git", "slug": "git", "projectIds": ["calculator-project", "greeting-project"] },
-        { "name": "CLI Tools", "slug": "cli-tools", "projectIds": ["calculator-project"] }
+        { "name": "Python", "slug": "python", "projectIds": ["calculator-project", "greeting-project", "ai-guild-master-fyp"], "level": 85 },
+        { "name": "C", "slug": "c", "projectIds": ["c-programming-university", "jewel-smash-game"], "level": 65 },
+        { "name": "JavaScript", "slug": "javascript", "projectIds": ["ierg-4210-web-project"], "level": 50 },
+        { "name": "GDScript", "slug": "gdscript", "projectIds": ["christmas-game-2025"], "level": 50 },
+        { "name": "Testing (pytest)", "slug": "testing", "projectIds": ["calculator-project"], "level": 50 },
+        { "name": "Git", "slug": "git", "projectIds": ["calculator-project", "greeting-project"], "level": 65 },
+        { "name": "CLI Tools", "slug": "cli-tools", "projectIds": ["calculator-project"], "level": 50 }
       ]
     },
     {
       "name": "Game Development",
       "slug": "game-dev",
       "skills": [
-        { "name": "Phaser.js", "slug": "phaser-js", "projectIds": ["ai-guild-master-fyp"] },
-        { "name": "Godot", "slug": "godot", "projectIds": ["christmas-game-2025"] },
-        { "name": "PyGame", "slug": "pygame", "projectIds": ["jewel-smash-game"] },
-        { "name": "Game Dev (general)", "slug": "game-dev-general", "projectIds": ["ai-guild-master-fyp", "jewel-smash-game", "christmas-game-2025"] }
+        { "name": "Phaser.js", "slug": "phaser-js", "projectIds": ["ai-guild-master-fyp"], "level": 50 },
+        { "name": "Godot", "slug": "godot", "projectIds": ["christmas-game-2025"], "level": 50 },
+        { "name": "PyGame", "slug": "pygame", "projectIds": ["jewel-smash-game"], "level": 50 },
+        { "name": "Game Dev (general)", "slug": "game-dev-general", "projectIds": ["ai-guild-master-fyp", "jewel-smash-game", "christmas-game-2025"], "level": 85 }
       ]
     },
     {
       "name": "AI & Machine Learning",
       "slug": "ai-ml",
       "skills": [
-        { "name": "Gemini API", "slug": "gemini-api", "projectIds": ["ai-guild-master-fyp"] },
-        { "name": "AI/ML", "slug": "ai-ml", "projectIds": ["ai-guild-master-fyp"] }
+        { "name": "Gemini API", "slug": "gemini-api", "projectIds": ["ai-guild-master-fyp"], "level": 50 },
+        { "name": "AI/ML", "slug": "ai-ml", "projectIds": ["ai-guild-master-fyp"], "level": 50 }
       ]
     },
     {
       "name": "Web Development",
       "slug": "web-dev",
       "skills": [
-        { "name": "HTML/CSS", "slug": "html-css", "projectIds": ["ierg-4210-web-project"] },
-        { "name": "JavaScript (Web)", "slug": "javascript-web", "projectIds": ["ierg-4210-web-project"] },
-        { "name": "Web Dev (general)", "slug": "web-dev-general", "projectIds": ["ierg-4210-web-project"] },
-        { "name": "Wix", "slug": "wix", "projectIds": ["intern-life-2024"] },
-        { "name": "WordPress", "slug": "wordpress", "projectIds": ["intern-life-2024"] }
+        { "name": "HTML/CSS", "slug": "html-css", "projectIds": ["ierg-4210-web-project"], "level": 50 },
+        { "name": "JavaScript (Web)", "slug": "javascript-web", "projectIds": ["ierg-4210-web-project"], "level": 50 },
+        { "name": "Web Dev (general)", "slug": "web-dev-general", "projectIds": ["ierg-4210-web-project"], "level": 50 },
+        { "name": "Wix", "slug": "wix", "projectIds": ["intern-life-2024"], "level": 50 },
+        { "name": "WordPress", "slug": "wordpress", "projectIds": ["intern-life-2024"], "level": 50 }
       ]
     },
     {
       "name": "Embedded Systems",
       "slug": "embedded-systems",
       "skills": [
-        { "name": "ARM/STM32", "slug": "arm-stm32", "projectIds": ["jewel-smash-game", "c-programming-university"] },
-        { "name": "Embedded Systems (general)", "slug": "embedded-systems-general", "projectIds": ["jewel-smash-game", "c-programming-university"] },
-        { "name": "Microcontroller Programming", "slug": "microcontroller-programming", "projectIds": ["c-programming-university"] }
+        { "name": "ARM/STM32", "slug": "arm-stm32", "projectIds": ["jewel-smash-game", "c-programming-university"], "level": 65 },
+        { "name": "Embedded Systems (general)", "slug": "embedded-systems-general", "projectIds": ["jewel-smash-game", "c-programming-university"], "level": 65 },
+        { "name": "Microcontroller Programming", "slug": "microcontroller-programming", "projectIds": ["c-programming-university"], "level": 50 }
       ]
     },
     {
       "name": "Creative & Design",
       "slug": "creative-design",
       "skills": [
-        { "name": "Game Design", "slug": "game-design", "projectIds": ["innoport-board-game"] },
-        { "name": "Graphic Design", "slug": "graphic-design", "projectIds": ["innoport-board-game", "pixel-art-graphic-design", "film-society-yingto"] },
-        { "name": "Affinity Designer", "slug": "affinity-designer", "projectIds": ["innoport-board-game", "pixel-art-graphic-design"] },
-        { "name": "Pixel Art", "slug": "pixel-art", "projectIds": ["pixel-art-graphic-design"] },
-        { "name": "Aseprite", "slug": "aseprite", "projectIds": ["pixel-art-graphic-design"] },
-        { "name": "Photoshop", "slug": "photoshop", "projectIds": ["pixel-art-graphic-design"] },
-        { "name": "Logo Design", "slug": "logo-design", "projectIds": ["pixel-art-graphic-design"] },
-        { "name": "Product Design", "slug": "product-design", "projectIds": ["innoport-board-game"] },
-        { "name": "Creative Writing", "slug": "creative-writing", "projectIds": ["dnd-empire-ants"] },
-        { "name": "TTRPG Design", "slug": "ttrpg-design", "projectIds": ["dnd-empire-ants"] },
-        { "name": "Worldbuilding", "slug": "worldbuilding", "projectIds": ["dnd-empire-ants"] },
-        { "name": "Content Creation", "slug": "content-creation", "projectIds": ["infotainment-video-production"] },
-        { "name": "Script Writing", "slug": "script-writing", "projectIds": ["infotainment-video-production"] }
+        { "name": "Game Design", "slug": "game-design", "projectIds": ["innoport-board-game"], "level": 50 },
+        { "name": "Graphic Design", "slug": "graphic-design", "projectIds": ["innoport-board-game", "pixel-art-graphic-design", "film-society-yingto"], "level": 85 },
+        { "name": "Affinity Designer", "slug": "affinity-designer", "projectIds": ["innoport-board-game", "pixel-art-graphic-design"], "level": 65 },
+        { "name": "Pixel Art", "slug": "pixel-art", "projectIds": ["pixel-art-graphic-design"], "level": 50 },
+        { "name": "Aseprite", "slug": "aseprite", "projectIds": ["pixel-art-graphic-design"], "level": 50 },
+        { "name": "Photoshop", "slug": "photoshop", "projectIds": ["pixel-art-graphic-design"], "level": 50 },
+        { "name": "Logo Design", "slug": "logo-design", "projectIds": ["pixel-art-graphic-design"], "level": 50 },
+        { "name": "Product Design", "slug": "product-design", "projectIds": ["innoport-board-game"], "level": 50 },
+        { "name": "Creative Writing", "slug": "creative-writing", "projectIds": ["dnd-empire-ants"], "level": 50 },
+        { "name": "TTRPG Design", "slug": "ttrpg-design", "projectIds": ["dnd-empire-ants"], "level": 50 },
+        { "name": "Worldbuilding", "slug": "worldbuilding", "projectIds": ["dnd-empire-ants"], "level": 50 },
+        { "name": "Content Creation", "slug": "content-creation", "projectIds": ["infotainment-video-production"], "level": 50 },
+        { "name": "Script Writing", "slug": "script-writing", "projectIds": ["infotainment-video-production"], "level": 50 }
       ]
     },
     {
       "name": "Multimedia Production",
       "slug": "multimedia",
       "skills": [
-        { "name": "Video Production", "slug": "video-production", "projectIds": ["infotainment-video-production"] },
-        { "name": "Video Editing", "slug": "video-editing", "projectIds": ["infotainment-video-production"] },
-        { "name": "Voice Over", "slug": "voice-over", "projectIds": ["infotainment-video-production"] },
-        { "name": "Subtitling", "slug": "subtitling", "projectIds": ["infotainment-video-production"] }
+        { "name": "Video Production", "slug": "video-production", "projectIds": ["infotainment-video-production"], "level": 50 },
+        { "name": "Video Editing", "slug": "video-editing", "projectIds": ["infotainment-video-production"], "level": 50 },
+        { "name": "Voice Over", "slug": "voice-over", "projectIds": ["infotainment-video-production"], "level": 50 },
+        { "name": "Subtitling", "slug": "subtitling", "projectIds": ["infotainment-video-production"], "level": 50 }
       ]
     },
     {
       "name": "Leadership & Management",
       "slug": "leadership",
       "skills": [
-        { "name": "Event Management", "slug": "event-management", "projectIds": ["film-society-yingto"] },
-        { "name": "Leadership", "slug": "leadership", "projectIds": ["film-society-yingto"] },
-        { "name": "Team Management", "slug": "team-management", "projectIds": ["film-society-yingto"] },
-        { "name": "Budgeting", "slug": "budgeting", "projectIds": ["film-society-yingto"] },
-        { "name": "Documentation", "slug": "documentation", "projectIds": ["intern-life-2024"] }
+        { "name": "Event Management", "slug": "event-management", "projectIds": ["film-society-yingto"], "level": 50 },
+        { "name": "Leadership", "slug": "leadership", "projectIds": ["film-society-yingto"], "level": 50 },
+        { "name": "Team Management", "slug": "team-management", "projectIds": ["film-society-yingto"], "level": 50 },
+        { "name": "Budgeting", "slug": "budgeting", "projectIds": ["film-society-yingto"], "level": 50 },
+        { "name": "Documentation", "slug": "documentation", "projectIds": ["intern-life-2024"], "level": 50 }
       ]
     },
     {
       "name": "Tools & Platforms",
       "slug": "tools-platforms",
       "skills": [
-        { "name": "ReadTheDocs", "slug": "readthedocs", "projectIds": ["intern-life-2024"] },
-        { "name": "Sphinx", "slug": "sphinx", "projectIds": ["intern-life-2024"] },
-        { "name": "Tabletop Simulator", "slug": "tabletop-simulator", "projectIds": ["innoport-board-game"] },
-        { "name": "Product/Website Setup", "slug": "product-website-setup", "projectIds": ["intern-life-2024"] }
+        { "name": "ReadTheDocs", "slug": "readthedocs", "projectIds": ["intern-life-2024"], "level": 50 },
+        { "name": "Sphinx", "slug": "sphinx", "projectIds": ["intern-life-2024"], "level": 50 },
+        { "name": "Tabletop Simulator", "slug": "tabletop-simulator", "projectIds": ["innoport-board-game"], "level": 50 },
+        { "name": "Product/Website Setup", "slug": "product-website-setup", "projectIds": ["intern-life-2024"], "level": 50 }
       ]
     }
   ]

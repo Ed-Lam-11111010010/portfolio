@@ -112,3 +112,20 @@ export function getSkillCategories() {
 
   return categorized;
 }
+
+export function getAllSkillsWithLevels() {
+  const result = [];
+  for (const genre of skillsData.genres) {
+    for (const skill of genre.skills) {
+      result.push({
+        genreName: genre.name,
+        genreSlug: genre.slug,
+        name: skill.name,
+        slug: skill.slug,
+        level: skill.level || 50,
+        projectIds: skill.projectIds,
+      });
+    }
+  }
+  return result;
+}
