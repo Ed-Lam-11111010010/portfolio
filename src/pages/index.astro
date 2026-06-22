@@ -2,25 +2,38 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SkillFilter from '../components/SkillFilter.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
+import SkillBar from '../components/SkillBar.astro';
+import { getGenres } from '../data/skills.js';
 import projects from '../data/projects.json';
 ---
 
 <BaseLayout title="Edwin Lam — Portfolio | Lam Chi">
-  <section class="hero">
+  <section class="home" id="home">
     <div class="container">
-      <h1 class="hero-name">Lam Chi (Edwin)</h1>
-      <p class="hero-title">Information Engineering Student · Game Designer · Creative Technologist</p>
-      <p class="hero-bio">
-        CUHK Information Engineering student with a passion for game development, AI, creative design,
-        and multimedia production. Building experiences across code, pixels, and paper.
-      </p>
-      <div class="hero-links">
-        <a href="https://github.com/Ed-Lam-11111010010" target="_blank" rel="noopener noreferrer">
-          GitHub →
-        </a>
-        <a href="mailto:edwin.lam@example.com">
-          Email →
-        </a>
+      <div class="home-content">
+        <div class="home-img" data-aos="fade-down">
+          <div class="avatar-placeholder">
+            <span class="avatar-initials">EL</span>
+          </div>
+        </div>
+        <h1 data-aos="fade-up">Hi, I'm <span>Lam Chi (Edwin)</span></h1>
+        <div class="text-animate" data-aos="fade-up" data-aos-delay="100">
+          <h3><span class="typing-text"></span></h3>
+        </div>
+        <p data-aos="fade-up" data-aos-delay="200">
+          CUHK Information Engineering student with a passion for game development, AI, creative design,
+          and multimedia production. Building experiences across code, pixels, and paper.
+        </p>
+        <div class="btn-box" data-aos="fade-up" data-aos-delay="300">
+          <a href="#projects" class="btn">View My Work</a>
+          <a href="#contact" class="btn">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="home-sci" data-aos="fade-up" data-aos-delay="400">
+        <a href="https://github.com/Ed-Lam-11111010010" target="_blank"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/in/edwin-lam" target="_blank"><i class="bx bxl-linkedin"></i></a>
+        <a href="mailto:edwin.lam@example.com"><i class="bx bx-envelope"></i></a>
       </div>
     </div>
   </section>
@@ -44,6 +57,26 @@ import projects from '../data/projects.json';
     </div>
   </section>
 
+  <section class="section" id="skills" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <div class="skills-row">
+        {getGenres().map((genre) => (
+          <div class="skills-column" data-aos="fade-up">
+            <h3 class="title">{genre.name}</h3>
+            <div class="skills-box">
+              <div class="skills-content">
+                {genre.skills.map((skill) => (
+                  <SkillBar name={skill.name} level={skill.level || 50} genre={genre.slug} />
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
@@ -52,4 +85,48 @@ import projects from '../data/projects.json';
       <ProjectGrid projects={projects} />
     </div>
   </section>
+
+  <section class="section" id="contact" data-aos="fade-up">
+    <div class="container">
+      <h2 class="heading">Contact <span>Me</span></h2>
+      <form action="mailto:edwin.lam@example.com" method="post" enctype="text/plain" class="contact-form">
+        <div class="input-box">
+          <div class="input-field">
+            <input type="text" placeholder="Full Name" required>
+            <span class="focus"></span>
+          </div>
+          <div class="input-field">
+            <input type="email" placeholder="Email Address" required>
+            <span class="focus"></span>
+          </div>
+        </div>
+        <div class="input-box">
+          <div class="input-field">
+            <input type="text" placeholder="Subject" required>
+            <span class="focus"></span>
+          </div>
+        </div>
+        <div class="textarea-field">
+          <textarea cols="30" rows="10" placeholder="Your Message" required></textarea>
+          <span class="focus"></span>
+        </div>
+        <div class="btn-box btns">
+          <button type="submit" class="btn">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof Typed !== 'undefined') {
+      new Typed('.typing-text', {
+        strings: ['Information Engineering Student', 'Game Designer', 'Creative Technologist', 'AI Enthusiast'],
+        typeSpeed: 80,
+        backSpeed: 40,
+        backDelay: 2000,
+        loop: true
+      });
+    }
+  });
+</script>
 </BaseLayout>

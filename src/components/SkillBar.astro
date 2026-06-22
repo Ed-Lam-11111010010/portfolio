@@ -1,0 +1,28 @@
+---
+export interface Props {
+  name: string;
+  level: number;
+  genre: string;
+}
+const { name, level, genre } = Astro.props;
+const clampedLevel = Math.max(0, Math.min(100, level));
+---
+
+<div class="skill-bar" data-aos="fade-right" data-aos-delay="100">
+  <div class="skill-bar-header">
+    <span class="skill-bar-name">{name}</span>
+    <span class="skill-bar-percent">{clampedLevel}%</span>
+  </div>
+  <div class="skill-bar-track">
+    <div class="skill-bar-fill" style={`width: ${clampedLevel}%`}></div>
+  </div>
+</div>
+
+<style>
+  .skill-bar { margin-bottom: 1.25rem; }
+  .skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+  .skill-bar-name { font-size: 0.9rem; font-weight: 600; color: var(--color-text); }
+  .skill-bar-percent { font-size: 0.85rem; color: var(--color-text-secondary); }
+  .skill-bar-track { width: 100%; height: 10px; background: var(--color-tag-bg); border-radius: 5px; overflow: hidden; }
+  .skill-bar-fill { height: 100%; background: linear-gradient(135deg, var(--color-accent), #6c5ce7); border-radius: 5px; transition: width 1s ease; }
+</style>

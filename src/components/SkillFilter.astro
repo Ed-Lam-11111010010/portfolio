@@ -13,15 +13,19 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
   </div>
   <div class="skill-chips" id="skillChips">
     {genres.map((genre) => (
-      <div class="skill-chip-group" data-genre={genre.slug} style="display: none;">
-        {genre.skills.map((skill) => (
-          <a
-            href={`/skills/${genre.slug}/${skill.slug}`}
-            class="filter-tag"
-            data-skill={skill.name}
-            data-genre={genre.slug}
-          >{skill.name}</a>
-        ))}
+      <div class="skill-slider-wrapper" data-genre={genre.slug} style="display: none;">
+        <button class="scroll-btn scroll-btn--left" data-scroll-genre={genre.slug} type="button" aria-label="Scroll left">‹</button>
+        <div class="skill-chip-group" data-genre={genre.slug}>
+          {genre.skills.map((skill) => (
+            <a
+              href={`/skills/${genre.slug}/${skill.slug}`}
+              class="filter-tag"
+              data-skill={skill.slug}
+              data-genre={genre.slug}
+            >{skill.name}</a>
+          ))}
+        </div>
+        <button class="scroll-btn scroll-btn--right" data-scroll-genre={genre.slug} type="button" aria-label="Scroll right">›</button>
       </div>
     ))}
   </div>
@@ -30,7 +34,6 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
 
 <script>
   const genreTabs = document.querySelectorAll('.genre-tab');
-  const chipGroups = document.querySelectorAll('.skill-chip-group');
   const filterTags = document.querySelectorAll('.filter-tag');
   const filterClear = document.getElementById('filterClear');
   const filterEmpty = document.getElementById('filterEmpty');
@@ -48,8 +51,8 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
 
   // Show/hide skill chip groups based on active genre
   function updateChips() {
-    chipGroups.forEach((group) => {
-      group.style.display = activeGenre === 'all' || group.dataset.genre === activeGenre ? '' : 'none';
+    document.querySelectorAll('.skill-slider-wrapper').forEach((wrapper) => {
+      wrapper.style.display = activeGenre === 'all' || wrapper.dataset.genre === activeGenre ? '' : 'none';
     });
   }
 
@@ -112,6 +115,21 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     });
   });
 
+  // Scroll buttons for skill chip groups
+  document.querySelectorAll('.scroll-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const genre = btn.dataset.scrollGenre;
+      const group = document.querySelector(`.skill-chip-group[data-genre="${genre}"]`);
+      if (!group) return;
+      const scrollAmount = 200;
+      if (btn.classList.contains('scroll-btn--left')) {
+        group.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        group.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    });
+  });
+
   filterClear?.addEventListener('click', () => {
     activeFilters.clear();
     activeGenre = 'all';
@@ -156,12 +174,49 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     border-color: var(--color-accent);
   }
 
-  .skill-chip-group {
+  .skill-slider-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
+  }
+  .skill-chip-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
     padding: 0.5rem 0;
+    flex: 1;
+  }
+  .skill-chip-group::-webkit-scrollbar {
+    height: 4px;
+  }
+  .skill-chip-group::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+  .scroll-btn {
+    background: var(--color-tag-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+  .scroll-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
   }
 
   .filter-tag {

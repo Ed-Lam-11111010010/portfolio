@@ -20,17 +20,26 @@ const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- BoxIcons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   </head>
   <body>
     <header class="header">
       <div class="container">
-        <a href="/" class="header-title">Edwin Lam</a>
-        <nav class="header-nav">
-          <a href="/#about">About</a>
-          <a href="/#projects">Projects</a>
+        <a href="/" class="logo">Edwin <span>Lam</span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav class="navbar">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
             <span id="themeIcon">🌙</span>
           </button>
+          <span class="active-nav"></span>
         </nav>
       </div>
     </header>
@@ -42,6 +51,9 @@ const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (
     <footer class="footer">
       <div class="container">
         <p class="footer-text">&copy; {new Date().getFullYear()} Edwin Lam (Lam Chi). Built with Astro.</p>
+        <div class="footer-iconTop">
+          <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+        </div>
         <div class="footer-links">
           <a href="https://github.com/Ed-Lam-11111010010" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="mailto:edwin.lam@example.com">Email</a>
@@ -49,7 +61,39 @@ const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (
       </div>
     </footer>
 
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Typed.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
     <script>
+      // Hamburger menu toggle
+      const menuIcon = document.getElementById('menu-icon');
+      const navbar = document.querySelector('.navbar');
+      if (menuIcon && navbar) {
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('bx-x');
+          navbar.classList.toggle('active');
+        });
+      }
+      
+      // Close nav on link click
+      document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuIcon?.classList.remove('bx-x');
+          navbar?.classList.remove('active');
+        });
+      });
+      
+      // AOS initialization
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+          easing: 'ease-in-out'
+        });
+      }
+
       // Theme toggle
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
