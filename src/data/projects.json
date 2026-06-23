@@ -66,10 +66,10 @@
   {
     "id": "innoport-board-game",
     "title": "InnoPort Board Game",
-    "description": "A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer. Protected by an IP agreement with Unplugged Studio.",
-    "year": 2025,
+    "description": "A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer and Cider. Protected by an IP agreement with Unplugged Studio.",
+    "year": 2026,
     "category": "game-design",
-    "skills": ["game design", "graphic design", "affinity designer", "tabletop simulator", "product design"],
+    "skills": ["game design", "graphic design", "affinity designer", "tabletop simulator", "product design", "cider"],
     "image": null,
     "links": {
       "github": null,
@@ -257,7 +257,7 @@
   {
     "id": "dnd-empire-ants",
     "title": "D&D Campaign: Empire Ants",
-    "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TTRPG content creation skills.",
+    "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TRPG content creation skills.",
     "year": 2025,
     "category": "creative",
     "skills": ["creative writing", "ttrpg design", "worldbuilding"],
