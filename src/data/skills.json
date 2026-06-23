@@ -64,7 +64,7 @@
         { "name": "Logo Design", "slug": "logo-design", "projectIds": ["pixel-art-graphic-design"], "level": 50 },
         { "name": "Product Design", "slug": "product-design", "projectIds": ["innoport-board-game"], "level": 50 },
         { "name": "Creative Writing", "slug": "creative-writing", "projectIds": ["dnd-empire-ants"], "level": 50 },
-        { "name": "TTRPG Design", "slug": "ttrpg-design", "projectIds": ["dnd-empire-ants"], "level": 50 },
+        { "name": "TRPG Design", "slug": "trpg-design", "projectIds": ["dnd-empire-ants"], "level": 50 },
         { "name": "Worldbuilding", "slug": "worldbuilding", "projectIds": ["dnd-empire-ants"], "level": 50 },
         { "name": "Content Creation", "slug": "content-creation", "projectIds": ["infotainment-video-production"], "level": 50 },
         { "name": "Script Writing", "slug": "script-writing", "projectIds": ["infotainment-video-production"], "level": 50 }
