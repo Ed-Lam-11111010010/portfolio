@@ -1,5 +1,6 @@
 ---
 import { getGenres, findGenreForSkill, getSkillSlug } from '../data/skills.js';
+const base = import.meta.env.BASE_URL;
 
 const genres = getGenres();
 const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
@@ -18,7 +19,7 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
         <div class="skill-chip-group" data-genre={genre.slug}>
           {genre.skills.map((skill) => (
             <a
-              href={`/skills/${genre.slug}/${skill.slug}`}
+              href={`${base}skills/${genre.slug}/${skill.slug}`}
               class="filter-tag"
               data-skill={skill.slug}
               data-genre={genre.slug}

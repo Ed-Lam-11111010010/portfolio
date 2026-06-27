@@ -7,6 +7,7 @@ export interface Props {
 }
 
 const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (Edwin) — Information Engineering student, game designer, and creative technologist." } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -14,8 +15,8 @@ const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="manifest" href={`${base}manifest.json`} />
     <meta name="theme-color" content="#0071e3" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
@@ -28,7 +29,7 @@ const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (
   <body>
     <header class="header">
       <div class="container">
-        <a href="/" class="logo">Edwin <span>Lam</span></a>
+        <a href={`${base}`} class="logo">Edwin <span>Lam</span></a>
         <div class="bx bx-menu" id="menu-icon"></div>
         <nav class="navbar">
           <a href="#home" class="active">Home</a>
@@ -119,7 +120,7 @@ const { title = "Edwin Lam — Portfolio", description = "Portfolio of Lam Chi (
       // Register service worker for PWA
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {
+          navigator.serviceWorker.register(`${base}sw.js`).catch(() => {
             // Service worker registration failed silently
           });
         });
