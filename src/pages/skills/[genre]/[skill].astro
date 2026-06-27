@@ -21,6 +21,7 @@ export function getStaticPaths() {
 }
 
 const { genre, skill } = Astro.props;
+const base = import.meta.env.BASE_URL;
 const pageTitle = `${skill.name} — Edwin Lam Portfolio`;
 const pageDesc = `Projects using ${skill.name}`;
 
@@ -33,11 +34,11 @@ const skillProjects = projects.filter((project) => {
 <BaseLayout title={pageTitle} description={pageDesc}>
   <div class="container">
     <div class="skill-detail-header">
-      <a href="/#projects" class="detail-back">← Back to all projects</a>
+      <a href={`${base}#projects`} class="detail-back">← Back to all projects</a>
       <nav class="skill-breadcrumb">
         <a href="/#projects">Projects</a>
         <span class="breadcrumb-sep">/</span>
-        <a href={`/#${genre.slug}`}>{genre.name}</a>
+        <a href={`${base}#${genre.slug}`}>{genre.name}</a>
         <span class="breadcrumb-sep">/</span>
         <span>{skill.name}</span>
       </nav>
