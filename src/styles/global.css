@@ -372,6 +372,9 @@ img {
   font-size: 0.8rem;
   color: var(--color-text-secondary);
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .project-card-desc {
@@ -1172,6 +1175,7 @@ img {
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   background: var(--color-tag-bg);
+  white-space: nowrap;
 }
 
 .detail-type {
