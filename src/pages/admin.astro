@@ -1,0 +1,480 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import projects from "../data/projects.json";
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Admin ? Project Manager">
+  <meta name="robots" content="noindex">
+  <section class="admin-section">
+    <div class="container">
+      <h1>Project Manager</h1>
+      <p class="admin-subtitle">Add, edit, delete, or export project data.</p>
+
+      <div class="admin-toolbar">
+        <button id="btnAdd" class="btn">+ New Project</button>
+        <button id="btnExport" class="btn">?? Export JSON</button>
+        <button id="btnImport" class="btn">?? Import JSON</button>
+        <button id="btnReset" class="btn btn-danger">? Reset</button>
+      </div>
+
+      <div id="addFormContainer" class="admin-form-container" hidden>
+        <h2>Add New Project</h2>
+        <form id="addForm" class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Title</label>
+              <input name="title" required>
+            </div>
+            <div class="form-group">
+              <label>Year</label>
+              <input name="year" type="number" required value="2026">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category</label>
+              <select name="category" required>
+                <option value="programming">Programming</option>
+                <option value="web-dev">Web Dev</option>
+                <option value="game-dev">Game Dev</option>
+                <option value="ai-game-dev">AI Game Dev</option>
+                <option value="creative">Creative</option>
+                <option value="multimedia">Multimedia</option>
+                <option value="leadership">Leadership</option>
+                <option value="documentation">Documentation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <select name="type" required>
+                <option value="personal">Personal</option>
+                <option value="coursework">Coursework</option>
+                <option value="game-dev">Game Dev</option>
+                <option value="game-design">Game Design</option>
+                <option value="multimedia">Multimedia</option>
+                <option value="leadership">Leadership</option>
+                <option value="documentation">Documentation</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Skills (comma-separated)</label>
+            <input name="skills" placeholder="python, javascript, phaser.js">
+          </div>
+          <div class="form-group">
+            <label>Highlights (comma-separated)</label>
+            <textarea name="highlights" rows="2" placeholder="Key feature 1, Key feature 2"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>GitHub URL</label>
+              <input name="github" placeholder="https://github.com/...">
+            </div>
+            <div class="form-group">
+              <label>Demo URL</label>
+              <input name="demo" placeholder="https://...">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Video URL</label>
+              <input name="video" placeholder="https://...">
+            </div>
+            <div class="form-group">
+              <label>Source URL (if external)</label>
+              <input name="source_url" placeholder="https://...">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Image URL</label>
+              <input name="image" placeholder="https://... or leave empty">
+            </div>
+            <div class="form-group checkbox-group">
+              <label>
+                <input name="external" type="checkbox">
+                External project (Cloud badge)
+              </label>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn">Save Project</button>
+            <button type="button" id="cancelAdd" class="btn btn-secondary">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="importContainer" class="admin-form-container" hidden>
+        <h2>Import Projects JSON</h2>
+        <textarea id="importTextarea" rows="10" style="width:100%;font-family:monospace;" placeholder="Paste projects.json array here..."></textarea>
+        <div class="form-actions">
+          <button id="btnImportConfirm" class="btn">Import</button>
+          <button id="btnImportCancel" class="btn btn-secondary">Cancel</button>
+        </div>
+      </div>
+
+      <div id="projectList" class="admin-project-list"></div>
+
+      <div id="projectCount" class="admin-count"></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const BASE_URL = "{base}";
+  const ORIGINAL_DATA = JSON.parse('{JSON.stringify(projects)}');
+
+  let data = loadData();
+
+  function loadData() {
+    try {
+      const saved = localStorage.getItem("admin-projects");
+      return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(ORIGINAL_DATA));
+    } catch { return JSON.parse(JSON.stringify(ORIGINAL_DATA)); }
+  }
+
+  function saveData() {
+    localStorage.setItem("admin-projects", JSON.stringify(data, null, 2));
+  }
+
+  function slugify(text) {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  function render() {
+    const list = document.getElementById("projectList");
+    const count = document.getElementById("projectCount");
+    if (!list) return;
+    list.innerHTML = data.map((p, i) => `
+      <div class="admin-project-card" data-index="${i}">
+        <div class="admin-project-header">
+          <div class="admin-project-main">
+            <span class="admin-project-title">${p.title}</span>
+            <span class="admin-project-meta">${p.year} ? ${p.type || "personal"} ? ${p.category}</span>
+          </div>
+          <div class="admin-project-actions">
+            <button class="btn-small btn-edit" data-index="${i}">Edit</button>
+            <button class="btn-small btn-delete" data-index="${i}">Delete</button>
+          </div>
+        </div>
+        <div class="admin-project-detail" hidden>
+          <form class="admin-edit-form" data-index="${i}">
+            <div class="form-row">
+              <div class="form-group"><label>Title</label><input name="title" value="${p.title.replace(/"/g, "&quot;")}"></div>
+              <div class="form-group"><label>Year</label><input name="year" type="number" value="${p.year}"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Category</label>
+                <select name="category">
+                  ${["programming","web-dev","game-dev","ai-game-dev","creative","multimedia","leadership","documentation"].map(c => `<option value="${c}"${p.category===c?" selected":""}>${c}</option>`).join("")}
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Type</label>
+                <select name="type">
+                  ${["personal","coursework","game-dev","game-design","multimedia","leadership","documentation"].map(t => `<option value="${t}"${p.type===t?" selected":""}>${t}</option>`).join("")}
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label>Description</label><textarea name="description" rows="2">${p.description.replace(/"/g, "&quot;")}</textarea></div>
+            <div class="form-group"><label>Skills (comma)</label><input name="skills" value="${p.skills.join(", ")}"></div>
+            <div class="form-group"><label>Highlights (comma)</label><input name="highlights" value="${(p.highlights||[]).join(", ")}"></div>
+            <div class="form-row">
+              <div class="form-group"><label>GitHub</label><input name="github" value="${p.links.github||""}"></div>
+              <div class="form-group"><label>Demo</label><input name="demo" value="${p.links.demo||""}"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Video</label><input name="video" value="${p.links.video||""}"></div>
+              <div class="form-group"><label>External URL</label><input name="source_url" value="${p.source_url||""}"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Image URL</label><input name="image" value="${p.image||""}"></div>
+              <div class="form-group checkbox-group">
+                <label><input name="external" type="checkbox"${p.external?" checked":""}> External</label>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-small">Save</button>
+              <button type="button" class="btn-small btn-cancel-edit">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    `).join("");
+    count.textContent = "Total: " + data.length + " projects";
+    bindEvents();
+  }
+
+  function bindEvents() {
+    document.querySelectorAll(".btn-edit").forEach(b => b.addEventListener("click", () => {
+      const card = b.closest(".admin-project-card");
+      const detail = card.querySelector(".admin-project-detail");
+      detail.hidden = !detail.hidden;
+    }));
+    document.querySelectorAll(".btn-cancel-edit").forEach(b => b.addEventListener("click", () => {
+      b.closest(".admin-project-detail").hidden = true;
+    }));
+    document.querySelectorAll(".admin-edit-form").forEach(form => form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const idx = parseInt(form.dataset.index);
+      const fd = new FormData(form);
+      data[idx] = buildProject(fd, data[idx].id);
+      saveData();
+      render();
+    }));
+    document.querySelectorAll(".btn-delete").forEach(b => b.addEventListener("click", () => {
+      const idx = parseInt(b.dataset.index);
+      if (confirm("Delete project: " + data[idx].title + "?")) {
+        data.splice(idx, 1);
+        saveData();
+        render();
+      }
+    }));
+  }
+
+  function buildProject(fd, existingId) {
+    const skills = fd.get("skills") ? fd.get("skills").split(",").map(s => s.trim()).filter(Boolean) : [];
+    const highlights = fd.get("highlights") ? fd.get("highlights").split(",").map(s => s.trim()).filter(Boolean) : [];
+    const title = fd.get("title") || "";
+    return {
+      id: existingId || slugify(title) || "project-" + Date.now(),
+      title,
+      description: fd.get("description") || "",
+      year: parseInt(fd.get("year")) || new Date().getFullYear(),
+      category: fd.get("category") || "programming",
+      skills,
+      image: fd.get("image") || null,
+      links: {
+        github: fd.get("github") || null,
+        demo: fd.get("demo") || null,
+        video: fd.get("video") || null
+      },
+      highlights,
+      external: fd.get("external") === "on",
+      source_url: fd.get("source_url") || null,
+      type: fd.get("type") || "personal"
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    render();
+
+    document.getElementById("btnAdd").addEventListener("click", () => {
+      document.getElementById("addFormContainer").hidden = false;
+    });
+    document.getElementById("cancelAdd").addEventListener("click", () => {
+      document.getElementById("addFormContainer").hidden = true;
+      document.getElementById("addForm").reset();
+    });
+    document.getElementById("addForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      data.push(buildProject(fd));
+      saveData();
+      render();
+      e.target.reset();
+      document.getElementById("addFormContainer").hidden = true;
+    });
+    document.getElementById("btnExport").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "projects.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    document.getElementById("btnImport").addEventListener("click", () => {
+      document.getElementById("importContainer").hidden = false;
+    });
+    document.getElementById("btnImportCancel").addEventListener("click", () => {
+      document.getElementById("importContainer").hidden = true;
+    });
+    document.getElementById("btnImportConfirm").addEventListener("click", () => {
+      try {
+        const parsed = JSON.parse(document.getElementById("importTextarea").value);
+        if (!Array.isArray(parsed)) throw new Error("Not an array");
+        data = parsed;
+        saveData();
+        render();
+        document.getElementById("importContainer").hidden = true;
+        document.getElementById("importTextarea").value = "";
+      } catch (err) {
+        alert("Invalid JSON: " + err.message);
+      }
+    });
+    document.getElementById("btnReset").addEventListener("click", () => {
+      if (confirm("Reset all changes to original data?")) {
+        localStorage.removeItem("admin-projects");
+        data = JSON.parse(JSON.stringify(ORIGINAL_DATA));
+        render();
+      }
+    });
+  });
+</script>
+
+<style>
+  .admin-section {
+    padding: 3rem 0;
+  }
+  .admin-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+  .admin-subtitle {
+    color: var(--color-text-secondary, #666);
+    margin-bottom: 1.5rem;
+  }
+  .admin-toolbar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .admin-form-container {
+    background: var(--color-card-bg, #f9f9f9);
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .admin-form-container h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+  .admin-form .form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .admin-form .form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+  }
+  .form-group {
+    margin-bottom: 0.75rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-text, #333);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 4px;
+    background: var(--color-bg, #fff);
+    color: var(--color-text, #333);
+    font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+    padding-top: 1.5rem;
+  }
+  .checkbox-group input[type="checkbox"] {
+    width: auto;
+  }
+  .form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .admin-project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .admin-project-card {
+    background: var(--color-card-bg, #f9f9f9);
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .admin-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+  .admin-project-main {
+    display: flex;
+    flex-direction: column;
+  }
+  .admin-project-title {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .admin-project-meta {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary, #666);
+  }
+  .admin-project-actions {
+    display: flex;
+    gap: 0.35rem;
+  }
+  .admin-project-detail {
+    padding: 0 1rem 1rem;
+    border-top: 1px solid var(--color-border, #ddd);
+  }
+  .btn-small {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 4px;
+    cursor: pointer;
+    background: var(--color-bg, #fff);
+    color: var(--color-text, #333);
+  }
+  .btn-small:hover {
+    opacity: 0.85;
+  }
+  .btn-delete {
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+  .btn-danger {
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+  .btn-danger:hover {
+    background: #e74c3c;
+    color: #fff;
+  }
+  .btn-secondary {
+    opacity: 0.7;
+  }
+  .btn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--color-accent, #6c63ff);
+    border-radius: 6px;
+    background: var(--color-accent, #6c63ff);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: opacity 0.2s;
+  }
+  .btn:hover {
+    opacity: 0.85;
+  }
+  .admin-count {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #666);
+  }
+</style>
