@@ -16,6 +16,7 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     <div class="skill-slider-wrapper">
       <button class="scroll-btn scroll-btn--left" type="button" aria-label="Scroll left">?</button>
       <div class="skill-chip-group" id="skillChipGroup">
+        <a href="#" class="filter-tag" data-skill="_all_" data-genre="all">&lt;/&gt;</a>
         {genres.map((genre) => genre.skills.map((skill) => (
           <a
             href={`${base}skills/${genre.slug}/${skill.slug}`}
@@ -104,6 +105,15 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     tag.addEventListener('click', (e) => {
       e.preventDefault();
       const skill = tag.dataset.skill;
+      // `<>` chip �X reset all filters
+      if (skill === '_all_') {
+        activeFilters.clear();
+        activeGenre = 'all';
+        updateGenreTabs();
+        updateChips();
+        updateFilter();
+        return;
+      }
       if (activeFilters.has(skill)) {
         activeFilters.delete(skill);
       } else {
@@ -171,6 +181,11 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     border-color: var(--color-accent);
   }
 
+  .skill-chips {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
   .skill-slider-wrapper {
     display: flex;
     align-items: center;
