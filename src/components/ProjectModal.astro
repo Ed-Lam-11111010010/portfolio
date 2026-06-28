@@ -1,0 +1,452 @@
+---
+import projects from '../data/projects.json';
+import { findGenreForSkill, getSkillSlug } from '../data/skills.js';
+const base = import.meta.env.BASE_URL;
+---
+
+<!-- Project Detail Modal -->
+<div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-container">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    
+    <div class="modal-content" id="modalContent">
+      <!-- Content will be injected by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .modal-overlay:not([hidden]) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-container {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px var(--color-card-shadow);
+  }
+
+  .modal-overlay:not([hidden]) .modal-container {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s ease;
+  }
+
+  .modal-close:hover {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
+  }
+
+  .modal-content {
+    padding: 2rem;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-image-box {
+    flex: 0 0 300px;
+    aspect-ratio: 16/10;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  .modal-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--color-text-secondary);
+  }
+
+  .modal-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .modal-title-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-year,
+  .modal-type,
+  .modal-category {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: var(--color-tag-bg);
+    white-space: nowrap;
+  }
+
+  .modal-type {
+    background: var(--color-accent);
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .modal-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-section h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .modal-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+
+  .modal-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .modal-highlights {
+    list-style: none;
+    padding: 0;
+  }
+
+  .modal-highlights li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-text-secondary);
+  }
+
+  .modal-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  .modal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .modal-links .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: var(--color-accent);
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .modal-links .btn:hover {
+    opacity: 0.9;
+  }
+
+  .modal-links .btn-cloud {
+    background: var(--color-text-secondary);
+  }
+
+  .modal-related {
+    margin-top: 1.5rem;
+  }
+
+  .modal-related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .modal-related-card {
+    display: block;
+    padding: 0.75rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .modal-related-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .modal-related-title {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  .modal-related-category {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .modal-header {
+      flex-direction: column;
+    }
+
+    .modal-image-box {
+      flex: none;
+      width: 100%;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+    }
+
+    .modal-content {
+      padding: 1.5rem;
+    }
+
+    .modal-close {
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 36px;
+      height: 36px;
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  // Project data for modal (injected from Astro)
+  const projectData = JSON.parse('{JSON.stringify(projects)}');
+  const baseUrl = '{base}';
+
+  // Modal elements
+  const modalOverlay = document.getElementById('projectModal');
+  const modalContent = document.getElementById('modalContent');
+  const modalClose = document.getElementById('modalClose');
+
+  // Open modal with project data
+  function openModal(projectId) {
+    const project = projectData.find(p => p.id === projectId);
+    if (!project) return;
+
+    const genreInfo = (skill) => {
+      // Find genre for skill
+      const genres = [
+        { name: 'Programming Languages', slug: 'programming', skills: ['python', 'c', 'javascript', 'gdscript', 'testing', 'git', 'cli-tools'] },
+        { name: 'Game Development', slug: 'game-dev', skills: ['phaser.js', 'godot', 'pygame', 'game-dev'] },
+        { name: 'AI & Machine Learning', slug: 'ai-ml', skills: ['gemini-api', 'ai/ml'] },
+        { name: 'Web Development', slug: 'web-dev', skills: ['html/css', 'javascript-web', 'web-dev', 'wix', 'wordpress'] },
+        { name: 'Embedded Systems', slug: 'embedded-systems', skills: ['arm/stm32', 'embedded-systems', 'microcontroller-programming'] },
+        { name: 'Creative & Design', slug: 'creative-design', skills: ['game-design', 'graphic-design', 'affinity-designer', 'pixel-art', 'aseprite', 'photoshop', 'logo-design', 'product-design', 'creative-writing', 'trpg-design', 'worldbuilding', 'content-creation', 'script-writing'] },
+        { name: 'Multimedia Production', slug: 'multimedia', skills: ['video-production', 'video-editing', 'voice-over', 'subtitling'] },
+        { name: 'Leadership & Management', slug: 'leadership', skills: ['event-management', 'leadership', 'team-management', 'budgeting', 'documentation'] },
+        { name: 'Tools & Platforms', slug: 'tools-platforms', skills: ['readthedocs', 'sphinx', 'tabletop-simulator', 'product-website-setup'] }
+      ];
+      
+      for (const genre of genres) {
+        if (genre.skills.includes(skill.toLowerCase())) {
+          return { genreSlug: genre.slug, skillSlug: skill.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-').replace(/\//g, '-') };
+        }
+      }
+      return { genreSlug: 'other', skillSlug: skill.toLowerCase().replace(/\s+/g, '-') };
+    };
+
+    const getSkillSlug = (skill) => skill.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-').replace(/\//g, '-');
+
+    const skillsHtml = project.skills.map(skill => {
+      const info = genreInfo(skill);
+      return `<a href="${baseUrl}skills/${info.genreSlug}/${getSkillSlug(skill)}" class="filter-tag">${skill}</a>`;
+    }).join('');
+
+    const highlightsHtml = project.highlights && project.highlights.length > 0
+      ? `<ul class="modal-highlights">${project.highlights.map(h => `<li>${h}</li>`).join('')}</ul>`
+      : '';
+
+    const linksHtml = `
+      ${project.links.github ? `<a href="${project.links.github}" target="_blank" rel="noopener noreferrer" class="btn">GitHub →</a>` : ''}
+      ${project.source_url && project.external && !project.links.github ? `<a href="${project.source_url}" target="_blank" rel="noopener noreferrer" class="btn btn-cloud">Cloud →</a>` : ''}
+      ${project.links.demo ? `<a href="${project.links.demo}" target="_blank" rel="noopener noreferrer" class="btn">Demo →</a>` : ''}
+      ${project.links.video ? `<a href="${project.links.video}" target="_blank" rel="noopener noreferrer" class="btn">Video →</a>` : ''}
+    `;
+
+    // Find related projects (shared skills)
+    const relatedProjects = projectData
+      .filter(p => p.id !== project.id && p.skills.some(s => project.skills.includes(s)))
+      .slice(0, 4);
+
+    const relatedHtml = relatedProjects.length > 0
+      ? `<div class="modal-section modal-related">
+          <h3>Related Projects</h3>
+          <div class="modal-related-grid">
+            ${relatedProjects.map(r => `
+              <a href="${baseUrl}projects/${r.id}" class="modal-related-card">
+                <span class="modal-related-title">${r.title}</span>
+                <span class="modal-related-category">${r.category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
+              </a>
+            `).join('')}
+          </div>
+        </div>`
+      : '';
+
+    modalContent.innerHTML = `
+      <div class="modal-header">
+        <div class="modal-image-box">
+          ${project.image 
+            ? `<img src="${project.image}" alt="${project.title}" loading="lazy" />`
+            : `<div class="modal-image-placeholder">📁</div>`
+          }
+        </div>
+        <div class="modal-main">
+          <h2 class="modal-title" id="modalTitle">
+            ${project.title}
+            ${project.external ? '<span class="badge-external-detail">Cloud</span>' : ''}
+          </h2>
+          <div class="modal-meta">
+            <span class="modal-year">${project.year}</span>
+            <span class="modal-type">${project.type || 'personal'}</span>
+            <span class="modal-category">${project.category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="modal-section">
+        <h3>Description</h3>
+        <p>${project.description}</p>
+      </section>
+
+      <section class="modal-section">
+        <h3>Skills & Tags</h3>
+        <div class="modal-skills">${skillsHtml}</div>
+      </section>
+
+      ${highlightsHtml ? `
+      <section class="modal-section">
+        <h3>Highlights</h3>
+        ${highlightsHtml}
+      </section>
+      ` : ''}
+
+      <section class="modal-section">
+        <h3>Links</h3>
+        <div class="modal-links">${linksHtml}</div>
+      </section>
+
+      ${relatedHtml}
+    `;
+
+    modalOverlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management
+    modalClose.focus();
+  }
+
+  // Close modal
+  function closeModal() {
+    modalOverlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  // Event listeners
+  modalClose.addEventListener('click', closeModal);
+  
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modalOverlay.hidden) closeModal();
+  });
+
+  // Make openModal globally accessible
+  window.openProjectModal = openModal;
+</script>

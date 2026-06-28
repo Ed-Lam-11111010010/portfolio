@@ -12,6 +12,16 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
       <button class="genre-tab" data-genre={g.slug} type="button">{g.name}</button>
     ))}
   </div>
+  <div class="type-tabs">
+    <button class="type-tab active" data-type="" type="button">All Types</button>
+    <button class="type-tab" data-type="personal" type="button">Personal</button>
+    <button class="type-tab" data-type="coursework" type="button">Coursework</button>
+    <button class="type-tab" data-type="game-dev" type="button">Game Dev</button>
+    <button class="type-tab" data-type="game-design" type="button">Game Design</button>
+    <button class="type-tab" data-type="multimedia" type="button">Multimedia</button>
+    <button class="type-tab" data-type="leadership" type="button">Leadership</button>
+    <button class="type-tab" data-type="documentation" type="button">Documentation</button>
+  </div>
   <div class="skill-chips" id="skillChips">
     {genres.map((genre) => (
       <div class="skill-slider-wrapper" data-genre={genre.slug} style="display: none;">
@@ -42,6 +52,7 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
 
   let activeGenre = 'all';
   let activeFilters = new Set();
+  let activeType = "";
 
   // Apply active class to genre tab
   function updateGenreTabs() {
@@ -51,6 +62,12 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
   }
 
   // Show/hide skill chip groups based on active genre
+  function updateTypeTabs() {
+    document.querySelectorAll(".type-tab").forEach((tab) => {
+      tab.classList.toggle("active", tab.dataset.type === activeType);
+    });
+  }
+
   function updateChips() {
     document.querySelectorAll('.skill-slider-wrapper').forEach((wrapper) => {
       wrapper.style.display = activeGenre === 'all' || wrapper.dataset.genre === activeGenre ? '' : 'none';
@@ -58,30 +75,32 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
   }
 
   // Filter projects
-  function updateFilter() {
+    function updateFilter() {
     const cards = projectCards();
     let visibleCount = 0;
 
-    if (activeFilters.size === 0) {
-      cards.forEach((card) => { card.style.display = ''; });
+    if (activeFilters.size === 0 && !activeType) {
+      cards.forEach((card) => { card.style.display = ""; });
       visibleCount = cards.length;
     } else {
       cards.forEach((card) => {
-        const skills = (card.dataset.projectSkills || '').split(',');
-        const matches = [...activeFilters].every((filter) => skills.includes(filter));
-        card.style.display = matches ? '' : 'none';
+        const skills = (card.dataset.projectSkills || "").split(",");
+        const matchesType = !activeType || card.dataset.projectType === activeType;
+        const matchesSkills = activeFilters.size === 0 || [...activeFilters].every((filter) => skills.includes(filter));
+        const matches = matchesType && matchesSkills;
+        card.style.display = matches ? "" : "none";
         if (matches) visibleCount++;
       });
     }
 
     // Update active tag styles
     filterTags.forEach((tag) => {
-      tag.classList.toggle('active', activeFilters.has(tag.dataset.skill));
+      tag.classList.toggle("active", activeFilters.has(tag.dataset.skill));
     });
 
     // Show empty state
     if (filterEmpty) {
-      filterEmpty.style.display = visibleCount === 0 ? '' : 'none';
+      filterEmpty.style.display = visibleCount === 0 ? "" : "none";
     }
   }
 
@@ -258,5 +277,31 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
   .filter-clear:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
+  }
+.type-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .type-tab {
+    background: var(--color-tag-bg);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .type-tab:hover {
+    opacity: 0.85;
+  }
+  .type-tab.active {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
   }
 </style>

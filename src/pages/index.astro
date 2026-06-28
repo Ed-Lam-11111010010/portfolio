@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SkillFilter from '../components/SkillFilter.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
+import ProjectModal from '../components/ProjectModal.astro';
 import SkillBar from '../components/SkillBar.astro';
 import { getGenres } from '../data/skills.js';
 import projects from '../data/projects.json';
@@ -80,9 +81,10 @@ import projects from '../data/projects.json';
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">Click a skill tag below to filter projects. Click any project for details.</p>
+      <p class="section-subtitle">Click a skill tag below to filter projects. Click any project card to view details in a popup.</p>
       <SkillFilter />
       <ProjectGrid projects={projects} />
+      <ProjectModal />
     </div>
   </section>
 

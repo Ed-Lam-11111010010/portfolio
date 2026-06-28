@@ -1,0 +1,4 @@
+# Runtime artifacts - not part of the codebase
+run-continuation/
+drafts/
+*.cjs
