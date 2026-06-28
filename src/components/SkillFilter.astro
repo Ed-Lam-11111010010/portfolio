@@ -12,33 +12,21 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
       <button class="genre-tab" data-genre={g.slug} type="button">{g.name}</button>
     ))}
   </div>
-  <div class="type-tabs">
-    <button class="type-tab active" data-type="" type="button">All Types</button>
-    <button class="type-tab" data-type="personal" type="button">Personal</button>
-    <button class="type-tab" data-type="coursework" type="button">Coursework</button>
-    <button class="type-tab" data-type="game-dev" type="button">Game Dev</button>
-    <button class="type-tab" data-type="game-design" type="button">Game Design</button>
-    <button class="type-tab" data-type="multimedia" type="button">Multimedia</button>
-    <button class="type-tab" data-type="leadership" type="button">Leadership</button>
-    <button class="type-tab" data-type="documentation" type="button">Documentation</button>
-  </div>
   <div class="skill-chips" id="skillChips">
-    {genres.map((genre) => (
-      <div class="skill-slider-wrapper" data-genre={genre.slug} style="display: none;">
-        <button class="scroll-btn scroll-btn--left" data-scroll-genre={genre.slug} type="button" aria-label="Scroll left">‹</button>
-        <div class="skill-chip-group" data-genre={genre.slug}>
-          {genre.skills.map((skill) => (
-            <a
-              href={`${base}skills/${genre.slug}/${skill.slug}`}
-              class="filter-tag"
-              data-skill={skill.slug}
-              data-genre={genre.slug}
-            >{skill.name}</a>
-          ))}
-        </div>
-        <button class="scroll-btn scroll-btn--right" data-scroll-genre={genre.slug} type="button" aria-label="Scroll right">›</button>
+    <div class="skill-slider-wrapper">
+      <button class="scroll-btn scroll-btn--left" type="button" aria-label="Scroll left">?</button>
+      <div class="skill-chip-group" id="skillChipGroup">
+        {genres.map((genre) => genre.skills.map((skill) => (
+          <a
+            href={`${base}skills/${genre.slug}/${skill.slug}`}
+            class="filter-tag"
+            data-skill={skill.slug}
+            data-genre={genre.slug}
+          >{skill.name}</a>
+        ))).flat()}
       </div>
-    ))}
+      <button class="scroll-btn scroll-btn--right" type="button" aria-label="Scroll right">?</button>
+    </div>
   </div>
   <button class="filter-clear" id="filterClear" type="button">Clear all</button>
 </div>
@@ -52,7 +40,6 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
 
   let activeGenre = 'all';
   let activeFilters = new Set();
-  let activeType = "";
 
   // Apply active class to genre tab
   function updateGenreTabs() {
@@ -61,46 +48,38 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     });
   }
 
-  // Show/hide skill chip groups based on active genre
-  function updateTypeTabs() {
-    document.querySelectorAll(".type-tab").forEach((tab) => {
-      tab.classList.toggle("active", tab.dataset.type === activeType);
-    });
-  }
-
+  // Show/hide skill tags based on active genre in the single bar
   function updateChips() {
-    document.querySelectorAll('.skill-slider-wrapper').forEach((wrapper) => {
-      wrapper.style.display = activeGenre === 'all' || wrapper.dataset.genre === activeGenre ? '' : 'none';
+    document.querySelectorAll('.filter-tag').forEach((tag) => {
+      tag.style.display = activeGenre === 'all' || tag.dataset.genre === activeGenre ? '' : 'none';
     });
   }
 
   // Filter projects
-    function updateFilter() {
+  function updateFilter() {
     const cards = projectCards();
     let visibleCount = 0;
 
-    if (activeFilters.size === 0 && !activeType) {
-      cards.forEach((card) => { card.style.display = ""; });
+    if (activeFilters.size === 0) {
+      cards.forEach((card) => { card.style.display = ''; });
       visibleCount = cards.length;
     } else {
       cards.forEach((card) => {
-        const skills = (card.dataset.projectSkills || "").split(",");
-        const matchesType = !activeType || card.dataset.projectType === activeType;
+        const skills = (card.dataset.projectSkills || '').split(',');
         const matchesSkills = activeFilters.size === 0 || [...activeFilters].every((filter) => skills.includes(filter));
-        const matches = matchesType && matchesSkills;
-        card.style.display = matches ? "" : "none";
-        if (matches) visibleCount++;
+        card.style.display = matchesSkills ? '' : 'none';
+        if (matchesSkills) visibleCount++;
       });
     }
 
     // Update active tag styles
     filterTags.forEach((tag) => {
-      tag.classList.toggle("active", activeFilters.has(tag.dataset.skill));
+      tag.classList.toggle('active', activeFilters.has(tag.dataset.skill));
     });
 
     // Show empty state
     if (filterEmpty) {
-      filterEmpty.style.display = visibleCount === 0 ? "" : "none";
+      filterEmpty.style.display = visibleCount === 0 ? '' : 'none';
     }
   }
 
@@ -109,7 +88,6 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     tab.addEventListener('click', () => {
       const genre = tab.dataset.genre;
       if (activeGenre === genre && genre !== 'all') {
-        // Toggle off genre filter (show all)
         activeGenre = 'all';
       } else {
         activeGenre = genre;
@@ -121,7 +99,7 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     });
   });
 
-  // Skill tag click handler (links navigate, but we also filter on click)
+  // Skill tag click handler
   filterTags.forEach((tag) => {
     tag.addEventListener('click', (e) => {
       e.preventDefault();
@@ -135,11 +113,10 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
     });
   });
 
-  // Scroll buttons for skill chip groups
+  // Scroll buttons for the single skill chip group
   document.querySelectorAll('.scroll-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const genre = btn.dataset.scrollGenre;
-      const group = document.querySelector(`.skill-chip-group[data-genre="${genre}"]`);
+      const group = document.getElementById('skillChipGroup');
       if (!group) return;
       const scrollAmount = 200;
       if (btn.classList.contains('scroll-btn--left')) {
@@ -277,31 +254,5 @@ const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
   .filter-clear:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
-  }
-.type-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-  .type-tab {
-    background: var(--color-tag-bg);
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
-    padding: 0.45rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-  .type-tab:hover {
-    opacity: 0.85;
-  }
-  .type-tab.active {
-    background: var(--color-accent);
-    color: #fff;
-    border-color: var(--color-accent);
   }
 </style>
