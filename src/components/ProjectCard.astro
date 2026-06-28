@@ -32,8 +32,8 @@ const cardClass = project.external ? 'project-card project-card--external' : 'pr
   <button 
     class="project-card-link" 
     type="button"
-    onclick="window.openProjectModal('{project.id}')"
-    aria-label="View details for {project.title}"
+    onclick={`window.openProjectModal('${project.id}')`}
+    aria-label={`View details for ${project.title}`}
   >
     <div class="project-card-image">
       {project.image ? (
