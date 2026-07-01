@@ -67,7 +67,19 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
       <section class="detail-section">
         <h3>Skills</h3>
         <div class="detail-skills">
-          {project.skills.map((skill) => {
+          {project.skills.filter(skill => !['phaser.js', 'godot', 'pygame', 'gemini api', 'aseprite', 'affinity designer', 'photoshop', 'readthedocs', 'sphinx', 'tabletop simulator', 'wix', 'wordpress'].includes(skill.toLowerCase())).map((skill) => {
+            const info = findGenreForSkill(skill);
+            return (
+              <a href={`${base}skills/${info.genreSlug}/${getSkillSlug(skill)}`} class="filter-tag">{skill}</a>
+            );
+          })}
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h3>Software Used</h3>
+        <div class="detail-skills">
+          {project.skills.filter(skill => ['phaser.js', 'godot', 'pygame', 'gemini api', 'aseprite', 'affinity designer', 'photoshop', 'readthedocs', 'sphinx', 'tabletop simulator', 'wix', 'wordpress'].includes(skill.toLowerCase())).map((skill) => {
             const info = findGenreForSkill(skill);
             return (
               <a href={`${base}skills/${info.genreSlug}/${getSkillSlug(skill)}`} class="filter-tag">{skill}</a>
