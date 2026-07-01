@@ -1061,7 +1061,9 @@ img {
 .project-detail-page {
   display: flex;
   gap: 2.5rem;
-  padding: 2rem 0;
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
   align-items: flex-start;
 }
 
