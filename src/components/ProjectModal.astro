@@ -303,10 +303,9 @@ const base = import.meta.env.BASE_URL;
   }
 </style>
 
-<script>
+<script define:vars={{ projectsJson: JSON.stringify(projects), baseUrl: base }}>
   // Project data for modal (injected from Astro)
-  const projectData = JSON.parse('{JSON.stringify(projects)}');
-  const baseUrl = '{base}';
+  const projectData = JSON.parse(projectsJson);
 
   // Modal elements
   const modalOverlay = document.getElementById('projectModal');
