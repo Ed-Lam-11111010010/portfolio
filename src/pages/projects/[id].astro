@@ -18,7 +18,7 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
 <BaseLayout title={pageTitle} description={project.description}>
   <div class="project-detail-page">
     <div class="detail-sidebar">
-      <a href={`${base}#projects`} class="detail-back">&larr; Back</a>
+      <a href={`${base}/projects/${project.id}`} class="detail-back">&larr; Back</a>
 
       <div class="detail-image-box">
         {project.image ? (
