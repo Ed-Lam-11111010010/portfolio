@@ -1,0 +1,76 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Edwin Lam" [ref=e4] [cursor=pointer]:
+        - /url: /portfolio
+      - text: 
+      - navigation [ref=e5]:
+        - link "Home" [ref=e6] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=e7] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=e8] [cursor=pointer]:
+          - /url: "#skills"
+        - link "Projects" [ref=e9] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Contact" [ref=e10] [cursor=pointer]:
+          - /url: "#contact"
+        - button "Toggle theme" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: 🌙
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - link "← Back" [ref=e16] [cursor=pointer]:
+          - /url: /portfolio#projects
+        - generic [ref=e19]: 📁
+        - generic [ref=e20]:
+          - heading "Links" [level=3] [ref=e21]
+          - link "GitHub →" [ref=e22] [cursor=pointer]:
+            - /url: https://github.com/Ed-Lam-11111010010
+      - generic [ref=e23]:
+        - heading "AI Guild Master" [level=1] [ref=e24]
+        - generic [ref=e25]:
+          - generic [ref=e26]: "2026"
+          - generic [ref=e27]: personal
+          - generic [ref=e28]: Ai Game Dev
+        - generic [ref=e29]:
+          - heading "Description" [level=3] [ref=e30]
+          - paragraph [ref=e31]: A Phaser.js browser game where NPCs train based on character dreams, guided by Google Gemini AI. Features an AI controller that automates Pokémon-style game mechanics using the Gemini API for intelligent NPC decision-making.
+        - generic [ref=e32]:
+          - heading "Skills" [level=3] [ref=e33]
+          - generic [ref=e34]:
+            - link "python" [ref=e35] [cursor=pointer]:
+              - /url: /portfolioskills/programming/python
+            - link "javascript" [ref=e36] [cursor=pointer]:
+              - /url: /portfolioskills/programming/javascript
+            - link "html/css" [ref=e37] [cursor=pointer]:
+              - /url: /portfolioskills/web-dev/html-css
+            - link "ai/ml" [ref=e38] [cursor=pointer]:
+              - /url: /portfolioskills/ai-ml/ai-ml
+            - link "game dev" [ref=e39] [cursor=pointer]:
+              - /url: /portfolioskills/other/game-dev
+        - generic [ref=e40]:
+          - heading "Software Used" [level=3] [ref=e41]
+          - generic [ref=e42]:
+            - link "phaser.js" [ref=e43] [cursor=pointer]:
+              - /url: /portfolioskills/game-dev/phaser-js
+            - link "gemini api" [ref=e44] [cursor=pointer]:
+              - /url: /portfolioskills/ai-ml/gemini-api
+        - generic [ref=e45]:
+          - heading "Highlights" [level=3] [ref=e46]
+          - list [ref=e47]:
+            - listitem [ref=e48]: → Gemini API integration for NPC decision-making
+            - listitem [ref=e49]: → Phaser.js game engine for browser-based gameplay
+            - listitem [ref=e50]: → Python AI controller for game automation
+            - listitem [ref=e51]: → Character dream system drives NPC training
+  - contentinfo [ref=e52]:
+    - generic [ref=e53]:
+      - paragraph [ref=e54]: © 2026 Edwin Lam (Lam Chi). Built with Astro.
+      - link "" [ref=e56] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=e57]: 
+      - generic [ref=e58]:
+        - link "GitHub" [ref=e59] [cursor=pointer]:
+          - /url: https://github.com/Ed-Lam-11111010010
+        - link "Email" [ref=e60] [cursor=pointer]:
+          - /url: mailto:edwin.lam@example.com

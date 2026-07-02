@@ -1,0 +1,9 @@
+[      40ms] TypeError: Cannot set properties of undefined (setting 'AOS')
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:182
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:187
+[     121ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://unpkg.com/boxicons@2.1.4/fonts/boxicons.woff2 @ https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:0
+[    1032ms] ReferenceError: base is not defined
+    at https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:1:5060
+[    1770ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliofavicon.svg:0
+[    1864ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[    2242ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:0

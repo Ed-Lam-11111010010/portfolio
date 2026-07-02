@@ -1,0 +1,656 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "Edwin Lam" [ref=f1e4] [cursor=pointer]:
+        - /url: /portfolio
+      - text: 
+      - navigation [ref=f1e5]:
+        - link "Home" [ref=f1e6] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=f1e7] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=f1e8] [cursor=pointer]:
+          - /url: "#skills"
+        - link "Projects" [ref=f1e9] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Contact" [ref=f1e10] [cursor=pointer]:
+          - /url: "#contact"
+        - button "Toggle theme" [ref=f1e11] [cursor=pointer]:
+          - generic [ref=f1e12]: 🌙
+  - main [ref=f1e13]:
+    - generic [ref=f1e15]:
+      - generic [ref=f1e16]:
+        - generic [ref=f1e19]: EL
+        - heading "Hi, I'm Lam Chi (Edwin)" [level=1] [ref=f1e20]
+        - heading "|" [level=3] [ref=f1e22]:
+          - generic [ref=f1e23]: "|"
+        - paragraph [ref=f1e24]: CUHK Information Engineering student with a passion for game development, AI, creative design, and multimedia production. Building experiences across code, pixels, and paper.
+        - generic [ref=f1e25]:
+          - link "View My Work" [ref=f1e26] [cursor=pointer]:
+            - /url: "#projects"
+          - link "Contact Me" [ref=f1e27] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=f1e28]:
+        - link "" [ref=f1e29] [cursor=pointer]:
+          - /url: https://github.com/Ed-Lam-11111010010
+          - generic [ref=f1e30]: 
+        - link "" [ref=f1e31] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/edwinlam228/
+          - generic [ref=f1e32]: 
+        - link "" [ref=f1e33] [cursor=pointer]:
+          - /url: mailto:edwinlam822@gmail.com
+          - generic [ref=f1e34]: 
+    - generic [ref=f1e36]:
+      - heading "About" [level=2] [ref=f1e37]
+      - generic [ref=f1e38]:
+        - paragraph [ref=f1e39]: I'm an Information Engineering student at CUHK with a multidisciplinary background spanning AI/game development, embedded systems, web development, game design, and multimedia production. I believe the best work happens at the intersection of technology and creativity.
+        - paragraph [ref=f1e40]: From building AI-powered browser games with Gemini and Phaser.js, to designing board games with professional-grade assets, to producing infotainment videos — I thrive on bringing ideas to life across different mediums. I also served as a founding cabinet member of the CUHK Film Society 「映徒」, organizing screenings and events for the university film community.
+    - generic [ref=f1e42]:
+      - heading "My Skills" [level=2] [ref=f1e43]
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - heading "Programming Languages" [level=3] [ref=f1e46]
+          - generic [ref=f1e48]:
+            - generic [ref=f1e50]:
+              - generic [ref=f1e51]: Python
+              - generic [ref=f1e52]: 85%
+            - generic [ref=f1e56]:
+              - generic [ref=f1e57]: C
+              - generic [ref=f1e58]: 65%
+            - generic [ref=f1e62]:
+              - generic [ref=f1e63]: JavaScript
+              - generic [ref=f1e64]: 50%
+            - generic [ref=f1e68]:
+              - generic [ref=f1e69]: GDScript
+              - generic [ref=f1e70]: 50%
+            - generic [ref=f1e74]:
+              - generic [ref=f1e75]: Testing (pytest)
+              - generic [ref=f1e76]: 50%
+            - generic [ref=f1e80]:
+              - generic [ref=f1e81]: Git
+              - generic [ref=f1e82]: 65%
+            - generic [ref=f1e86]:
+              - generic [ref=f1e87]: CLI Tools
+              - generic [ref=f1e88]: 50%
+        - generic [ref=f1e91]:
+          - heading "Game Development" [level=3] [ref=f1e92]
+          - generic [ref=f1e94]:
+            - generic [ref=f1e96]:
+              - generic [ref=f1e97]: Phaser.js
+              - generic [ref=f1e98]: 50%
+            - generic [ref=f1e102]:
+              - generic [ref=f1e103]: Godot
+              - generic [ref=f1e104]: 50%
+            - generic [ref=f1e108]:
+              - generic [ref=f1e109]: PyGame
+              - generic [ref=f1e110]: 50%
+            - generic [ref=f1e114]:
+              - generic [ref=f1e115]: Game Dev (general)
+              - generic [ref=f1e116]: 85%
+        - generic [ref=f1e119]:
+          - heading "AI & Machine Learning" [level=3] [ref=f1e120]
+          - generic [ref=f1e122]:
+            - generic [ref=f1e124]:
+              - generic [ref=f1e125]: Gemini API
+              - generic [ref=f1e126]: 50%
+            - generic [ref=f1e130]:
+              - generic [ref=f1e131]: AI/ML
+              - generic [ref=f1e132]: 50%
+        - generic [ref=f1e135]:
+          - heading "Web Development" [level=3] [ref=f1e136]
+          - generic [ref=f1e138]:
+            - generic [ref=f1e140]:
+              - generic [ref=f1e141]: HTML/CSS
+              - generic [ref=f1e142]: 50%
+            - generic [ref=f1e146]:
+              - generic [ref=f1e147]: JavaScript (Web)
+              - generic [ref=f1e148]: 50%
+            - generic [ref=f1e152]:
+              - generic [ref=f1e153]: Web Dev (general)
+              - generic [ref=f1e154]: 50%
+            - generic [ref=f1e158]:
+              - generic [ref=f1e159]: Wix
+              - generic [ref=f1e160]: 50%
+            - generic [ref=f1e164]:
+              - generic [ref=f1e165]: WordPress
+              - generic [ref=f1e166]: 50%
+        - generic [ref=f1e169]:
+          - heading "Embedded Systems" [level=3] [ref=f1e170]
+          - generic [ref=f1e172]:
+            - generic [ref=f1e174]:
+              - generic [ref=f1e175]: ARM/STM32
+              - generic [ref=f1e176]: 65%
+            - generic [ref=f1e180]:
+              - generic [ref=f1e181]: Embedded Systems (general)
+              - generic [ref=f1e182]: 65%
+            - generic [ref=f1e186]:
+              - generic [ref=f1e187]: Microcontroller Programming
+              - generic [ref=f1e188]: 50%
+        - generic [ref=f1e191]:
+          - heading "Creative & Design" [level=3] [ref=f1e192]
+          - generic [ref=f1e194]:
+            - generic [ref=f1e196]:
+              - generic [ref=f1e197]: Game Design
+              - generic [ref=f1e198]: 50%
+            - generic [ref=f1e202]:
+              - generic [ref=f1e203]: Graphic Design
+              - generic [ref=f1e204]: 85%
+            - generic [ref=f1e208]:
+              - generic [ref=f1e209]: Affinity Designer
+              - generic [ref=f1e210]: 65%
+            - generic [ref=f1e214]:
+              - generic [ref=f1e215]: Pixel Art
+              - generic [ref=f1e216]: 50%
+            - generic [ref=f1e220]:
+              - generic [ref=f1e221]: Aseprite
+              - generic [ref=f1e222]: 50%
+            - generic [ref=f1e226]:
+              - generic [ref=f1e227]: Photoshop
+              - generic [ref=f1e228]: 50%
+            - generic [ref=f1e232]:
+              - generic [ref=f1e233]: Logo Design
+              - generic [ref=f1e234]: 50%
+            - generic [ref=f1e238]:
+              - generic [ref=f1e239]: Product Design
+              - generic [ref=f1e240]: 50%
+            - generic [ref=f1e244]:
+              - generic [ref=f1e245]: Creative Writing
+              - generic [ref=f1e246]: 50%
+            - generic [ref=f1e250]:
+              - generic [ref=f1e251]: TRPG Design
+              - generic [ref=f1e252]: 50%
+            - generic [ref=f1e256]:
+              - generic [ref=f1e257]: Worldbuilding
+              - generic [ref=f1e258]: 50%
+            - generic [ref=f1e262]:
+              - generic [ref=f1e263]: Content Creation
+              - generic [ref=f1e264]: 50%
+            - generic [ref=f1e268]:
+              - generic [ref=f1e269]: Script Writing
+              - generic [ref=f1e270]: 50%
+        - generic [ref=f1e273]:
+          - heading "Multimedia Production" [level=3] [ref=f1e274]
+          - generic [ref=f1e276]:
+            - generic [ref=f1e278]:
+              - generic [ref=f1e279]: Video Production
+              - generic [ref=f1e280]: 50%
+            - generic [ref=f1e284]:
+              - generic [ref=f1e285]: Video Editing
+              - generic [ref=f1e286]: 50%
+            - generic [ref=f1e290]:
+              - generic [ref=f1e291]: Voice Over
+              - generic [ref=f1e292]: 50%
+            - generic [ref=f1e296]:
+              - generic [ref=f1e297]: Subtitling
+              - generic [ref=f1e298]: 50%
+        - generic [ref=f1e301]:
+          - heading "Leadership & Management" [level=3] [ref=f1e302]
+          - generic [ref=f1e304]:
+            - generic [ref=f1e306]:
+              - generic [ref=f1e307]: Event Management
+              - generic [ref=f1e308]: 50%
+            - generic [ref=f1e312]:
+              - generic [ref=f1e313]: Leadership
+              - generic [ref=f1e314]: 50%
+            - generic [ref=f1e318]:
+              - generic [ref=f1e319]: Team Management
+              - generic [ref=f1e320]: 50%
+            - generic [ref=f1e324]:
+              - generic [ref=f1e325]: Budgeting
+              - generic [ref=f1e326]: 50%
+            - generic [ref=f1e330]:
+              - generic [ref=f1e331]: Documentation
+              - generic [ref=f1e332]: 50%
+        - generic [ref=f1e335]:
+          - heading "Tools & Platforms" [level=3] [ref=f1e336]
+          - generic [ref=f1e338]:
+            - generic [ref=f1e340]:
+              - generic [ref=f1e341]: ReadTheDocs
+              - generic [ref=f1e342]: 50%
+            - generic [ref=f1e346]:
+              - generic [ref=f1e347]: Sphinx
+              - generic [ref=f1e348]: 50%
+            - generic [ref=f1e352]:
+              - generic [ref=f1e353]: Tabletop Simulator
+              - generic [ref=f1e354]: 50%
+            - generic [ref=f1e358]:
+              - generic [ref=f1e359]: Product/Website Setup
+              - generic [ref=f1e360]: 50%
+    - generic [ref=f1e364]:
+      - heading "Projects" [level=2] [ref=f1e365]
+      - paragraph [ref=f1e366]: Click a skill tag below to filter projects. Click any project card to view details in a popup.
+      - generic [ref=f1e367]:
+        - generic [ref=f1e368]:
+          - button "All" [ref=f1e369] [cursor=pointer]
+          - button "Programming Languages" [ref=f1e370] [cursor=pointer]
+          - button "Game Development" [ref=f1e371] [cursor=pointer]
+          - button "AI & Machine Learning" [ref=f1e372] [cursor=pointer]
+          - button "Web Development" [ref=f1e373] [cursor=pointer]
+          - button "Embedded Systems" [ref=f1e374] [cursor=pointer]
+          - button "Creative & Design" [ref=f1e375] [cursor=pointer]
+          - button "Multimedia Production" [ref=f1e376] [cursor=pointer]
+          - button "Leadership & Management" [ref=f1e377] [cursor=pointer]
+          - button "Tools & Platforms" [ref=f1e378] [cursor=pointer]
+        - generic [ref=f1e380]:
+          - button "Scroll left" [ref=f1e381] [cursor=pointer]: "?"
+          - generic [ref=f1e382]:
+            - link "</>" [ref=f1e383] [cursor=pointer]:
+              - /url: "#"
+            - link "Python" [ref=f1e384] [cursor=pointer]:
+              - /url: /portfolioskills/programming/python
+            - link "C" [ref=f1e385] [cursor=pointer]:
+              - /url: /portfolioskills/programming/c
+            - link "JavaScript" [ref=f1e386] [cursor=pointer]:
+              - /url: /portfolioskills/programming/javascript
+            - link "GDScript" [ref=f1e387] [cursor=pointer]:
+              - /url: /portfolioskills/programming/gdscript
+            - link "Testing (pytest)" [ref=f1e388] [cursor=pointer]:
+              - /url: /portfolioskills/programming/testing
+            - link "Git" [ref=f1e389] [cursor=pointer]:
+              - /url: /portfolioskills/programming/git
+            - link "CLI Tools" [ref=f1e390] [cursor=pointer]:
+              - /url: /portfolioskills/programming/cli-tools
+            - link "Phaser.js" [ref=f1e391] [cursor=pointer]:
+              - /url: /portfolioskills/game-dev/phaser-js
+            - link "Godot" [ref=f1e392] [cursor=pointer]:
+              - /url: /portfolioskills/game-dev/godot
+            - link "PyGame" [ref=f1e393] [cursor=pointer]:
+              - /url: /portfolioskills/game-dev/pygame
+            - link "Game Dev (general)" [ref=f1e394] [cursor=pointer]:
+              - /url: /portfolioskills/game-dev/game-dev-general
+            - link "Gemini API" [ref=f1e395] [cursor=pointer]:
+              - /url: /portfolioskills/ai-ml/gemini-api
+            - link "AI/ML" [ref=f1e396] [cursor=pointer]:
+              - /url: /portfolioskills/ai-ml/ai-ml
+            - link "HTML/CSS" [ref=f1e397] [cursor=pointer]:
+              - /url: /portfolioskills/web-dev/html-css
+            - link "JavaScript (Web)" [ref=f1e398] [cursor=pointer]:
+              - /url: /portfolioskills/web-dev/javascript-web
+            - link "Web Dev (general)" [ref=f1e399] [cursor=pointer]:
+              - /url: /portfolioskills/web-dev/web-dev-general
+            - link "Wix" [ref=f1e400] [cursor=pointer]:
+              - /url: /portfolioskills/web-dev/wix
+            - link "WordPress" [ref=f1e401] [cursor=pointer]:
+              - /url: /portfolioskills/web-dev/wordpress
+            - link "ARM/STM32" [ref=f1e402] [cursor=pointer]:
+              - /url: /portfolioskills/embedded-systems/arm-stm32
+            - link "Embedded Systems (general)" [ref=f1e403] [cursor=pointer]:
+              - /url: /portfolioskills/embedded-systems/embedded-systems-general
+            - link "Microcontroller Programming" [ref=f1e404] [cursor=pointer]:
+              - /url: /portfolioskills/embedded-systems/microcontroller-programming
+            - link "Game Design" [ref=f1e405] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/game-design
+            - link "Graphic Design" [ref=f1e406] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/graphic-design
+            - link "Affinity Designer" [ref=f1e407] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/affinity-designer
+            - link "Pixel Art" [ref=f1e408] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/pixel-art
+            - link "Aseprite" [ref=f1e409] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/aseprite
+            - link "Photoshop" [ref=f1e410] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/photoshop
+            - link "Logo Design" [ref=f1e411] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/logo-design
+            - link "Product Design" [ref=f1e412] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/product-design
+            - link "Creative Writing" [ref=f1e413] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/creative-writing
+            - link "TRPG Design" [ref=f1e414] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/trpg-design
+            - link "Worldbuilding" [ref=f1e415] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/worldbuilding
+            - link "Content Creation" [ref=f1e416] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/content-creation
+            - link "Script Writing" [ref=f1e417] [cursor=pointer]:
+              - /url: /portfolioskills/creative-design/script-writing
+            - link "Video Production" [ref=f1e418] [cursor=pointer]:
+              - /url: /portfolioskills/multimedia/video-production
+            - link "Video Editing" [ref=f1e419] [cursor=pointer]:
+              - /url: /portfolioskills/multimedia/video-editing
+            - link "Voice Over" [ref=f1e420] [cursor=pointer]:
+              - /url: /portfolioskills/multimedia/voice-over
+            - link "Subtitling" [ref=f1e421] [cursor=pointer]:
+              - /url: /portfolioskills/multimedia/subtitling
+            - link "Event Management" [ref=f1e422] [cursor=pointer]:
+              - /url: /portfolioskills/leadership/event-management
+            - link "Leadership" [ref=f1e423] [cursor=pointer]:
+              - /url: /portfolioskills/leadership/leadership
+            - link "Team Management" [ref=f1e424] [cursor=pointer]:
+              - /url: /portfolioskills/leadership/team-management
+            - link "Budgeting" [ref=f1e425] [cursor=pointer]:
+              - /url: /portfolioskills/leadership/budgeting
+            - link "Documentation" [ref=f1e426] [cursor=pointer]:
+              - /url: /portfolioskills/leadership/documentation
+            - link "ReadTheDocs" [ref=f1e427] [cursor=pointer]:
+              - /url: /portfolioskills/tools-platforms/readthedocs
+            - link "Sphinx" [ref=f1e428] [cursor=pointer]:
+              - /url: /portfolioskills/tools-platforms/sphinx
+            - link "Tabletop Simulator" [ref=f1e429] [cursor=pointer]:
+              - /url: /portfolioskills/tools-platforms/tabletop-simulator
+            - link "Product/Website Setup" [ref=f1e430] [cursor=pointer]:
+              - /url: /portfolioskills/tools-platforms/product-website-setup
+          - button "Scroll right" [ref=f1e431] [cursor=pointer]: "?"
+        - button "Clear all" [ref=f1e432] [cursor=pointer]
+      - generic [ref=f1e433]:
+        - article [ref=f1e434] [cursor=pointer]:
+          - link "View details for AI Guild Master" [ref=f1e435]:
+            - /url: /portfolioprojects/ai-guild-master-fyp
+            - generic [ref=f1e437]: 📁
+          - generic [ref=f1e438]:
+            - link "View details for AI Guild Master" [ref=f1e439]:
+              - /url: /portfolioprojects/ai-guild-master-fyp
+              - heading "AI Guild Master" [level=3] [ref=f1e440]
+              - paragraph [ref=f1e441]:
+                - generic [ref=f1e442]: personal
+                - generic [ref=f1e443]: "2026"
+              - paragraph [ref=f1e444]: A Phaser.js browser game where NPCs train based on character dreams, guided by Google Gemini AI. Features an AI controller that automates Pokémon-style game mechanics using the Gemini API for intelligent NPC decision-making.
+            - generic [ref=f1e445]:
+              - link "View details for AI Guild Master":
+                - /url: /portfolioprojects/ai-guild-master-fyp
+              - link "python" [ref=f1e446]:
+                - /url: /portfolioskills/programming/python
+              - link "javascript" [ref=f1e447]:
+                - /url: /portfolioskills/programming/javascript
+              - link "html/css" [ref=f1e448]:
+                - /url: /portfolioskills/web-dev/html-css
+              - link "phaser.js" [ref=f1e449]:
+                - /url: /portfolioskills/game-dev/phaser-js
+              - generic [ref=f1e450]: "+3"
+        - article [ref=f1e451] [cursor=pointer]:
+          - link "View details for Jewel Smash Game" [ref=f1e452]:
+            - /url: /portfolioprojects/jewel-smash-game
+            - generic [ref=f1e454]: 📁
+          - generic [ref=f1e455]:
+            - link "View details for Jewel Smash Game" [ref=f1e456]:
+              - /url: /portfolioprojects/jewel-smash-game
+              - heading "Jewel Smash Game" [level=3] [ref=f1e457]
+              - paragraph [ref=f1e458]:
+                - generic [ref=f1e459]: game-dev
+                - generic [ref=f1e460]: "2025"
+              - paragraph [ref=f1e461]: A tile-matching game originally built in Python with PyGame, then ported to run on STM32 microcontroller hardware. Demonstrates cross-platform game logic from PC to embedded systems.
+            - generic [ref=f1e462]:
+              - link "View details for Jewel Smash Game":
+                - /url: /portfolioprojects/jewel-smash-game
+              - link "c" [ref=f1e463]:
+                - /url: /portfolioskills/programming/c
+              - link "python" [ref=f1e464]:
+                - /url: /portfolioskills/programming/python
+              - link "pygame" [ref=f1e465]:
+                - /url: /portfolioskills/game-dev/pygame
+              - link "embedded systems" [ref=f1e466]:
+                - /url: /portfolioskills/other/embedded-systems
+              - generic [ref=f1e467]: "+2"
+        - article [ref=f1e468] [cursor=pointer]:
+          - link "View details for Christmas New Game Idea 2025" [ref=f1e469]:
+            - /url: /portfolioprojects/christmas-game-2025
+            - generic [ref=f1e471]: 📁
+          - generic [ref=f1e472]:
+            - link "View details for Christmas New Game Idea 2025" [ref=f1e473]:
+              - /url: /portfolioprojects/christmas-game-2025
+              - heading "Christmas New Game Idea 2025" [level=3] [ref=f1e474]
+              - paragraph [ref=f1e475]:
+                - generic [ref=f1e476]: game-dev
+                - generic [ref=f1e477]: "2025"
+              - paragraph [ref=f1e478]: An exploratory game project built with the Godot engine using GDScript, with Python integration. A creative sandbox for experimenting with game design concepts.
+            - generic [ref=f1e479]:
+              - link "View details for Christmas New Game Idea 2025":
+                - /url: /portfolioprojects/christmas-game-2025
+              - link "godot" [ref=f1e480]:
+                - /url: /portfolioskills/game-dev/godot
+              - link "gdscript" [ref=f1e481]:
+                - /url: /portfolioskills/programming/gdscript
+              - link "python" [ref=f1e482]:
+                - /url: /portfolioskills/programming/python
+              - link "game design" [ref=f1e483]:
+                - /url: /portfolioskills/creative-design/game-design
+        - article [ref=f1e484] [cursor=pointer]:
+          - link "View details for InnoPort Board Game" [ref=f1e485]:
+            - /url: /portfolioprojects/innoport-board-game
+            - generic [ref=f1e487]: 📁
+          - generic [ref=f1e488]:
+            - link "View details for InnoPort Board Game" [ref=f1e489]:
+              - /url: /portfolioprojects/innoport-board-game
+              - heading "InnoPort Board Game" [level=3] [ref=f1e490]
+              - paragraph [ref=f1e491]:
+                - generic [ref=f1e492]: game-design
+                - generic [ref=f1e493]: "2026"
+              - paragraph [ref=f1e494]: A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer and Cider. Protected by an IP agreement with Unplugged Studio.
+            - generic [ref=f1e495]:
+              - link "View details for InnoPort Board Game":
+                - /url: /portfolioprojects/innoport-board-game
+              - link "game design" [ref=f1e496]:
+                - /url: /portfolioskills/creative-design/game-design
+              - link "graphic design" [ref=f1e497]:
+                - /url: /portfolioskills/creative-design/graphic-design
+              - link "affinity designer" [ref=f1e498]:
+                - /url: /portfolioskills/creative-design/affinity-designer
+              - link "tabletop simulator" [ref=f1e499]:
+                - /url: /portfolioskills/tools-platforms/tabletop-simulator
+              - generic [ref=f1e500]: "+2"
+        - article [ref=f1e501] [cursor=pointer]:
+          - link "View details for Intern Life 2024" [ref=f1e502]:
+            - /url: /portfolioprojects/intern-life-2024
+            - generic [ref=f1e504]: 📁
+          - generic [ref=f1e505]:
+            - link "View details for Intern Life 2024" [ref=f1e506]:
+              - /url: /portfolioprojects/intern-life-2024
+              - heading "Intern Life 2024" [level=3] [ref=f1e507]
+              - paragraph [ref=f1e508]:
+                - generic [ref=f1e509]: documentation
+                - generic [ref=f1e510]: "2024"
+              - paragraph [ref=f1e511]: A ReadTheDocs documentation site chronicling internship experiences from 2024-2025. Also involved setting up websites using Wix and WordPress platforms, covering product setup and branding.
+            - generic [ref=f1e512]:
+              - link "View details for Intern Life 2024":
+                - /url: /portfolioprojects/intern-life-2024
+              - link "documentation" [ref=f1e513]:
+                - /url: /portfolioskills/leadership/documentation
+              - link "readthedocs" [ref=f1e514]:
+                - /url: /portfolioskills/tools-platforms/readthedocs
+              - link "sphinx" [ref=f1e515]:
+                - /url: /portfolioskills/tools-platforms/sphinx
+              - link "wix" [ref=f1e516]:
+                - /url: /portfolioskills/web-dev/wix
+              - generic [ref=f1e517]: "+2"
+        - article [ref=f1e518] [cursor=pointer]:
+          - link "View details for Calculator Project" [ref=f1e519]:
+            - /url: /portfolioprojects/calculator-project
+            - generic [ref=f1e521]: 📁
+          - generic [ref=f1e522]:
+            - link "View details for Calculator Project" [ref=f1e523]:
+              - /url: /portfolioprojects/calculator-project
+              - heading "Calculator Project" [level=3] [ref=f1e524]
+              - paragraph [ref=f1e525]:
+                - generic [ref=f1e526]: personal
+                - generic [ref=f1e527]: "2024"
+              - paragraph [ref=f1e528]: A Python calculator built with pytest testing, using the uv package manager. Demonstrates test-driven development practices and clean CLI tool design.
+            - generic [ref=f1e529]:
+              - link "View details for Calculator Project":
+                - /url: /portfolioprojects/calculator-project
+              - link "python" [ref=f1e530]:
+                - /url: /portfolioskills/programming/python
+              - link "testing" [ref=f1e531]:
+                - /url: /portfolioskills/programming/testing
+              - link "pytest" [ref=f1e532]:
+                - /url: /portfolioskills/other/pytest
+              - link "git" [ref=f1e533]:
+                - /url: /portfolioskills/programming/git
+              - generic [ref=f1e534]: "+1"
+        - article [ref=f1e535] [cursor=pointer]:
+          - link "View details for Greeting Project" [ref=f1e536]:
+            - /url: /portfolioprojects/greeting-project
+            - generic [ref=f1e538]: 📁
+          - generic [ref=f1e539]:
+            - link "View details for Greeting Project" [ref=f1e540]:
+              - /url: /portfolioprojects/greeting-project
+              - heading "Greeting Project" [level=3] [ref=f1e541]
+              - paragraph [ref=f1e542]:
+                - generic [ref=f1e543]: personal
+                - generic [ref=f1e544]: "2024"
+              - paragraph [ref=f1e545]: A simple Python greeting script forked from an instructor's repository. A foundational programming exercise demonstrating version control and collaborative development.
+            - generic [ref=f1e546]:
+              - link "View details for Greeting Project":
+                - /url: /portfolioprojects/greeting-project
+              - link "python" [ref=f1e547]:
+                - /url: /portfolioskills/programming/python
+              - link "git" [ref=f1e548]:
+                - /url: /portfolioskills/programming/git
+        - article [ref=f1e549] [cursor=pointer]:
+          - link "View details for C Programming & Embedded Systems" [ref=f1e550]:
+            - /url: /portfolioprojects/c-programming-university
+            - generic [ref=f1e552]: 📁
+          - generic [ref=f1e553]:
+            - link "View details for C Programming & Embedded Systems" [ref=f1e554]:
+              - /url: /portfolioprojects/c-programming-university
+              - heading "C Programming & Embedded Systems" [level=3] [ref=f1e555]
+              - paragraph [ref=f1e556]:
+                - generic [ref=f1e557]: coursework
+                - generic [ref=f1e558]: "2024"
+              - paragraph [ref=f1e559]: University coursework in C programming across IERG 3810, 3830, and 3842, focusing on ARM/STM32 microcontrollers and embedded systems development.
+            - generic [ref=f1e560]:
+              - link "View details for C Programming & Embedded Systems":
+                - /url: /portfolioprojects/c-programming-university
+              - link "c" [ref=f1e561]:
+                - /url: /portfolioskills/programming/c
+              - link "embedded systems" [ref=f1e562]:
+                - /url: /portfolioskills/other/embedded-systems
+              - link "arm/stm32" [ref=f1e563]:
+                - /url: /portfolioskills/embedded-systems/arm-stm32
+              - link "microcontroller programming" [ref=f1e564]:
+                - /url: /portfolioskills/embedded-systems/microcontroller-programming
+        - article [ref=f1e565] [cursor=pointer]:
+          - link "View details for IERG 4210 Web Project" [ref=f1e566]:
+            - /url: /portfolioprojects/ierg-4210-web-project
+            - generic [ref=f1e568]: 📁
+          - generic [ref=f1e569]:
+            - link "View details for IERG 4210 Web Project" [ref=f1e570]:
+              - /url: /portfolioprojects/ierg-4210-web-project
+              - heading "IERG 4210 Web Project" [level=3] [ref=f1e571]
+              - paragraph [ref=f1e572]:
+                - generic [ref=f1e573]: coursework
+                - generic [ref=f1e574]: "2025"
+              - paragraph [ref=f1e575]: Web technologies coursework covering modern HTML, CSS, and JavaScript development. A full-stack web project demonstrating frontend and backend integration.
+            - generic [ref=f1e576]:
+              - link "View details for IERG 4210 Web Project":
+                - /url: /portfolioprojects/ierg-4210-web-project
+              - link "html" [ref=f1e577]:
+                - /url: /portfolioskills/other/html
+              - link "css" [ref=f1e578]:
+                - /url: /portfolioskills/other/css
+              - link "javascript" [ref=f1e579]:
+                - /url: /portfolioskills/programming/javascript
+              - link "web dev" [ref=f1e580]:
+                - /url: /portfolioskills/other/web-dev
+        - article [ref=f1e581] [cursor=pointer]:
+          - link "View details for Infotainment Video Production" [ref=f1e582]:
+            - /url: /portfolioprojects/infotainment-video-production
+            - generic [ref=f1e584]: 📁
+          - generic [ref=f1e585]:
+            - link "View details for Infotainment Video Production" [ref=f1e586]:
+              - /url: /portfolioprojects/infotainment-video-production
+              - heading "Infotainment Video Production" [level=3] [ref=f1e587]
+              - paragraph [ref=f1e588]:
+                - generic [ref=f1e589]: multimedia
+                - generic [ref=f1e590]: "2025"
+              - paragraph [ref=f1e591]: A COMM3930B infotainment production project encompassing video production, script writing, and content creation. Additional video editing work includes fine cuts, voice-over recordings, and subtitling.
+            - generic [ref=f1e592]:
+              - link "View details for Infotainment Video Production":
+                - /url: /portfolioprojects/infotainment-video-production
+              - link "video production" [ref=f1e593]:
+                - /url: /portfolioskills/multimedia/video-production
+              - link "script writing" [ref=f1e594]:
+                - /url: /portfolioskills/creative-design/script-writing
+              - link "content creation" [ref=f1e595]:
+                - /url: /portfolioskills/creative-design/content-creation
+              - link "voice over" [ref=f1e596]:
+                - /url: /portfolioskills/multimedia/voice-over
+              - generic [ref=f1e597]: "+2"
+        - article [ref=f1e598] [cursor=pointer]:
+          - link "View details for Film Society 「映徒」" [ref=f1e599]:
+            - /url: /portfolioprojects/film-society-yingto
+            - generic [ref=f1e601]: 📁
+          - generic [ref=f1e602]:
+            - link "View details for Film Society 「映徒」" [ref=f1e603]:
+              - /url: /portfolioprojects/film-society-yingto
+              - heading "Film Society 「映徒」" [level=3] [ref=f1e604]
+              - paragraph [ref=f1e605]:
+                - generic [ref=f1e606]: leadership
+                - generic [ref=f1e607]: "2024"
+              - paragraph [ref=f1e608]: Founding cabinet member of the CUHK Film Society 「映徒」. Responsibilities included event planning, poster design, film screenings, budgeting, and membership management for the university film community.
+            - generic [ref=f1e609]:
+              - link "View details for Film Society 「映徒」":
+                - /url: /portfolioprojects/film-society-yingto
+              - link "event management" [ref=f1e610]:
+                - /url: /portfolioskills/leadership/event-management
+              - link "leadership" [ref=f1e611]:
+                - /url: /portfolioskills/leadership/leadership
+              - link "graphic design" [ref=f1e612]:
+                - /url: /portfolioskills/creative-design/graphic-design
+              - link "budgeting" [ref=f1e613]:
+                - /url: /portfolioskills/leadership/budgeting
+              - generic [ref=f1e614]: "+1"
+        - article [ref=f1e615] [cursor=pointer]:
+          - link "View details for Pixel Art & Graphic Design" [ref=f1e616]:
+            - /url: /portfolioprojects/pixel-art-graphic-design
+            - generic [ref=f1e618]: 📁
+          - generic [ref=f1e619]:
+            - link "View details for Pixel Art & Graphic Design" [ref=f1e620]:
+              - /url: /portfolioprojects/pixel-art-graphic-design
+              - heading "Pixel Art & Graphic Design" [level=3] [ref=f1e621]
+              - paragraph [ref=f1e622]:
+                - generic [ref=f1e623]: personal
+                - generic [ref=f1e624]: "2025"
+              - paragraph [ref=f1e625]: A diverse collection of creative visual work including character sprites, UI assets, logos, posters, and card designs created with Aseprite, Affinity Designer, and Photoshop.
+            - generic [ref=f1e626]:
+              - link "View details for Pixel Art & Graphic Design":
+                - /url: /portfolioprojects/pixel-art-graphic-design
+              - link "pixel art" [ref=f1e627]:
+                - /url: /portfolioskills/creative-design/pixel-art
+              - link "aseprite" [ref=f1e628]:
+                - /url: /portfolioskills/creative-design/aseprite
+              - link "affinity designer" [ref=f1e629]:
+                - /url: /portfolioskills/creative-design/affinity-designer
+              - link "photoshop" [ref=f1e630]:
+                - /url: /portfolioskills/creative-design/photoshop
+              - generic [ref=f1e631]: "+2"
+        - article [ref=f1e632] [cursor=pointer]:
+          - 'link "View details for D&D Campaign: Empire Ants" [ref=f1e633]':
+            - /url: /portfolioprojects/dnd-empire-ants
+            - generic [ref=f1e635]: 📁
+          - generic [ref=f1e636]:
+            - 'link "View details for D&D Campaign: Empire Ants" [ref=f1e637]':
+              - /url: /portfolioprojects/dnd-empire-ants
+              - 'heading "D&D Campaign: Empire Ants" [level=3] [ref=f1e638]'
+              - paragraph [ref=f1e639]:
+                - generic [ref=f1e640]: personal
+                - generic [ref=f1e641]: "2025"
+              - paragraph [ref=f1e642]: A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TRPG content creation skills.
+            - generic [ref=f1e643]:
+              - 'link "View details for D&D Campaign: Empire Ants"':
+                - /url: /portfolioprojects/dnd-empire-ants
+              - link "creative writing" [ref=f1e644]:
+                - /url: /portfolioskills/creative-design/creative-writing
+              - link "ttrpg design" [ref=f1e645]:
+                - /url: /portfolioskills/other/ttrpg-design
+              - link "worldbuilding" [ref=f1e646]:
+                - /url: /portfolioskills/creative-design/worldbuilding
+    - generic [ref=f1e648]:
+      - heading "Contact Me" [level=2] [ref=f1e649]
+      - generic [ref=f1e650]:
+        - generic [ref=f1e651]:
+          - textbox "Full Name" [ref=f1e653]
+          - textbox "Email Address" [ref=f1e655]
+        - textbox "Subject" [ref=f1e658]
+        - textbox "Your Message" [ref=f1e660]
+        - button "Send Message" [ref=f1e662] [cursor=pointer]
+  - contentinfo [ref=f1e663]:
+    - generic [ref=f1e664]:
+      - paragraph [ref=f1e665]: © 2026 Edwin Lam (Lam Chi). Built with Astro.
+      - link "" [ref=f1e667] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=f1e668]: 
+      - generic [ref=f1e669]:
+        - link "GitHub" [ref=f1e670] [cursor=pointer]:
+          - /url: https://github.com/Ed-Lam-11111010010
+        - link "Email" [ref=f1e671] [cursor=pointer]:
+          - /url: mailto:edwin.lam@example.com

@@ -1,0 +1,11 @@
+[    1530ms] [WARNING] Mixed Content: The page at 'https://ed-lam-11111010010.github.io/portfolio/' was loaded over a secure connection, but contains a form that targets an insecure endpoint 'mailto:edwinlam822@gmail.com'. This endpoint should be made available over a secure connection. @ https://ed-lam-11111010010.github.io/portfolio/:160
+[    1550ms] TypeError: Cannot set properties of undefined (setting 'AOS')
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:182
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:187
+[    2277ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[    2380ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/:0
+[    2453ms] ReferenceError: base is not defined
+    at https://ed-lam-11111010010.github.io/portfolio/:173:1589
+[    2923ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[    3021ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliofavicon.svg:0
+[    3127ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/:0

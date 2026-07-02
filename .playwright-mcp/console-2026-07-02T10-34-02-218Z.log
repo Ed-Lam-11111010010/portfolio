@@ -1,0 +1,25 @@
+[    3867ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://unpkg.com/boxicons@2.1.4/fonts/boxicons.woff2 @ https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:0
+[    4892ms] TypeError: Cannot set properties of undefined (setting 'AOS')
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:182
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:187
+[    5502ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[    5777ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:0
+[   17467ms] ReferenceError: base is not defined
+    at https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:1:5060
+[   17843ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[   18176ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/projects/ai-guild-master-fyp/:0
+[   18644ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliofavicon.svg:0
+[   23480ms] [WARNING] Mixed Content: The page at 'https://ed-lam-11111010010.github.io/portfolio/#projects' was loaded over a secure connection, but contains a form that targets an insecure endpoint 'mailto:edwinlam822@gmail.com'. This endpoint should be made available over a secure connection. @ https://ed-lam-11111010010.github.io/portfolio/#projects:13
+[   23911ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[   23911ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/#projects:0
+[   25237ms] SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+    at JSON.parse (<anonymous>)
+    at https://ed-lam-11111010010.github.io/portfolio/_astro/ProjectModal.astro_astro_type_script_index_0_lang.iDP_s8sh.js:1:14
+[   25237ms] TypeError: Cannot set properties of undefined (setting 'AOS')
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:182
+    at https://unpkg.com/aos@2.3.4/dist/aos.js:1:187
+[   26245ms] ReferenceError: base is not defined
+    at https://ed-lam-11111010010.github.io/portfolio/:26:1589
+[   26543ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfoliomanifest.json:0
+[   26559ms] [ERROR] Manifest fetch from https://ed-lam-11111010010.github.io/portfoliomanifest.json failed, code 404 @ https://ed-lam-11111010010.github.io/portfolio/#projects:0
+[   28725ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://ed-lam-11111010010.github.io/portfolioprojects/ai-guild-master-fyp:0
