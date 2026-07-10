@@ -35,9 +35,9 @@
       "name": "Web Development",
       "slug": "web-dev",
       "skills": [
-        { "name": "HTML/CSS", "slug": "html-css", "projectIds": ["ierg-4210-web-project"], "level": 50 },
-        { "name": "JavaScript (Web)", "slug": "javascript-web", "projectIds": ["ierg-4210-web-project"], "level": 50 },
-        { "name": "Web Dev (general)", "slug": "web-dev-general", "projectIds": ["ierg-4210-web-project"], "level": 50 },
+        { "name": "HTML/CSS", "slug": "html-css", "projectIds": ["ierg-4210-web-project", "sushiro-counter"], "level": 50 },
+        { "name": "JavaScript (Web)", "slug": "javascript-web", "projectIds": ["ierg-4210-web-project", "sushiro-counter"], "level": 50 },
+        { "name": "Web Dev (general)", "slug": "web-dev-general", "projectIds": ["ierg-4210-web-project", "sushiro-counter"], "level": 50 },
         { "name": "Wix", "slug": "wix", "projectIds": ["intern-life-2024"], "level": 50 },
         { "name": "WordPress", "slug": "wordpress", "projectIds": ["intern-life-2024"], "level": 50 }
       ]
