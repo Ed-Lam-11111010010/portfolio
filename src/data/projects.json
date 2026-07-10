@@ -6,17 +6,17 @@
     "year": 2026,
     "category": "ai-game-dev",
     "skills": [
-      "python",
-      "javascript",
-      "html/css",
-      "phaser.js",
-      "gemini api",
-      "ai/ml",
-      "game dev"
+      "Python",
+      "JavaScript",
+      "HTML/CSS",
+      "Phaser.js",
+      "Gemini API",
+      "AI/ML",
+      "Game Dev"
     ],
     "image": null,
     "links": {
-      "github": "https://github.com/Ed-Lam-11111010010",
+      "github": "https://github.com/Ed-Lam-11111010010/IERG_FYP_2025",
       "demo": null,
       "video": null
     },
@@ -37,12 +37,12 @@
     "year": 2025,
     "category": "game-dev",
     "skills": [
-      "c",
-      "python",
-      "pygame",
-      "embedded systems",
-      "arm/stm32",
-      "game dev"
+      "C",
+      "Python",
+      "PyGame",
+      "Embedded Systems",
+      "ARM/STM32",
+      "Game Dev"
     ],
     "image": null,
     "links": {
@@ -66,10 +66,10 @@
     "year": 2025,
     "category": "game-dev",
     "skills": [
-      "godot",
-      "gdscript",
-      "python",
-      "game design"
+      "Godot",
+      "GDScript",
+      "Python",
+      "Game Design"
     ],
     "image": null,
     "links": {
@@ -93,12 +93,12 @@
     "year": 2026,
     "category": "game-design",
     "skills": [
-      "game design",
-      "graphic design",
-      "affinity designer",
-      "tabletop simulator",
-      "product design",
-      "cider"
+      "Game Design",
+      "Graphic Design",
+      "Affinity Designer",
+      "Tabletop Simulator",
+      "Product Design",
+      "Cider"
     ],
     "image": null,
     "links": {
@@ -123,12 +123,12 @@
     "year": 2024,
     "category": "documentation",
     "skills": [
-      "documentation",
-      "readthedocs",
-      "sphinx",
-      "wix",
-      "wordpress",
-      "product/website setup"
+      "Documentation",
+      "ReadTheDocs",
+      "Sphinx",
+      "Wix",
+      "WordPress",
+      "Product/Website Setup"
     ],
     "image": null,
     "links": {
@@ -152,11 +152,11 @@
     "year": 2024,
     "category": "programming",
     "skills": [
-      "python",
-      "testing",
-      "pytest",
-      "git",
-      "cli tools"
+      "Python",
+      "Testing",
+      "Pytest",
+      "Git",
+      "CLI Tools"
     ],
     "image": null,
     "links": {
@@ -257,12 +257,12 @@
     "year": 2025,
     "category": "multimedia",
     "skills": [
-      "video production",
-      "script writing",
-      "content creation",
-      "voice over",
-      "subtitling",
-      "video editing"
+      "Video Production",
+      "Script Writing",
+      "Content Creation",
+      "Voice Over",
+      "Subtitling",
+      "Video Editing"
     ],
     "image": null,
     "links": {
@@ -287,11 +287,11 @@
     "year": 2024,
     "category": "leadership",
     "skills": [
-      "event management",
-      "leadership",
-      "graphic design",
-      "budgeting",
-      "team management"
+      "Event Management",
+      "Leadership",
+      "Graphic Design",
+      "Budgeting",
+      "Team Management"
     ],
     "image": null,
     "links": {
@@ -316,12 +316,12 @@
     "year": 2025,
     "category": "creative",
     "skills": [
-      "pixel art",
-      "aseprite",
-      "affinity designer",
-      "photoshop",
-      "logo design",
-      "graphic design"
+      "Pixel Art",
+      "Aseprite",
+      "Affinity Designer",
+      "Photoshop",
+      "Logo Design",
+      "Graphic Design"
     ],
     "image": null,
     "links": {
@@ -340,15 +340,41 @@
     "type": "personal"
   },
   {
+    "id": "sushiro-counter",
+    "title": "Sushiro HK Price Counter",
+    "description": "壽司郎香港價錢計算器 — A Sushiro Hong Kong price calculator built as a single-file HTML app with zero dependencies. Lets diners tally their conveyor-belt sushi bill by plate colour and quantity.",
+    "year": 2026,
+    "category": "web-dev",
+    "skills": [
+      "HTML/CSS",
+      "JavaScript",
+      "Web Dev"
+    ],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010/sushiro-counter",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Single-file HTML app with zero external dependencies",
+      "Plate-colour-based price calculation for Sushiro HK",
+      "Runs entirely client-side — no build step, no backend"
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010/sushiro-counter",
+    "type": "personal"
+  },
+  {
     "id": "dnd-empire-ants",
     "title": "D&D Campaign: Empire Ants",
     "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TRPG content creation skills.",
     "year": 2025,
     "category": "creative",
     "skills": [
-      "creative writing",
-      "ttrpg design",
-      "worldbuilding"
+      "Creative Writing",
+      "TTRPG Design",
+      "Worldbuilding"
     ],
     "image": null,
     "links": {
