@@ -96,14 +96,15 @@ Some projects exist outside this repository (on GitHub, cloud drives, or other c
 
 ## Skill Structure (Taxonomy)
 
-The current skill hierarchy has **9 genres**:
+The current skill hierarchy has **10 genres**:
 
 | Genre | Skills |
 |-------|--------|
-| Programming Languages | Python, C, JavaScript, GDScript, Testing (pytest), Git, CLI Tools |
+| Programming Languages | Python, C, JavaScript, GDScript, TypeScript, Dart, Testing (pytest), Testing (Vitest), Git, CLI Tools |
 | Game Development | Phaser.js, Godot, PyGame, Game Dev (general) |
 | AI & Machine Learning | Gemini API, AI/ML |
-| Web Development | HTML/CSS, JavaScript (Web), Web Dev (general), Wix, WordPress |
+| Web Development | HTML/CSS, JavaScript (Web), Web Dev (general), Wix, WordPress, React |
+| App Development | Flutter, Electron |
 | Embedded Systems | ARM/STM32, Embedded Systems (general), Microcontroller Programming |
 | Creative & Design | Game Design, Graphic Design, Affinity Designer, Pixel Art, Aseprite, Photoshop, Logo Design, Product Design, Creative Writing, TTRPG Design, Worldbuilding, Content Creation, Script Writing |
 | Multimedia Production | Video Production, Video Editing, Voice Over, Subtitling |

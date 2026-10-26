@@ -10,7 +10,10 @@
         { "name": "GDScript", "slug": "gdscript", "projectIds": ["christmas-game-2025"], "level": 50 },
         { "name": "Testing (pytest)", "slug": "testing", "projectIds": ["calculator-project"], "level": 50 },
         { "name": "Git", "slug": "git", "projectIds": ["calculator-project", "greeting-project"], "level": 65 },
-        { "name": "CLI Tools", "slug": "cli-tools", "projectIds": ["calculator-project"], "level": 50 }
+        { "name": "CLI Tools", "slug": "cli-tools", "projectIds": ["calculator-project"], "level": 50 },
+        { "name": "TypeScript", "slug": "typescript", "projectIds": ["dino-island-rnw"], "level": 50 },
+        { "name": "Dart", "slug": "dart", "projectIds": ["wordle-neo"], "level": 50 },
+        { "name": "Testing (Vitest)", "slug": "vitest", "projectIds": ["dino-island-rnw"], "level": 50 }
       ]
     },
     {
@@ -20,7 +23,7 @@
         { "name": "Phaser.js", "slug": "phaser-js", "projectIds": ["ai-guild-master-fyp"], "level": 50 },
         { "name": "Godot", "slug": "godot", "projectIds": ["christmas-game-2025"], "level": 50 },
         { "name": "PyGame", "slug": "pygame", "projectIds": ["jewel-smash-game"], "level": 50 },
-        { "name": "Game Dev (general)", "slug": "game-dev-general", "projectIds": ["ai-guild-master-fyp", "jewel-smash-game", "christmas-game-2025"], "level": 85 }
+        { "name": "Game Dev (general)", "slug": "game-dev-general", "projectIds": ["ai-guild-master-fyp", "jewel-smash-game", "christmas-game-2025", "dino-island-rnw", "wordle-neo"], "level": 85 }
       ]
     },
     {
@@ -39,7 +42,16 @@
         { "name": "JavaScript (Web)", "slug": "javascript-web", "projectIds": ["ierg-4210-web-project", "sushiro-counter"], "level": 50 },
         { "name": "Web Dev (general)", "slug": "web-dev-general", "projectIds": ["ierg-4210-web-project", "sushiro-counter"], "level": 50 },
         { "name": "Wix", "slug": "wix", "projectIds": ["intern-life-2024"], "level": 50 },
-        { "name": "WordPress", "slug": "wordpress", "projectIds": ["intern-life-2024"], "level": 50 }
+        { "name": "WordPress", "slug": "wordpress", "projectIds": ["intern-life-2024"], "level": 50 },
+        { "name": "React", "slug": "react", "projectIds": ["dino-island-rnw"], "level": 50 }
+      ]
+    },
+    {
+      "name": "App Development",
+      "slug": "app-dev",
+      "skills": [
+        { "name": "Flutter", "slug": "flutter", "projectIds": ["wordle-neo"], "level": 50 },
+        { "name": "Electron", "slug": "electron", "projectIds": ["dino-island-rnw"], "level": 50 }
       ]
     },
     {

@@ -31,6 +31,118 @@
     "type": "personal"
   },
   {
+    "id": "innoport-board-game",
+    "title": "InnoPort Board Game",
+    "description": "A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer and Cider. Protected by an IP agreement with Unplugged Studio.",
+    "year": 2026,
+    "category": "game-design",
+    "skills": [
+      "Game Design",
+      "Graphic Design",
+      "Affinity Designer",
+      "Tabletop Simulator",
+      "Product Design",
+      "Cider"
+    ],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Complete board/card game with physical assets",
+      "Tabletop Simulator mod for digital playtesting",
+      "Affinity Designer for all card assets",
+      "IP agreement with Unplugged Studio"
+    ],
+    "external": false,
+    "source_url": null,
+    "type": "game-design"
+  },
+  {
+    "id": "sushiro-counter",
+    "title": "Sushiro HK Price Counter",
+    "description": "壽司郎香港價錢計算器 — A Sushiro Hong Kong price calculator built as a single-file HTML app with zero dependencies. Lets diners tally their conveyor-belt sushi bill by plate colour and quantity.",
+    "year": 2026,
+    "category": "web-dev",
+    "skills": [
+      "HTML/CSS",
+      "JavaScript",
+      "Web Dev"
+    ],
+    "image": null,
+    "links": {
+      "github": "https://github.com/Ed-Lam-11111010010/sushiro-counter",
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Single-file HTML app with zero external dependencies",
+      "Plate-colour-based price calculation for Sushiro HK",
+      "Runs entirely client-side — no build step, no backend"
+    ],
+    "external": false,
+    "source_url": "https://github.com/Ed-Lam-11111010010/sushiro-counter",
+    "type": "personal"
+  },
+  {
+    "id": "dino-island-rnw",
+    "title": "Dinosaur Island: Rawr 'n Write — Digital Hot-seat",
+    "description": "A fan-made digital hot-seat adaptation of the roll-and-write board game Dinosaur Island: Rawr 'n Write. The game rules run as a tested state machine kept separate from the React UI, so every player action is validated before the game state changes.",
+    "year": 2026,
+    "category": "game-dev",
+    "skills": [
+      "TypeScript",
+      "React",
+      "Electron",
+      "Vitest",
+      "Game Dev"
+    ],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Rules engine modelled as a state machine — the UI only renders state and submits one legal action at a time",
+      "Pending work (placements, disasters, rewards) must be resolved before a turn can advance; stale or wrong-player actions are rejected",
+      "Covered by 1,000+ automated engine and store tests with Vitest",
+      "Runs as a desktop app built with Vite and Electron, with local save games"
+    ],
+    "external": false,
+    "source_url": null,
+    "type": "personal"
+  },
+  {
+    "id": "wordle-neo",
+    "title": "WORDLE NEO",
+    "description": "A Flutter rebuild of Wordle with random and custom word modes (3–12 letters), online word validation, and bilingual English / Traditional Chinese definitions on the results screen.",
+    "year": 2026,
+    "category": "game-dev",
+    "skills": [
+      "Flutter",
+      "Dart",
+      "Game Dev"
+    ],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Pure Dart scoring engine with a two-pass algorithm that handles repeated letters correctly",
+      "Typed network results (valid / invalid / denied / unavailable) with a cache of confirmed words as fallback",
+      "Definition pipeline with sanitising and fallbacks, kept separate from word validation",
+      "Phone-first layout with on-screen and physical keyboard support, backed by unit, widget and integration tests"
+    ],
+    "external": false,
+    "source_url": null,
+    "type": "personal"
+  },
+  {
     "id": "jewel-smash-game",
     "title": "Jewel Smash Game",
     "description": "A tile-matching game originally built in Python with PyGame, then ported to run on STM32 microcontroller hardware. Demonstrates cross-platform game logic from PC to embedded systems.",
@@ -87,18 +199,16 @@
     "type": "game-dev"
   },
   {
-    "id": "innoport-board-game",
-    "title": "InnoPort Board Game",
-    "description": "A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer and Cider. Protected by an IP agreement with Unplugged Studio.",
-    "year": 2026,
-    "category": "game-design",
+    "id": "ierg-4210-web-project",
+    "title": "IERG 4210 Web Project",
+    "description": "Web technologies coursework covering modern HTML, CSS, and JavaScript development. A full-stack web project demonstrating frontend and backend integration.",
+    "year": 2025,
+    "category": "web-dev",
     "skills": [
-      "Game Design",
-      "Graphic Design",
-      "Affinity Designer",
-      "Tabletop Simulator",
-      "Product Design",
-      "Cider"
+      "html",
+      "css",
+      "javascript",
+      "web dev"
     ],
     "image": null,
     "links": {
@@ -107,14 +217,98 @@
       "video": null
     },
     "highlights": [
-      "Complete board/card game with physical assets",
-      "Tabletop Simulator mod for digital playtesting",
-      "Affinity Designer for all card assets",
-      "IP agreement with Unplugged Studio"
+      "Modern web development with HTML/CSS/JS",
+      "Full-stack web application coursework"
     ],
     "external": false,
     "source_url": null,
-    "type": "game-design"
+    "type": "coursework"
+  },
+  {
+    "id": "infotainment-video-production",
+    "title": "Infotainment Video Production",
+    "description": "A COMM3930B infotainment production project encompassing video production, script writing, and content creation. Additional video editing work includes fine cuts, voice-over recordings, and subtitling.",
+    "year": 2025,
+    "category": "multimedia",
+    "skills": [
+      "Video Production",
+      "Script Writing",
+      "Content Creation",
+      "Voice Over",
+      "Subtitling",
+      "Video Editing"
+    ],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Infotainment video production from concept to delivery",
+      "Script writing and content creation",
+      "Voice-over recording and fine-cut editing",
+      "Professional subtitling work"
+    ],
+    "external": false,
+    "source_url": null,
+    "type": "multimedia"
+  },
+  {
+    "id": "pixel-art-graphic-design",
+    "title": "Pixel Art & Graphic Design",
+    "description": "A diverse collection of creative visual work including character sprites, UI assets, logos, posters, and card designs created with Aseprite, Affinity Designer, and Photoshop.",
+    "year": 2025,
+    "category": "creative",
+    "skills": [
+      "Pixel Art",
+      "Aseprite",
+      "Affinity Designer",
+      "Photoshop",
+      "Logo Design",
+      "Graphic Design"
+    ],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Character sprites and UI asset creation",
+      "Logo and poster design",
+      "Card design for board games",
+      "Multi-tool workflow: Aseprite, Affinity Designer, Photoshop"
+    ],
+    "external": false,
+    "source_url": null,
+    "type": "personal"
+  },
+  {
+    "id": "dnd-empire-ants",
+    "title": "D&D Campaign: Empire Ants",
+    "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TRPG content creation skills.",
+    "year": 2025,
+    "category": "creative",
+    "skills": [
+      "Creative Writing",
+      "TTRPG Design",
+      "Worldbuilding"
+    ],
+    "image": null,
+    "links": {
+      "github": null,
+      "demo": null,
+      "video": null
+    },
+    "highlights": [
+      "Custom campaign worldbuilding and lore",
+      "Character sheet and encounter design",
+      "Narrative-driven TTRPG content creation"
+    ],
+    "external": false,
+    "source_url": null,
+    "type": "personal"
   },
   {
     "id": "intern-life-2024",
@@ -225,62 +419,6 @@
     "type": "coursework"
   },
   {
-    "id": "ierg-4210-web-project",
-    "title": "IERG 4210 Web Project",
-    "description": "Web technologies coursework covering modern HTML, CSS, and JavaScript development. A full-stack web project demonstrating frontend and backend integration.",
-    "year": 2025,
-    "category": "web-dev",
-    "skills": [
-      "html",
-      "css",
-      "javascript",
-      "web dev"
-    ],
-    "image": null,
-    "links": {
-      "github": null,
-      "demo": null,
-      "video": null
-    },
-    "highlights": [
-      "Modern web development with HTML/CSS/JS",
-      "Full-stack web application coursework"
-    ],
-    "external": false,
-    "source_url": null,
-    "type": "coursework"
-  },
-  {
-    "id": "infotainment-video-production",
-    "title": "Infotainment Video Production",
-    "description": "A COMM3930B infotainment production project encompassing video production, script writing, and content creation. Additional video editing work includes fine cuts, voice-over recordings, and subtitling.",
-    "year": 2025,
-    "category": "multimedia",
-    "skills": [
-      "Video Production",
-      "Script Writing",
-      "Content Creation",
-      "Voice Over",
-      "Subtitling",
-      "Video Editing"
-    ],
-    "image": null,
-    "links": {
-      "github": null,
-      "demo": null,
-      "video": null
-    },
-    "highlights": [
-      "Infotainment video production from concept to delivery",
-      "Script writing and content creation",
-      "Voice-over recording and fine-cut editing",
-      "Professional subtitling work"
-    ],
-    "external": false,
-    "source_url": null,
-    "type": "multimedia"
-  },
-  {
     "id": "film-society-yingto",
     "title": "Film Society 「映徒」",
     "description": "Founding cabinet member of the CUHK Film Society 「映徒」. Responsibilities included event planning, poster design, film screenings, budgeting, and membership management for the university film community.",
@@ -308,87 +446,5 @@
     "external": false,
     "source_url": null,
     "type": "leadership"
-  },
-  {
-    "id": "pixel-art-graphic-design",
-    "title": "Pixel Art & Graphic Design",
-    "description": "A diverse collection of creative visual work including character sprites, UI assets, logos, posters, and card designs created with Aseprite, Affinity Designer, and Photoshop.",
-    "year": 2025,
-    "category": "creative",
-    "skills": [
-      "Pixel Art",
-      "Aseprite",
-      "Affinity Designer",
-      "Photoshop",
-      "Logo Design",
-      "Graphic Design"
-    ],
-    "image": null,
-    "links": {
-      "github": null,
-      "demo": null,
-      "video": null
-    },
-    "highlights": [
-      "Character sprites and UI asset creation",
-      "Logo and poster design",
-      "Card design for board games",
-      "Multi-tool workflow: Aseprite, Affinity Designer, Photoshop"
-    ],
-    "external": false,
-    "source_url": null,
-    "type": "personal"
-  },
-  {
-    "id": "sushiro-counter",
-    "title": "Sushiro HK Price Counter",
-    "description": "壽司郎香港價錢計算器 — A Sushiro Hong Kong price calculator built as a single-file HTML app with zero dependencies. Lets diners tally their conveyor-belt sushi bill by plate colour and quantity.",
-    "year": 2026,
-    "category": "web-dev",
-    "skills": [
-      "HTML/CSS",
-      "JavaScript",
-      "Web Dev"
-    ],
-    "image": null,
-    "links": {
-      "github": "https://github.com/Ed-Lam-11111010010/sushiro-counter",
-      "demo": null,
-      "video": null
-    },
-    "highlights": [
-      "Single-file HTML app with zero external dependencies",
-      "Plate-colour-based price calculation for Sushiro HK",
-      "Runs entirely client-side — no build step, no backend"
-    ],
-    "external": false,
-    "source_url": "https://github.com/Ed-Lam-11111010010/sushiro-counter",
-    "type": "personal"
-  },
-  {
-    "id": "dnd-empire-ants",
-    "title": "D&D Campaign: Empire Ants",
-    "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TRPG content creation skills.",
-    "year": 2025,
-    "category": "creative",
-    "skills": [
-      "Creative Writing",
-      "TTRPG Design",
-      "Worldbuilding"
-    ],
-    "image": null,
-    "links": {
-      "github": null,
-      "demo": null,
-      "video": null
-    },
-    "highlights": [
-      "Custom campaign worldbuilding and lore",
-      "Character sheet and encounter design",
-      "Narrative-driven TTRPG content creation"
-    ],
-    "external": false,
-    "source_url": null,
-    "type": "personal"
   }
 ]
