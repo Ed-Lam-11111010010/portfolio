@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# AI agent / tool working files (opencode, playwright-mcp, codegraph)
+.omo/
+.playwright-mcp/
+.codegraph
+page-snapshot*.yml
+current-page.png
