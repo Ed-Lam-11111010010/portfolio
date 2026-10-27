@@ -1,85 +1,77 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import SkillFilter from '../components/SkillFilter.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
-import ProjectModal from '../components/ProjectModal.astro';
-import SkillBar from '../components/SkillBar.astro';
-import { getGenres } from '../data/skills.js';
+import { getGenres, projectSkillSlugs } from '../data/skills.js';
+import { monogramSvg, iconSvg } from '../lib/pixel.js';
 import projects from '../data/projects.json';
+
+const base = import.meta.env.BASE_URL;
+const featured = projects.filter((p) => p.featured).sort((a, b) => a.featured - b.featured);
+const rest = projects.filter((p) => !p.featured && !p.minor);
+const minor = projects.filter((p) => p.minor);
+const genres = getGenres();
 ---
 
 <BaseLayout title="Edwin Lam — Portfolio | Lam Chi">
-  <section class="home" id="home">
-    <div class="container">
-      <div class="home-content">
-        <div class="home-img" data-aos="fade-down">
-          <div class="avatar-placeholder">
-            <span class="avatar-initials">EL</span>
-          </div>
-        </div>
-        <h1 data-aos="fade-up">Hi, I'm <span>Lam Chi (Edwin)</span></h1>
-        <div class="text-animate" data-aos="fade-up" data-aos-delay="100">
-          <h3><span class="typing-text"></span></h3>
-        </div>
-        <p data-aos="fade-up" data-aos-delay="200">
-          CUHK Information Engineering student with a passion for game development, AI, creative design,
-          and multimedia production. Building experiences across code, pixels, and paper.
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-title">Lam Chi<span class="cursor" aria-hidden="true"></span> <span class="hero-alias">(Edwin)</span></h1>
+        <p class="hero-lead">
+          Information Engineering student at CUHK. I make games, pixel art and board games,
+          and the tools that hold them together.
         </p>
-        <div class="btn-box" data-aos="fade-up" data-aos-delay="300">
-          <a href="#projects" class="btn">View My Work</a>
-          <a href="#contact" class="btn">Contact Me</a>
+        <div class="btn-row">
+          <a href="#projects" class="btn btn--primary">See projects</a>
+          <a href="#contact" class="btn">Get in touch</a>
         </div>
       </div>
-
-      <div class="home-sci" data-aos="fade-up" data-aos-delay="400">
-        <a href="https://github.com/Ed-Lam-11111010010" target="_blank"><i class="bx bxl-github"></i></a>
-        <a href="https://www.linkedin.com/in/edwinlam228/" target="_blank"><i class="bx bxl-linkedin"></i></a>
-        <a href="mailto:edwinlam822@gmail.com"><i class="bx bx-envelope"></i></a>
-      </div>
+      <div class="hero-art" set:html={monogramSvg()} />
     </div>
   </section>
 
   <section class="section" id="about">
-    <div class="container">
+    <div class="container"><div class="prose">
       <h2 class="section-title">About</h2>
-      <div class="about-content">
-        <p>
-          I'm an Information Engineering student at CUHK with a multidisciplinary background spanning
-          AI/game development, embedded systems, web development, game design, and multimedia production.
-          I believe the best work happens at the intersection of technology and creativity.
-        </p>
-        <p>
-          From building AI-powered browser games with Gemini and Phaser.js, to designing board games
-          with professional-grade assets, to producing infotainment videos — I thrive on bringing
-          ideas to life across different mediums. I also served as a founding cabinet member of
-          the CUHK Film Society 「映徒」, organizing screenings and events for the university film community.
-        </p>
-        <p>
-          Beyond the public projects here, I build private tools for my own everyday use — such as a
-          Flutter app that tracks spending and recurring subscriptions in a local SQLite database, and a
-          Gmail + Google Apps Script automation that files subscription receipts and compiles a monthly
-          summary on its own. They stay private, but they are where I practise app design and workflow
-          automation on real problems.
-        </p>
-      </div>
-    </div>
+      <p>
+        I'm an Information Engineering student at CUHK with a multidisciplinary background spanning
+        AI and game development, embedded systems, web development, game design and multimedia production.
+        The work I enjoy most sits where technology and creativity meet.
+      </p>
+      <p>
+        That has meant AI-powered browser games built with Gemini and Phaser.js, board games with
+        print-ready assets, and infotainment videos. I was also a founding cabinet member of the
+        CUHK Film Society 「映徒」, organising screenings and events for the university film community.
+      </p>
+      <p>
+        Beyond the public projects here, I build private tools for my own everyday use, such as a
+        Flutter app that tracks spending and recurring subscriptions in a local SQLite database, and a
+        Gmail + Google Apps Script automation that files subscription receipts and compiles a monthly
+        summary on its own. They stay private, but they are where I practise app design and workflow
+        automation on real problems.
+      </p>
+    </div></div>
   </section>
 
-  <section class="section" id="skills" data-aos="fade-up">
+  <section class="section section--tinted" id="skills">
     <div class="container">
-      <h2 class="section-title">My <span>Skills</span></h2>
-      <div class="skills-row">
-        {getGenres().map((genre) => (
-          <div class="skills-column" data-aos="fade-up">
-            <h3 class="title">{genre.name}</h3>
-            <div class="skills-box">
-              <div class="skills-content">
-                {genre.skills.map((skill) => (
-                  <SkillBar name={skill.name} level={skill.level || 50} genre={genre.slug} />
-                ))}
-              </div>
-            </div>
-          </div>
+      <h2 class="section-title">Skills</h2>
+      <p class="section-intro">Grouped by area. The number is how many projects on this page use it; select a skill to see them.</p>
+      <div class="inventory">
+        {genres.map((genre) => (
+          <section class="inventory-group" aria-labelledby={`genre-${genre.slug}`}>
+            <h3 id={`genre-${genre.slug}`}>{genre.name}</h3>
+            <ul class="chip-list">
+              {genre.skills.map((skill) => (
+                <li>
+                  <a class="chip" href={`${base}skills/${genre.slug}/${skill.slug}/`}>
+                    {skill.name} <span class="chip-count">{skill.projectIds.length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </div>
     </div>
@@ -88,37 +80,44 @@ import projects from '../data/projects.json';
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">Click a skill tag below to filter projects. Click any project card to view details in a popup.</p>
       <SkillFilter />
-      <ProjectGrid projects={projects} />
-      <ProjectModal />
+
+      <h3 class="subsection-title">Featured</h3>
+      <div class="featured-grid">
+        {featured.map((project) => <ProjectCard project={project} variant="featured" />)}
+      </div>
+
+      <h3 class="subsection-title">More projects</h3>
+      <div class="project-grid">
+        {rest.map((project) => <ProjectCard project={project} />)}
+      </div>
+
+      <h3 class="subsection-title">Smaller exercises</h3>
+      <ul class="minor-list">
+        {minor.map((project) => (
+          <li data-project-skills={projectSkillSlugs(project).join(',')}>
+            <a href={`${base}projects/${project.id}/`}>{project.title}</a>
+            <span>{project.year}</span>
+            <span>{project.skills.join(', ')}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="filter-empty" id="filterEmpty" hidden>No project uses all of the selected skills. Remove one or clear the filters.</p>
     </div>
   </section>
 
-  <section class="section" id="contact" data-aos="fade-up">
-    <div class="container">
-      <h2 class="heading">Contact <span>Me</span></h2>
-      <div class="contact-card">
-        <p class="contact-lead">Open to internships, collaborations and game or design projects. The quickest way to reach me is email.</p>
-        <div class="btn-box contact-actions">
-          <a class="btn" href="mailto:edwinlam822@gmail.com?subject=Hello%20from%20your%20portfolio"><i class="bx bx-envelope"></i> Email me</a>
-          <a class="btn" href="https://www.linkedin.com/in/edwinlam228/" target="_blank" rel="noopener noreferrer"><i class="bx bxl-linkedin"></i> LinkedIn</a>
-          <a class="btn" href="https://github.com/Ed-Lam-11111010010" target="_blank" rel="noopener noreferrer"><i class="bx bxl-github"></i> GitHub</a>
-        </div>
+  <section class="section section--tinted" id="contact">
+    <div class="container contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-intro">Open to internships, collaborations and game or design projects. Email is the quickest way to reach me.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="mailto:edwinlam822@gmail.com?subject=Hello%20from%20your%20portfolio">
+          <span set:html={iconSvg('mail', 16)} /> Email me
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/edwinlam228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/Ed-Lam-11111010010" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
   </section>
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (typeof Typed !== 'undefined') {
-      new Typed('.typing-text', {
-        strings: ['Information Engineering Student', 'Game Designer', 'Creative Technologist', 'AI Enthusiast'],
-        typeSpeed: 80,
-        backSpeed: 40,
-        backDelay: 2000,
-        loop: true
-      });
-    }
-  });
-</script>
 </BaseLayout>

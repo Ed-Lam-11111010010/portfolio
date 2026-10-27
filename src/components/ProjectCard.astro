@@ -1,6 +1,6 @@
 ---
-import { findGenreForSkill, getSkillSlug } from '../data/skills.js';
-const base = import.meta.env.BASE_URL;
+import { findGenreForSkill, projectSkillSlugs, categoryLabel } from '../data/skills.js';
+import { coverSvg } from '../lib/pixel.js';
 
 interface Props {
   project: {
@@ -11,81 +11,47 @@ interface Props {
     category: string;
     skills: string[];
     image: string | null;
-    links: {
-      github: string | null;
-      demo: string | null;
-      video: string | null;
-    };
+    links: { github: string | null; demo: string | null; video: string | null };
     highlights: string[];
-    external?: boolean;
-    source_url?: string | null;
     type?: string;
+    featured?: number;
   };
+  variant?: 'card' | 'featured';
 }
 
-const { project } = Astro.props;
-const skillList = project.skills.join(',');
-const cardClass = project.external ? 'project-card project-card--external' : 'project-card';
+const { project, variant = 'card' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const href = `${base}projects/${project.id}/`;
+const shown = variant === 'featured' ? project.skills.slice(0, 5) : project.skills.slice(0, 3);
+const more = project.skills.length - shown.length;
 ---
 
-<article class={cardClass} data-project-skills={skillList} data-project-type={project.type || ""}>
-  <a 
-    href={`${base}/projects/${project.id}`}
-    class="project-card-link"
-    aria-label={`View details for ${project.title}`}
-  >
-    <div class="project-card-image">
-      {project.image ? (
-        <img src={project.image} alt={project.title} loading="lazy" />
-      ) : (
-        <span>📁</span>
-      )}
-    </div>
-    <div class="project-card-body">
-      <h3 class="project-card-title">
-        {project.title}
-        {project.external && <span class="badge-external">Cloud</span>}
-      </h3>
-      <p class="project-card-year">
-        {project.type && <span class="project-type-badge">{project.type}</span>}
-        <span>{project.year}</span>
-      </p>
-      <p class="project-card-desc">{project.description}</p>
-      <div class="project-card-skills">
-        {project.skills.slice(0, 4).map((skill) => {
-          const info = findGenreForSkill(skill);
-          return (
-            <a
-              href={`${base}skills/${info.genreSlug}/${getSkillSlug(skill)}`}
-              class="project-card-skill"
-              data-skill={skill}
-            >{skill}</a>
-          );
-        })}
-        {project.skills.length > 4 && (
-          <span class="project-card-skill">+{project.skills.length - 4}</span>
-        )}
-      </div>
-    </div>
-  </a>
+<article
+  class:list={['project-card', `project-card--${variant}`]}
+  data-project-skills={projectSkillSlugs(project).join(',')}
+>
+  <div class="project-card-cover">
+    {project.image
+      ? <img src={`${base}${project.image.replace(/^\//, '')}`} alt="" loading="lazy" />
+      : <Fragment set:html={coverSvg(project.id, project.category, project.title)} />}
+  </div>
+  <div class="project-card-body">
+    <p class="project-card-meta">
+      <span class="tag tag--category">{categoryLabel(project.category)}</span>
+      <span>{project.year}</span>
+      {project.type === 'coursework' && <span>Coursework</span>}
+      {project.links.demo && <span class="tag tag--demo">Playable</span>}
+    </p>
+    <h3 class="project-card-title">
+      <a href={href} class="project-card-link">{project.title}</a>
+    </h3>
+    <p class="project-card-desc">{project.description}</p>
+    <ul class="chip-list" aria-label="Skills">
+      {shown.map((skill) => {
+        const info = findGenreForSkill(skill);
+        return <li><a class="chip" href={`${base}skills/${info.genreSlug}/${info.skillSlug}/`}>{info.skillName}</a></li>;
+      })}
+      {more > 0 && <li><span class="chip chip--muted">+{more}</span></li>}
+    </ul>
+  </div>
 </article>
-
-<style>
-  .project-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-  }
-
-  .project-card-link:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-    border-radius: var(--border-radius);
-  }
-</style>

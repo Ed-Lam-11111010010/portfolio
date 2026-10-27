@@ -1,273 +1,78 @@
 ---
-import { getGenres, findGenreForSkill, getSkillSlug } from '../data/skills.js';
-const base = import.meta.env.BASE_URL;
-
+import { getGenres } from '../data/skills.js';
 const genres = getGenres();
-const allGenres = [{ name: 'All', slug: 'all' }, ...genres];
 ---
 
-<div class="skill-filter" id="skillFilter">
-  <div class="genre-tabs" id="genreTabs">
-    {allGenres.map((g) => (
-      <button class="genre-tab" data-genre={g.slug} type="button">{g.name}</button>
+<div class="filter" id="projectFilter">
+  <div class="filter-genres" role="group" aria-label="Skill area">
+    <button class="filter-genre" type="button" data-genre="all" aria-pressed="true">All</button>
+    {genres.map((g) => (
+      <button class="filter-genre" type="button" data-genre={g.slug} aria-pressed="false">{g.name}</button>
     ))}
   </div>
-  <div class="skill-chips" id="skillChips">
-    <div class="skill-slider-wrapper">
-      <button class="scroll-btn scroll-btn--left" type="button" aria-label="Scroll left">?</button>
-      <div class="skill-chip-group" id="skillChipGroup">
-        <a href="#" class="filter-tag" data-skill="_all_" data-genre="all">&lt;/&gt;</a>
-        {genres.map((genre) => genre.skills.map((skill) => (
-          <a
-            href={`${base}skills/${genre.slug}/${skill.slug}`}
-            class="filter-tag"
-            data-skill={skill.slug}
-            data-genre={genre.slug}
-          >{skill.name}</a>
-        ))).flat()}
-      </div>
-      <button class="scroll-btn scroll-btn--right" type="button" aria-label="Scroll right">?</button>
-    </div>
+  <div class="filter-skills" role="group" aria-label="Skills">
+    {genres.map((g) => g.skills.map((s) => (
+      <button class="chip filter-skill" type="button" data-skill={s.slug} data-genre={g.slug} aria-pressed="false">
+        {s.name} <span class="chip-count">{s.projectIds.length}</span>
+      </button>
+    )))}
   </div>
-  <button class="filter-clear" id="filterClear" type="button">Clear all</button>
+  <div class="filter-status">
+    <p id="filterCount" aria-live="polite"></p>
+    <p class="filter-hint" id="filterHint">Pick an area to filter by skill.</p>
+    <button class="text-btn" id="filterClear" type="button" hidden>Clear filters</button>
+  </div>
 </div>
 
 <script>
-  const genreTabs = document.querySelectorAll('.genre-tab');
-  const filterTags = document.querySelectorAll('.filter-tag');
-  const filterClear = document.getElementById('filterClear');
-  const filterEmpty = document.getElementById('filterEmpty');
-  const projectCards = () => document.querySelectorAll('.project-card');
+  const root = document.getElementById('projectFilter');
+  if (root) {
+    const genreBtns = [...root.querySelectorAll<HTMLButtonElement>('.filter-genre')];
+    const skillBtns = [...root.querySelectorAll<HTMLButtonElement>('.filter-skill')];
+    const items = () => [...document.querySelectorAll<HTMLElement>('[data-project-skills]')];
+    const count = document.getElementById('filterCount');
+    const clear = document.getElementById('filterClear');
+    const empty = document.getElementById('filterEmpty');
+    let genre = 'all';
+    const active = new Set<string>();
 
-  let activeGenre = 'all';
-  let activeFilters = new Set();
-
-  // Apply active class to genre tab
-  function updateGenreTabs() {
-    genreTabs.forEach((tab) => {
-      tab.classList.toggle('active', tab.dataset.genre === activeGenre);
-    });
-  }
-
-  // Show/hide skill tags based on active genre in the single bar
-  function updateChips() {
-    document.querySelectorAll('.filter-tag').forEach((tag) => {
-      tag.style.display = activeGenre === 'all' || tag.dataset.genre === activeGenre ? '' : 'none';
-    });
-  }
-
-  // Filter projects
-  function updateFilter() {
-    const cards = projectCards();
-    let visibleCount = 0;
-
-    if (activeFilters.size === 0) {
-      cards.forEach((card) => { card.style.display = ''; });
-      visibleCount = cards.length;
-    } else {
-      cards.forEach((card) => {
-        const skills = (card.dataset.projectSkills || '').split(',');
-        const matchesSkills = activeFilters.size === 0 || [...activeFilters].every((filter) => skills.includes(filter));
-        card.style.display = matchesSkills ? '' : 'none';
-        if (matchesSkills) visibleCount++;
+    const render = () => {
+      genreBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.genre === genre)));
+      skillBtns.forEach((b) => {
+        b.hidden = b.dataset.genre !== genre && !active.has(b.dataset.skill || '');
+        b.setAttribute('aria-pressed', String(active.has(b.dataset.skill || '')));
       });
-    }
+      const all = items();
+      let shown = 0;
+      all.forEach((el) => {
+        const skills = (el.dataset.projectSkills || '').split(',');
+        const match = [...active].every((s) => skills.includes(s));
+        el.hidden = !match;
+        if (match) shown++;
+      });
+      if (count) count.textContent = active.size ? `Showing ${shown} of ${all.length} projects` : `${all.length} projects`;
+      if (clear) clear.hidden = active.size === 0 && genre === 'all';
+      const hint = document.getElementById('filterHint');
+      if (hint) hint.hidden = genre !== 'all' || active.size > 0;
+      if (empty) empty.hidden = shown !== 0;
+    };
 
-    // Update active tag styles
-    filterTags.forEach((tag) => {
-      tag.classList.toggle('active', activeFilters.has(tag.dataset.skill));
-    });
+    genreBtns.forEach((b) => b.addEventListener('click', () => {
+      genre = b.dataset.genre === genre ? 'all' : b.dataset.genre || 'all';
+      active.clear();
+      render();
+    }));
+    skillBtns.forEach((b) => b.addEventListener('click', () => {
+      const s = b.dataset.skill || '';
+      active.has(s) ? active.delete(s) : active.add(s);
+      render();
+    }));
+    clear?.addEventListener('click', () => { genre = 'all'; active.clear(); render(); });
 
-    // Show empty state
-    if (filterEmpty) {
-      filterEmpty.style.display = visibleCount === 0 ? '' : 'none';
-    }
+    const params = new URLSearchParams(location.search);
+    const preset = params.get('skill');
+    const presetBtn = skillBtns.find((b) => b.dataset.skill === preset);
+    if (presetBtn) { active.add(preset || ''); genre = presetBtn.dataset.genre || 'all'; }
+    render();
   }
-
-  // Genre tab click handler
-  genreTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const genre = tab.dataset.genre;
-      if (activeGenre === genre && genre !== 'all') {
-        activeGenre = 'all';
-      } else {
-        activeGenre = genre;
-      }
-      activeFilters.clear();
-      updateGenreTabs();
-      updateChips();
-      updateFilter();
-    });
-  });
-
-  // Skill tag click handler
-  filterTags.forEach((tag) => {
-    tag.addEventListener('click', (e) => {
-      e.preventDefault();
-      const skill = tag.dataset.skill;
-      // `<>` chip �X reset all filters
-      if (skill === '_all_') {
-        activeFilters.clear();
-        activeGenre = 'all';
-        updateGenreTabs();
-        updateChips();
-        updateFilter();
-        return;
-      }
-      if (activeFilters.has(skill)) {
-        activeFilters.delete(skill);
-      } else {
-        activeFilters.add(skill);
-      }
-      updateFilter();
-    });
-  });
-
-  // Scroll buttons for the single skill chip group
-  document.querySelectorAll('.scroll-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const group = document.getElementById('skillChipGroup');
-      if (!group) return;
-      const scrollAmount = 200;
-      if (btn.classList.contains('scroll-btn--left')) {
-        group.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        group.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    });
-  });
-
-  filterClear?.addEventListener('click', () => {
-    activeFilters.clear();
-    activeGenre = 'all';
-    updateGenreTabs();
-    updateChips();
-    updateFilter();
-  });
-
-  // Initialize
-  updateGenreTabs();
-  updateChips();
 </script>
-
-<style>
-  .genre-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .genre-tab {
-    background: var(--color-tag-bg);
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
-    padding: 0.45rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .genre-tab:hover {
-    opacity: 0.85;
-  }
-
-  .genre-tab.active {
-    background: var(--color-accent);
-    color: #fff;
-    border-color: var(--color-accent);
-  }
-
-  .skill-chips {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  .skill-slider-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-  .skill-chip-group {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    padding: 0.5rem 0;
-    flex: 1;
-  }
-  .skill-chip-group::-webkit-scrollbar {
-    height: 4px;
-  }
-  .skill-chip-group::-webkit-scrollbar-thumb {
-    background: var(--color-border);
-    border-radius: 2px;
-  }
-  .scroll-btn {
-    background: var(--color-tag-bg);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-  }
-  .scroll-btn:hover {
-    background: var(--color-accent);
-    color: #fff;
-    border-color: var(--color-accent);
-  }
-
-  .filter-tag {
-    background: var(--color-tag-bg);
-    color: var(--color-tag-text);
-    border: none;
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-
-  .filter-tag:hover {
-    opacity: 0.8;
-  }
-
-  .filter-tag.active {
-    background: var(--color-tag-active-bg);
-    color: var(--color-tag-active-text);
-  }
-
-  .filter-clear {
-    background: none;
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin-top: 0.25rem;
-  }
-
-  .filter-clear:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-</style>

@@ -1,144 +1,73 @@
 # Edwin Lam — Portfolio
 
-A responsive portfolio website showcasing projects by Lam Chi (Edwin). Built with [Astro](https://astro.build).
+Personal portfolio of Lam Chi (Edwin), built with [Astro](https://astro.build) in a pixel-art style.
+Live at <https://ed-lam-11111010010.github.io/portfolio/>.
 
-## Features
+## What's on the site
 
-- **Project Showcase** — Various projects with descriptions, skills, and links
-- **Hierarchical Skill Browser** — click a genre tab (e.g. "Programming Languages") to see related skill tags, then click a skill to filter projects or visit its dedicated page
-- **Skill Detail Pages** — dedicated pages at `/skills/{genre}/{skill}` showing all projects using that skill
-- **Project Detail Pages** — dedicated pages for each project
-- **Dark/Light Theme** — toggleable with persistence
-- **PWA Support** — installable as an app on mobile/desktop
-- **Responsive** — works on mobile, tablet, and desktop
-- **Cloud/External Project Support** — mark projects hosted outside this repo with a badge and link
-- **GitHub Pages Deploy** — automatic deployment via GitHub Actions
+- **Hero, About, Skills, Projects, Contact** on one page, with light and dark themes.
+- **Featured projects** shown as large tiles, the rest in a grid, and small exercises in a short list.
+- **Skill filter**: pick an area, then one or more skills, to narrow the projects.
+- **Skill pages** at `/skills/{area}/{skill}/` and **project pages** at `/projects/{id}/`.
+- **Pixel-art covers** generated for every project that has no image (`src/lib/pixel.js`).
+- Installable as an app (PWA) and readable offline once visited.
 
-## Adding a New Project
+## Adding a project
 
-1. Open `src/data/projects.json`
-2. Add a new entry with the following fields:
+Add an entry to `src/data/projects.json`:
 
 ```json
 {
   "id": "my-new-project",
   "title": "My New Project",
-  "description": "A short description of the project.",
-  "year": 2025,
-  "category": "programming",
-  "skills": ["python", "git"],
+  "description": "One or two sentences on what it is.",
+  "year": 2026,
+  "category": "game-dev",
+  "skills": ["Python", "Game Dev"],
   "image": null,
-  "links": {
-    "github": "https://github.com/your-username/my-new-project",
-    "demo": null,
-    "video": null
-  },
-  "highlights": [
-    "Key achievement 1",
-    "Key achievement 2"
-  ],
+  "links": { "github": null, "demo": null, "video": null },
+  "highlights": ["What makes it interesting"],
   "external": false,
-  "source_url": "https://github.com/your-username/my-new-project"
+  "source_url": null,
+  "type": "personal",
+  "featured": 5
 }
 ```
 
-3. If the project lives outside this repo (e.g. on a cloud drive, private repo), set `"external": true` and put the URL in `"source_url"`
-4. If the project uses a skill not yet in the taxonomy, add it to `src/data/skills.json` first (see below)
-5. Run `npm run build` to verify
-6. Commit and push — GitHub Actions will deploy automatically
+| Field | Notes |
+| --- | --- |
+| `id` | Used in the URL: `/projects/{id}/` |
+| `category` | One of `ai-game-dev`, `game-dev`, `game-design`, `web-dev`, `programming`, `documentation`, `multimedia`, `creative`, `leadership`. Sets the label and the pixel cover. |
+| `skills` | Must match a skill **name** or **slug** in `src/data/skills.json`. An unknown tag stops the build with a message saying which one. |
+| `image` | Path under `public/`, e.g. `/images/projects/my-game.png`. Leave `null` for a generated pixel cover. |
+| `links.demo` | Adds a "Playable" tag and a "Play the demo" button. |
+| `type` | `coursework` shows a Coursework label; anything else is not shown. |
+| `featured` | Optional number. Featured projects appear as large tiles, in this order. |
+| `minor` | Optional `true`. Lists the project under "Smaller exercises". |
 
-## Adding a New Skill
+Projects are listed in the order they appear in the file (currently newest year first).
 
-The skill hierarchy is defined in `src/data/skills.json`. Each skill lives under a genre.
+## Adding a skill or area
 
-1. Open `src/data/skills.json`
-2. Find the appropriate genre, or add a new genre (see below)
-3. Add a new skill entry with:
-   - `"name"`: Display name (e.g. "React")
-   - `"slug"`: URL-friendly identifier (e.g. "react")
-   - `"projectIds"`: Array of project IDs that use this skill
-
-```json
-{
-  "name": "React",
-  "slug": "react",
-  "projectIds": ["my-new-project"]
-}
-```
-
-4. Also update `project.skills` in `projects.json` to include the skill tag
-
-## Adding a New Genre
-
-1. Open `src/data/skills.json`
-2. Add a new genre object to the `"genres"` array:
-
-```json
-{
-  "name": "Cloud & DevOps",
-  "slug": "cloud-devops",
-  "skills": [
-    { "name": "Docker", "slug": "docker", "projectIds": ["my-new-project"] }
-  ]
-}
-```
-
-3. The genre slug becomes part of the URL: `/skills/{genre-slug}/{skill-slug}`
-
-## Marking a Project as External / Cloud
-
-Some projects exist outside this repository (on GitHub, cloud drives, or other computers). To add them:
-
-1. In `projects.json`, add the project entry with the minimal fields
-2. Set `"external": true` to show a "Cloud" badge on the card
-3. Set `"source_url"` to the link where the project can be viewed
-4. The project will appear normally but with a dashed border and a "Cloud" label
-
-## Skill Structure (Taxonomy)
-
-The current skill hierarchy has **10 genres**:
-
-| Genre | Skills |
-|-------|--------|
-| Programming Languages | Python, C, JavaScript, GDScript, TypeScript, Dart, Testing (pytest), Testing (Vitest), Git, CLI Tools |
-| Game Development | Phaser.js, Godot, PyGame, Game Dev (general) |
-| AI & Machine Learning | Gemini API, AI/ML |
-| Web Development | HTML/CSS, JavaScript (Web), Web Dev (general), Wix, WordPress, React |
-| App Development | Flutter, Electron |
-| Embedded Systems | ARM/STM32, Embedded Systems (general), Microcontroller Programming |
-| Creative & Design | Game Design, Graphic Design, Affinity Designer, Pixel Art, Aseprite, Photoshop, Logo Design, Product Design, Creative Writing, TTRPG Design, Worldbuilding, Content Creation, Script Writing |
-| Multimedia Production | Video Production, Video Editing, Voice Over, Subtitling |
-| Leadership & Management | Event Management, Leadership, Team Management, Budgeting, Documentation |
-| Tools & Platforms | ReadTheDocs, Sphinx, Tabletop Simulator, Product/Website Setup |
+Skills live in `src/data/skills.json`, grouped into areas (`genres`). Each skill needs a `name` and a URL-friendly `slug`.
+Project counts are worked out from `projects.json`, and skills no project uses are hidden.
 
 ## Development
 
 ```bash
 npm install
-npm run dev     # Start dev server at http://localhost:4321
-npm run build   # Build for production into dist/
-npm run preview # Preview production build locally
+npm run dev      # http://localhost:4321/portfolio/
+npm run build    # production build into dist/
+npm run preview  # serve the build locally
 ```
+
+`src/pages/admin.astro` is a local-only helper for editing project JSON. It works with `npm run dev` and is removed from the production build.
 
 ## Deployment
 
-The site is configured for GitHub Pages at `https://Ed-Lam-11111010010.github.io/portfolio/`.
+Pushing to `master` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages.
 
-### One-time GitHub Pages Setup
+## Tech
 
-1. Push this repository to `Ed-Lam-11111010010/portfolio` on GitHub
-2. Go to repo Settings → Pages → Source: select "GitHub Actions"
-3. Push to the `main` branch to trigger automatic deployment
-
-### Free Hosting Alternatives
-
-- **GitHub Pages** (already configured) — Free, automatic on push
-- **Azure Static Web Apps** — Free tier, $0/month, uses Azure student credits
-- **Cloudflare Pages** — Free tier, connected to GitHub repo
-
-## Tech Stack
-
-- **Astro** — Static site generator
-- **Vanilla CSS** — Custom properties for theming, no frameworks
-- **Vanilla JS** — Filter logic, theme toggle, PWA registration
-- **JSON** — All project and skill data in editable files
+Astro, plain CSS with custom properties, a little vanilla TypeScript for the filter, theme and menu.
+Fonts are self-hosted from npm: Pixelify Sans (headings and UI) and Atkinson Hyperlegible (body text).

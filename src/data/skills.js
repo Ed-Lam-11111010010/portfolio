@@ -1,131 +1,63 @@
 import skillsData from './skills.json';
 import projects from './projects.json';
 
-/**
- * Returns the full skills hierarchy (genres, each with skills array)
- */
+// Lookup of every skill by slug and by lower-cased name.
+const index = new Map();
+for (const genre of skillsData.genres) {
+  for (const skill of genre.skills) {
+    const entry = { genreName: genre.name, genreSlug: genre.slug, skillName: skill.name, skillSlug: skill.slug };
+    index.set(skill.slug, entry);
+    index.set(skill.name.toLowerCase(), entry);
+  }
+}
+
+/** Resolve a project tag to its skill. Throws on unknown tags so a typo fails the build. */
+export function resolveSkill(tag) {
+  const entry = index.get(tag) || index.get(String(tag).toLowerCase());
+  if (!entry) {
+    throw new Error(`Unknown skill tag "${tag}". Add it to src/data/skills.json or fix the tag in projects.json.`);
+  }
+  return entry;
+}
+
+// Validate every project tag at build time.
+for (const project of projects) {
+  for (const tag of project.skills) resolveSkill(tag);
+}
+
+export const findGenreForSkill = resolveSkill;
+export const getSkillSlug = (tag) => resolveSkill(tag).skillSlug;
+
+/** Slugs of a project's skills, used by the client-side filter. */
+export const projectSkillSlugs = (project) => project.skills.map(getSkillSlug);
+
+/** Projects that use a skill (by slug). */
+export const projectsForSkill = (slug) => projects.filter((p) => projectSkillSlugs(p).includes(slug));
+
+/** Genres with their skills; each skill carries the projects that use it. Unused skills are left out. */
 export function getGenres() {
-  return skillsData.genres;
+  return skillsData.genres
+    .map((genre) => ({
+      ...genre,
+      skills: genre.skills
+        .map((skill) => ({ ...skill, projectIds: projectsForSkill(skill.slug).map((p) => p.id) }))
+        .filter((skill) => skill.projectIds.length > 0),
+    }))
+    .filter((genre) => genre.skills.length > 0);
 }
 
-/**
- * Given a skill slug, find its genre info.
- * Returns { genreName, genreSlug, skillName, skillSlug } or null if not found.
- */
-export function getSkillGenre(skillSlug) {
-  for (const genre of skillsData.genres) {
-    for (const skill of genre.skills) {
-      if (skill.slug === skillSlug) {
-        return {
-          genreName: genre.name,
-          genreSlug: genre.slug,
-          skillName: skill.name,
-          skillSlug: skill.slug
-        };
-      }
-    }
-  }
-  return null;
-}
+const CATEGORY_LABELS = {
+  'ai-game-dev': 'AI game',
+  'game-dev': 'Game',
+  'game-design': 'Board game',
+  'web-dev': 'Web',
+  programming: 'Programming',
+  documentation: 'Documentation',
+  multimedia: 'Video',
+  creative: 'Creative',
+  leadership: 'Leadership',
+};
 
-/**
- * Given a raw skill tag from projects.json (e.g. "python", "phaser.js"),
- * look up its slug in the hierarchy by matching the skill slug.
- * Falls back to slugified version of the tag if not found.
- */
-export function getSkillSlug(tag) {
-  for (const genre of skillsData.genres) {
-    for (const skill of genre.skills) {
-      if (skill.slug === tag || skill.name.toLowerCase() === tag.toLowerCase()) {
-        return skill.slug;
-      }
-    }
-  }
-  return tag.replace(/[\s/]+/g, '-').toLowerCase();
-}
-
-/**
- * Given a raw skill tag from projects.json, return the genre+skill info
- * by trying to match either slug or name.
- */
-export function findGenreForSkill(tag) {
-  for (const genre of skillsData.genres) {
-    for (const skill of genre.skills) {
-      if (skill.slug === tag || skill.name.toLowerCase() === tag.toLowerCase()) {
-        return {
-          genreName: genre.name,
-          genreSlug: genre.slug,
-          skillName: skill.name,
-          skillSlug: skill.slug
-        };
-      }
-    }
-  }
-  // Fallback: derive slug from tag
-  return {
-    genreName: 'Other',
-    genreSlug: 'other',
-    skillName: tag,
-    skillSlug: tag.replace(/[\s/]+/g, '-').toLowerCase()
-  };
-}
-
-/**
- * Returns all unique skills sorted alphabetically (flat list, for backward compat)
- */
-export function getAllSkills() {
-  const skills = new Set(projects.flatMap((p) => p.skills));
-  return [...skills].sort();
-}
-
-/**
- * Returns categorized skills: { category: [skill, ...], ... }
- * Uses the new hierarchical taxonomy. Skills with no genre mapping go into "Other".
- */
-export function getSkillCategories() {
-  const categorized = {};
-  const allTags = new Set(projects.flatMap((p) => p.skills));
-
-  for (const genre of skillsData.genres) {
-    const skillNames = genre.skills.map((s) => s.name);
-    // Also include any raw tags that match this genre's skills by slug
-    for (const tag of allTags) {
-      const info = findGenreForSkill(tag);
-      if (info.genreSlug === genre.slug) {
-        if (!categorized[genre.name]) categorized[genre.name] = [];
-        if (!categorized[genre.name].includes(tag)) {
-          categorized[genre.name].push(tag);
-        }
-      }
-    }
-  }
-
-  // Uncategorized
-  const categorizedTags = new Set();
-  for (const cat of Object.values(categorized)) {
-    cat.forEach((t) => categorizedTags.add(t));
-  }
-  const uncategorized = [...allTags].filter((t) => !categorizedTags.has(t));
-  if (uncategorized.length > 0) {
-    categorized['Other'] = uncategorized;
-  }
-
-  return categorized;
-}
-
-export function getAllSkillsWithLevels() {
-  const result = [];
-  for (const genre of skillsData.genres) {
-    for (const skill of genre.skills) {
-      result.push({
-        genreName: genre.name,
-        genreSlug: genre.slug,
-        name: skill.name,
-        slug: skill.slug,
-        level: skill.level || 50,
-        projectIds: skill.projectIds,
-      });
-    }
-  }
-  return result;
-}
+/** Human-readable label for a project category slug. */
+export const categoryLabel = (category) =>
+  CATEGORY_LABELS[category] || category.replace(/-/g, ' ').replace(/^\w/, (c) => c.toUpperCase());

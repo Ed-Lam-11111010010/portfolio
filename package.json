@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource-variable/pixelify-sans": "^5.3.0",
+    "@fontsource/atkinson-hyperlegible": "^5.3.0",
     "astro": "^6.4.7"
   }
 }
