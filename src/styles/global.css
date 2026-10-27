@@ -1247,3 +1247,9 @@ img {
     font-size: 1.5rem;
   }
 }
+
+/* Contact card (replaces mailto form) */
+.contact-card { max-width: 640px; margin: 0 auto; text-align: center; }
+.contact-lead { color: var(--color-text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+.contact-actions .btn { display: inline-flex; align-items: center; gap: 0.4rem; }

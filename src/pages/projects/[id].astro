@@ -12,13 +12,17 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const SOFTWARE = ['phaser.js', 'godot', 'pygame', 'gemini api', 'aseprite', 'affinity designer', 'photoshop', 'readthedocs', 'sphinx', 'tabletop simulator', 'wix', 'wordpress'];
+const skillTags = project.skills.filter((skill) => !SOFTWARE.includes(skill.toLowerCase()));
+const softwareTags = project.skills.filter((skill) => SOFTWARE.includes(skill.toLowerCase()));
+const hasLinks = Boolean(project.links.github || project.links.demo || project.links.video || (project.source_url && project.external));
 const pageTitle = `${project.title} — Edwin Lam Portfolio`;
 ---
 
 <BaseLayout title={pageTitle} description={project.description}>
   <div class="project-detail-page">
     <div class="detail-sidebar">
-      <a href={`${base}/projects/${project.id}`} class="detail-back">&larr; Back</a>
+      <a href={`${base}#projects`} class="detail-back">&larr; Back to projects</a>
 
       <div class="detail-image-box">
         {project.image ? (
@@ -30,6 +34,7 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
         )}
       </div>
 
+      {hasLinks && (
       <div class="detail-sidebar-links">
         <h3>Links</h3>
         {project.links.github && (
@@ -45,6 +50,7 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
           <a href={project.links.video} target="_blank" rel="noopener noreferrer" class="btn btn-block">Video &rarr;</a>
         )}
       </div>
+      )}
     </div>
 
     <div class="detail-main">
@@ -64,10 +70,11 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
         <p>{project.description}</p>
       </section>
 
+      {skillTags.length > 0 && (
       <section class="detail-section">
         <h3>Skills</h3>
         <div class="detail-skills">
-          {project.skills.filter(skill => !['phaser.js', 'godot', 'pygame', 'gemini api', 'aseprite', 'affinity designer', 'photoshop', 'readthedocs', 'sphinx', 'tabletop simulator', 'wix', 'wordpress'].includes(skill.toLowerCase())).map((skill) => {
+          {skillTags.map((skill) => {
             const info = findGenreForSkill(skill);
             return (
               <a href={`${base}skills/${info.genreSlug}/${getSkillSlug(skill)}`} class="filter-tag">{skill}</a>
@@ -76,10 +83,13 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
         </div>
       </section>
 
+      )}
+
+      {softwareTags.length > 0 && (
       <section class="detail-section">
         <h3>Software Used</h3>
         <div class="detail-skills">
-          {project.skills.filter(skill => ['phaser.js', 'godot', 'pygame', 'gemini api', 'aseprite', 'affinity designer', 'photoshop', 'readthedocs', 'sphinx', 'tabletop simulator', 'wix', 'wordpress'].includes(skill.toLowerCase())).map((skill) => {
+          {softwareTags.map((skill) => {
             const info = findGenreForSkill(skill);
             return (
               <a href={`${base}skills/${info.genreSlug}/${getSkillSlug(skill)}`} class="filter-tag">{skill}</a>
@@ -87,6 +97,7 @@ const pageTitle = `${project.title} — Edwin Lam Portfolio`;
           })}
         </div>
       </section>
+      )}
 
       {project.highlights && project.highlights.length > 0 && (
         <section class="detail-section">

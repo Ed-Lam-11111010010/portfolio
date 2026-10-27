@@ -414,10 +414,12 @@ const base = import.meta.env.BASE_URL;
       </section>
       ` : ''}
 
+      ${linksHtml.trim() ? `
       <section class="modal-section">
         <h3>Links</h3>
         <div class="modal-links">${linksHtml}</div>
       </section>
+      ` : ''}
 
       ${relatedHtml}
     `;
