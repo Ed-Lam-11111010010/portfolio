@@ -1,71 +1,54 @@
 {
   "genres": [
     {
-      "name": "Programming Languages",
+      "name": "Programming",
       "slug": "programming",
       "skills": [
         { "name": "Python", "slug": "python" },
         { "name": "C", "slug": "c" },
         { "name": "JavaScript", "slug": "javascript" },
-        { "name": "GDScript", "slug": "gdscript" },
-        { "name": "pytest", "slug": "testing" },
-        { "name": "Git", "slug": "git" },
-        { "name": "CLI Tools", "slug": "cli-tools" },
         { "name": "TypeScript", "slug": "typescript" },
         { "name": "Dart", "slug": "dart" },
-        { "name": "Vitest", "slug": "vitest" }
+        { "name": "GDScript", "slug": "gdscript" },
+        { "name": "pytest", "slug": "testing" },
+        { "name": "Vitest", "slug": "vitest" },
+        { "name": "Git", "slug": "git" },
+        { "name": "CLI Tools", "slug": "cli-tools" }
       ]
     },
     {
-      "name": "Game Development",
-      "slug": "game-dev",
+      "name": "Games and apps",
+      "slug": "games-apps",
       "skills": [
+        { "name": "Game Dev", "slug": "game-dev-general" },
         { "name": "Phaser.js", "slug": "phaser-js" },
         { "name": "Godot", "slug": "godot" },
         { "name": "PyGame", "slug": "pygame" },
-        { "name": "Game Dev", "slug": "game-dev-general" }
-      ]
-    },
-    {
-      "name": "AI & Machine Learning",
-      "slug": "ai-ml",
-      "skills": [
+        { "name": "Flutter", "slug": "flutter" },
+        { "name": "Electron", "slug": "electron" },
         { "name": "Gemini API", "slug": "gemini-api" },
         { "name": "AI/ML", "slug": "ai-ml" }
       ]
     },
     {
-      "name": "Web Development",
-      "slug": "web-dev",
+      "name": "Web and hardware",
+      "slug": "web-hardware",
       "skills": [
         { "name": "HTML/CSS", "slug": "html-css" },
-        { "name": "JavaScript (Web)", "slug": "javascript-web" },
         { "name": "Web Dev", "slug": "web-dev-general" },
+        { "name": "React", "slug": "react" },
         { "name": "Wix", "slug": "wix" },
         { "name": "WordPress", "slug": "wordpress" },
-        { "name": "React", "slug": "react" }
-      ]
-    },
-    {
-      "name": "App Development",
-      "slug": "app-dev",
-      "skills": [
-        { "name": "Flutter", "slug": "flutter" },
-        { "name": "Electron", "slug": "electron" }
-      ]
-    },
-    {
-      "name": "Embedded Systems",
-      "slug": "embedded-systems",
-      "skills": [
+        { "name": "Product/Website Setup", "slug": "product-website-setup" },
+        { "name": "JavaScript (Web)", "slug": "javascript-web" },
         { "name": "ARM/STM32", "slug": "arm-stm32" },
         { "name": "Embedded Systems", "slug": "embedded-systems-general" },
         { "name": "Microcontroller Programming", "slug": "microcontroller-programming" }
       ]
     },
     {
-      "name": "Creative & Design",
-      "slug": "creative-design",
+      "name": "Art and design",
+      "slug": "art-design",
       "skills": [
         { "name": "Game Design", "slug": "game-design" },
         { "name": "Graphic Design", "slug": "graphic-design" },
@@ -75,43 +58,36 @@
         { "name": "Photoshop", "slug": "photoshop" },
         { "name": "Logo Design", "slug": "logo-design" },
         { "name": "Product Design", "slug": "product-design" },
-        { "name": "Creative Writing", "slug": "creative-writing" },
         { "name": "TTRPG Design", "slug": "trpg-design" },
         { "name": "Worldbuilding", "slug": "worldbuilding" },
-        { "name": "Content Creation", "slug": "content-creation" },
-        { "name": "Script Writing", "slug": "script-writing" }
+        { "name": "Tabletop Simulator", "slug": "tabletop-simulator" },
+        { "name": "Cider", "slug": "cider" }
       ]
     },
     {
-      "name": "Multimedia Production",
-      "slug": "multimedia",
+      "name": "Video and writing",
+      "slug": "video-writing",
       "skills": [
         { "name": "Video Production", "slug": "video-production" },
         { "name": "Video Editing", "slug": "video-editing" },
         { "name": "Voice Over", "slug": "voice-over" },
-        { "name": "Subtitling", "slug": "subtitling" }
+        { "name": "Subtitling", "slug": "subtitling" },
+        { "name": "Script Writing", "slug": "script-writing" },
+        { "name": "Content Creation", "slug": "content-creation" },
+        { "name": "Creative Writing", "slug": "creative-writing" },
+        { "name": "Documentation", "slug": "documentation" },
+        { "name": "ReadTheDocs", "slug": "readthedocs" },
+        { "name": "Sphinx", "slug": "sphinx" }
       ]
     },
     {
-      "name": "Leadership & Management",
+      "name": "Leading people",
       "slug": "leadership",
       "skills": [
-        { "name": "Event Management", "slug": "event-management" },
         { "name": "Leadership", "slug": "leadership" },
+        { "name": "Event Management", "slug": "event-management" },
         { "name": "Team Management", "slug": "team-management" },
-        { "name": "Budgeting", "slug": "budgeting" },
-        { "name": "Documentation", "slug": "documentation" }
-      ]
-    },
-    {
-      "name": "Tools & Platforms",
-      "slug": "tools-platforms",
-      "skills": [
-        { "name": "ReadTheDocs", "slug": "readthedocs" },
-        { "name": "Sphinx", "slug": "sphinx" },
-        { "name": "Tabletop Simulator", "slug": "tabletop-simulator" },
-        { "name": "Product/Website Setup", "slug": "product-website-setup" },
-        { "name": "Cider", "slug": "cider" }
+        { "name": "Budgeting", "slug": "budgeting" }
       ]
     }
   ]

@@ -28,22 +28,36 @@ for (const project of projects) {
 export const findGenreForSkill = resolveSkill;
 export const getSkillSlug = (tag) => resolveSkill(tag).skillSlug;
 
-/** Slugs of a project's skills, used by the client-side filter. */
+/** Slugs of a project's skills. */
 export const projectSkillSlugs = (project) => project.skills.map(getSkillSlug);
 
-/** Projects that use a skill (by slug). */
-export const projectsForSkill = (slug) => projects.filter((p) => projectSkillSlugs(p).includes(slug));
+/** Projects that use a skill (by slug), in site order. */
+export const projectsForSkill = (slug) => siteOrder().filter((p) => projectSkillSlugs(p).includes(slug));
 
-/** Genres with their skills; each skill carries the projects that use it. Unused skills are left out. */
+/** Skill areas with the skills projects use, most-used first; each skill lists its projects. */
 export function getGenres() {
   return skillsData.genres
     .map((genre) => ({
       ...genre,
       skills: genre.skills
-        .map((skill) => ({ ...skill, projectIds: projectsForSkill(skill.slug).map((p) => p.id) }))
-        .filter((skill) => skill.projectIds.length > 0),
+        .map((skill, i) => ({ ...skill, i, projectIds: projectsForSkill(skill.slug).map((p) => p.id) }))
+        .filter((skill) => skill.projectIds.length > 0)
+        .sort((a, b) => b.projectIds.length - a.projectIds.length || a.i - b.i),
     }))
     .filter((genre) => genre.skills.length > 0);
+}
+
+/** Featured projects in their set order, then the rest, then small exercises. */
+export function siteOrder() {
+  const featured = projects.filter((p) => p.featured).sort((a, b) => a.featured - b.featured);
+  return [...featured, ...projects.filter((p) => !p.featured && !p.minor), ...projects.filter((p) => p.minor)];
+}
+
+/** The projects before and after this one in site order (wrapping around). */
+export function neighbours(id) {
+  const list = siteOrder();
+  const i = list.findIndex((p) => p.id === id);
+  return { prev: list[(i - 1 + list.length) % list.length], next: list[(i + 1) % list.length] };
 }
 
 const CATEGORY_LABELS = {

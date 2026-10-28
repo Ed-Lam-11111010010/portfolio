@@ -19,12 +19,12 @@ const list = projectsForSkill(skill.slug);
   <div class="container detail">
     <a href={`${base}#skills`} class="back-link"><span set:html={iconSvg('left', 12)} /> All skills</a>
     <header class="skill-header">
-      <p class="project-card-meta"><span class="tag tag--category">{genre.name}</span></p>
       <h1 class="detail-title">{skill.name}</h1>
+      <p class="meta"><span class="tag">{genre.name}</span></p>
       <p class="detail-lead">{list.length === 1 ? '1 project uses' : `${list.length} projects use`} {skill.name}.</p>
     </header>
-    <div class="project-grid">
-      {list.map((project) => <ProjectCard project={project} />)}
+    <div class="card-grid">
+      {list.map((project) => <ProjectCard project={project} level={2} />)}
     </div>
   </div>
 </BaseLayout>

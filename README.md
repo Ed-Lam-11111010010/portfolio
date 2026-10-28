@@ -5,11 +5,10 @@ Live at <https://ed-lam-11111010010.github.io/portfolio/>.
 
 ## What's on the site
 
-- **Hero, About, Skills, Projects, Contact** on one page, with light and dark themes.
-- **Featured projects** shown as large tiles, the rest in a grid, and small exercises in a short list.
-- **Skill filter**: pick an area, then one or more skills, to narrow the projects.
+- **Hero, Work, About, Skills, Contact** on one page, with light and dark themes.
+- **Featured projects** as tiles (a wide lead plus three), the rest as a list with pixel icons, and small exercises in one line.
 - **Skill pages** at `/skills/{area}/{skill}/` and **project pages** at `/projects/{id}/`.
-- **Pixel-art covers** generated for every project that has no image (`src/lib/pixel.js`).
+- **Pixel art** drawn in code (`src/lib/pixel.js`): custom art for featured projects, category scenes for the rest, list icons and the hero horizon.
 - Installable as an app (PWA) and readable offline once visited.
 
 ## Adding a project
@@ -42,7 +41,10 @@ Add an entry to `src/data/projects.json`:
 | `image` | Path under `public/`, e.g. `/images/projects/my-game.png`. Leave `null` for a generated pixel cover. |
 | `links.demo` | Adds a "Playable" tag and a "Play the demo" button. |
 | `type` | `coursework` shows a Coursework label; anything else is not shown. |
-| `featured` | Optional number. Featured projects appear as large tiles, in this order. |
+| `featured` | Optional number. Featured projects appear as tiles, in this order; number 1 gets the wide lead tile. |
+| `summary` | One line for the project list and cards. Falls back to `description`. |
+| `process` | Optional `{ "title", "steps": [{ "title", "text" }] }`, shown as numbered steps on the project page. |
+| `status`, `credit` | Optional sentences shown in the project page's side panel. |
 | `minor` | Optional `true`. Lists the project under "Smaller exercises". |
 
 Projects are listed in the order they appear in the file (currently newest year first).

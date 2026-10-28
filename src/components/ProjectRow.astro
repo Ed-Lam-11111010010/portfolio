@@ -1,0 +1,36 @@
+---
+import { categoryLabel } from '../data/skills.js';
+import { listIconSvg, iconSvg } from '../lib/pixel.js';
+
+interface Props {
+  project: {
+    id: string;
+    title: string;
+    summary?: string;
+    description: string;
+    year: number;
+    category: string;
+    links: { demo: string | null };
+    type?: string;
+  };
+}
+
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const facts = [categoryLabel(project.category), project.year, project.type === 'coursework' && 'coursework'].filter(Boolean).join(', ');
+---
+
+<li>
+  <a class="row" href={`${base}projects/${project.id}/`}>
+    <span class="row-icon" set:html={listIconSvg(project)} />
+    <span class="row-main">
+      <span class="row-title">{project.title}</span>
+      <span class="row-text">{project.summary || project.description}</span>
+    </span>
+    <span class="row-meta">
+      {project.links.demo && <span class="tag tag--play">Playable</span>}
+      <span>{facts}</span>
+    </span>
+    <span class="row-arrow" set:html={iconSvg('right', 14)} />
+  </a>
+</li>

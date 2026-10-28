@@ -2,7 +2,7 @@
 // Paths are relative to this file, so it works under the /portfolio/ base path.
 // Pages use network-first so visitors always get the latest version when online;
 // other same-origin assets use stale-while-revalidate.
-const CACHE_NAME = 'edwin-portfolio-v2';
+const CACHE_NAME = 'edwin-portfolio-v3';
 const PRECACHE_URLS = ['./', './404.html', './manifest.json', './icons/icon.svg'];
 
 self.addEventListener('install', (event) => {

@@ -2,6 +2,7 @@
   {
     "id": "ai-guild-master-fyp",
     "title": "AI Guild Master",
+    "summary": "A Phaser.js browser game where NPCs train toward their dreams, with Google Gemini driving their decisions.",
     "description": "A Phaser.js browser game where NPCs train based on character dreams, guided by Google Gemini AI. Features an AI controller that automates Pokémon-style game mechanics using the Gemini API for intelligent NPC decision-making.",
     "year": 2026,
     "category": "ai-game-dev",
@@ -34,6 +35,7 @@
   {
     "id": "innoport-board-game",
     "title": "InnoPort Board Game",
+    "summary": "A complete board and card game with professionally made physical components and a Tabletop Simulator mod.",
     "description": "A complete board and card game design with professionally crafted physical assets. Includes a Tabletop Simulator mod for digital play, with all cards designed in Affinity Designer and Cider. Protected by an IP agreement with Unplugged Studio.",
     "year": 2026,
     "category": "game-design",
@@ -65,6 +67,7 @@
   {
     "id": "sushiro-counter",
     "title": "Sushiro HK Price Counter",
+    "summary": "A single-file, offline price calculator for Sushiro Hong Kong: tally plates by colour and see the bill.",
     "description": "壽司郎香港價錢計算器 — A Sushiro Hong Kong price calculator built as a single-file HTML app with zero dependencies. Lets diners tally their conveyor-belt sushi bill by plate colour and quantity.",
     "year": 2026,
     "category": "web-dev",
@@ -91,6 +94,7 @@
   {
     "id": "dino-island-rnw",
     "title": "Dinosaur Island: Rawr 'n Write — Digital Hot-seat",
+    "summary": "A fan-made digital hot-seat version of the roll-and-write board game, with its rules running as a tested state machine.",
     "description": "A fan-made digital hot-seat adaptation of the roll-and-write board game Dinosaur Island: Rawr 'n Write. The game rules run as a tested state machine kept separate from the React UI, so every player action is validated before the game state changes.",
     "year": 2026,
     "category": "game-dev",
@@ -113,6 +117,29 @@
       "Covered by 1,000+ automated engine and store tests with Vitest",
       "Runs as a desktop app built with Vite and Electron, with local save games"
     ],
+    "process": {
+      "title": "How a season plays",
+      "steps": [
+        {
+          "title": "Set up",
+          "text": "Players and their park sheets are created."
+        },
+        {
+          "title": "Take actions",
+          "text": "Dice choices build the park, one legal move at a time."
+        },
+        {
+          "title": "Run the park",
+          "text": "Attractions, specialists, the tour, excitement and the death toll."
+        },
+        {
+          "title": "Score",
+          "text": "After the third season, final scores decide the winner."
+        }
+      ]
+    },
+    "status": "In active development. The source is private, so there is no public link yet.",
+    "credit": "A fan-made adaptation of the board game Dinosaur Island: Rawr 'n Write. It isn't an official release.",
     "external": false,
     "source_url": null,
     "type": "personal",
@@ -121,6 +148,7 @@
   {
     "id": "wordle-neo",
     "title": "WORDLE NEO",
+    "summary": "A Flutter rebuild of Wordle with custom words, online word checking and English and Traditional Chinese definitions.",
     "description": "A Flutter rebuild of Wordle with random and custom word modes (3–12 letters), online word validation, and bilingual English / Traditional Chinese definitions on the results screen.",
     "year": 2026,
     "category": "game-dev",
@@ -149,6 +177,7 @@
   {
     "id": "jewel-smash-game",
     "title": "Jewel Smash Game",
+    "summary": "A tile-matching game built in Python with PyGame, then ported to an STM32 microcontroller.",
     "description": "A tile-matching game originally built in Python with PyGame, then ported to run on STM32 microcontroller hardware. Demonstrates cross-platform game logic from PC to embedded systems.",
     "year": 2025,
     "category": "game-dev",
@@ -178,6 +207,7 @@
   {
     "id": "christmas-game-2025",
     "title": "Christmas New Game Idea 2025",
+    "summary": "An exploratory Godot game in GDScript, used as a sandbox for game design ideas.",
     "description": "An exploratory game project built with the Godot engine using GDScript, with Python integration. A creative sandbox for experimenting with game design concepts.",
     "year": 2025,
     "category": "game-dev",
@@ -205,6 +235,7 @@
   {
     "id": "ierg-4210-web-project",
     "title": "IERG 4210 Web Project",
+    "summary": "Coursework building a full-stack web project with HTML, CSS and JavaScript.",
     "description": "Web technologies coursework covering modern HTML, CSS, and JavaScript development. A full-stack web project demonstrating frontend and backend integration.",
     "year": 2025,
     "category": "web-dev",
@@ -230,6 +261,7 @@
   {
     "id": "infotainment-video-production",
     "title": "Infotainment Video Production",
+    "summary": "A COMM3930B infotainment video: scripting, editing, voice-over and subtitles.",
     "description": "A COMM3930B infotainment production project encompassing video production, script writing, and content creation. Additional video editing work includes fine cuts, voice-over recordings, and subtitling.",
     "year": 2025,
     "category": "multimedia",
@@ -260,6 +292,7 @@
   {
     "id": "pixel-art-graphic-design",
     "title": "Pixel Art & Graphic Design",
+    "summary": "Character sprites, UI assets, logos, posters and card designs in Aseprite, Affinity Designer and Photoshop.",
     "description": "A diverse collection of creative visual work including character sprites, UI assets, logos, posters, and card designs created with Aseprite, Affinity Designer, and Photoshop.",
     "year": 2025,
     "category": "creative",
@@ -290,6 +323,7 @@
   {
     "id": "dnd-empire-ants",
     "title": "D&D Campaign: Empire Ants",
+    "summary": "A custom Dungeons & Dragons campaign with its own world, character sheets and story.",
     "description": "A custom Dungeons & Dragons campaign 'Empire Ants' with detailed worldbuilding, character sheets, and narrative design. Showcases creative writing and TRPG content creation skills.",
     "year": 2025,
     "category": "creative",
@@ -316,6 +350,7 @@
   {
     "id": "intern-life-2024",
     "title": "Intern Life 2024",
+    "summary": "A ReadTheDocs site chronicling my 2024–2025 internship, plus Wix and WordPress site set-ups.",
     "description": "A ReadTheDocs documentation site chronicling internship experiences from 2024-2025. Also involved setting up websites using Wix and WordPress platforms, covering product setup and branding.",
     "year": 2024,
     "category": "documentation",
@@ -345,6 +380,7 @@
   {
     "id": "calculator-project",
     "title": "Calculator Project",
+    "summary": "A Python calculator with pytest tests, managed with uv.",
     "description": "A Python calculator built with pytest testing, using the uv package manager. Demonstrates test-driven development practices and clean CLI tool design.",
     "year": 2024,
     "category": "programming",
@@ -373,6 +409,7 @@
   {
     "id": "greeting-project",
     "title": "Greeting Project",
+    "summary": "A small Python greeting script forked from an instructor's repository.",
     "description": "A simple Python greeting script forked from an instructor's repository. A foundational programming exercise demonstrating version control and collaborative development.",
     "year": 2024,
     "category": "programming",
@@ -398,6 +435,7 @@
   {
     "id": "c-programming-university",
     "title": "C Programming & Embedded Systems",
+    "summary": "University C coursework across IERG 3810, 3830 and 3842 on ARM/STM32 microcontrollers.",
     "description": "University coursework in C programming across IERG 3810, 3830, and 3842, focusing on ARM/STM32 microcontrollers and embedded systems development.",
     "year": 2024,
     "category": "programming",
@@ -425,6 +463,7 @@
   {
     "id": "film-society-yingto",
     "title": "Film Society 「映徒」",
+    "summary": "Founding cabinet member of the CUHK Film Society: events, posters, screenings and budgets.",
     "description": "Founding cabinet member of the CUHK Film Society 「映徒」. Responsibilities included event planning, poster design, film screenings, budgeting, and membership management for the university film community.",
     "year": 2024,
     "category": "leadership",

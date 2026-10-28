@@ -1,57 +1,55 @@
 ---
-import { findGenreForSkill, projectSkillSlugs, categoryLabel } from '../data/skills.js';
+import { findGenreForSkill, categoryLabel } from '../data/skills.js';
 import { coverSvg } from '../lib/pixel.js';
 
 interface Props {
   project: {
     id: string;
     title: string;
+    summary?: string;
     description: string;
     year: number;
     category: string;
     skills: string[];
     image: string | null;
     links: { github: string | null; demo: string | null; video: string | null };
-    highlights: string[];
     type?: string;
-    featured?: number;
   };
-  variant?: 'card' | 'featured';
+  variant?: 'lead' | 'featured' | 'card';
+  level?: 2 | 3;
 }
 
-const { project, variant = 'card' } = Astro.props;
+const { project, variant = 'card', level = 3 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const href = `${base}projects/${project.id}/`;
-const shown = variant === 'featured' ? project.skills.slice(0, 5) : project.skills.slice(0, 3);
+const max = variant === 'lead' ? 6 : variant === 'featured' ? 4 : 3;
+const shown = project.skills.slice(0, max);
 const more = project.skills.length - shown.length;
+const text = variant === 'lead' ? project.description : project.summary || project.description;
+const Heading = `h${level}`;
 ---
 
-<article
-  class:list={['project-card', `project-card--${variant}`]}
-  data-project-skills={projectSkillSlugs(project).join(',')}
->
-  <div class="project-card-cover">
+<article class:list={['card', `card--${variant}`]}>
+  <div class="card-art">
     {project.image
       ? <img src={`${base}${project.image.replace(/^\//, '')}`} alt="" loading="lazy" />
-      : <Fragment set:html={coverSvg(project.id, project.category, project.title)} />}
+      : <Fragment set:html={coverSvg(project)} />}
   </div>
-  <div class="project-card-body">
-    <p class="project-card-meta">
-      <span class="tag tag--category">{categoryLabel(project.category)}</span>
+  <div class="card-body">
+    <Heading class="card-title"><a href={href} class="card-link">{project.title}</a></Heading>
+    <p class="meta">
+      <span class="tag">{categoryLabel(project.category)}</span>
       <span>{project.year}</span>
       {project.type === 'coursework' && <span>Coursework</span>}
-      {project.links.demo && <span class="tag tag--demo">Playable</span>}
+      {project.links.demo && <span class="tag tag--play">Playable</span>}
     </p>
-    <h3 class="project-card-title">
-      <a href={href} class="project-card-link">{project.title}</a>
-    </h3>
-    <p class="project-card-desc">{project.description}</p>
-    <ul class="chip-list" aria-label="Skills">
+    <p class="card-text">{text}</p>
+    <ul class="chips" aria-label="Skills">
       {shown.map((skill) => {
         const info = findGenreForSkill(skill);
         return <li><a class="chip" href={`${base}skills/${info.genreSlug}/${info.skillSlug}/`}>{info.skillName}</a></li>;
       })}
-      {more > 0 && <li><span class="chip chip--muted">+{more}</span></li>}
+      {more > 0 && <li><span class="chip chip--more">+{more} more</span></li>}
     </ul>
   </div>
 </article>

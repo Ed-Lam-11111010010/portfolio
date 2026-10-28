@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { findGenreForSkill, categoryLabel } from '../../data/skills.js';
+import { findGenreForSkill, categoryLabel, neighbours } from '../../data/skills.js';
 import { coverSvg, iconSvg } from '../../lib/pixel.js';
 import projects from '../../data/projects.json';
 
@@ -10,6 +10,7 @@ export function getStaticPaths() {
 
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const { prev, next } = neighbours(project.id);
 const SOFTWARE = ['phaser.js', 'godot', 'pygame', 'gemini api', 'aseprite', 'affinity designer', 'photoshop', 'readthedocs', 'sphinx', 'tabletop simulator', 'wix', 'wordpress', 'cider'];
 const skillTags = project.skills.filter((s) => !SOFTWARE.includes(s.toLowerCase()));
 const softwareTags = project.skills.filter((s) => SOFTWARE.includes(s.toLowerCase()));
@@ -25,23 +26,25 @@ const chip = (tag) => {
 };
 ---
 
-<BaseLayout title={`${project.title} — Edwin Lam`} description={project.description}>
-  <article class="container detail">
-    <a href={`${base}#projects`} class="back-link"><span set:html={iconSvg('left', 12)} /> All projects</a>
+<BaseLayout title={`${project.title} — Edwin Lam`} description={project.summary || project.description}>
+  <div class="banner">
+    {project.image
+      ? <img src={`${base}${project.image.replace(/^\//, '')}`} alt="" />
+      : <Fragment set:html={coverSvg(project, { w: 120, h: 30 })} />}
+  </div>
 
-    <header class="detail-header">
-      <div class="detail-cover">
-        {project.image
-          ? <img src={`${base}${project.image.replace(/^\//, '')}`} alt="" />
-          : <Fragment set:html={coverSvg(project.id, project.category, project.title)} />}
-      </div>
-      <div class="detail-intro">
-        <p class="project-card-meta">
-          <span class="tag tag--category">{categoryLabel(project.category)}</span>
+  <article class="container detail">
+    <a href={`${base}#work`} class="back-link"><span set:html={iconSvg('left', 12)} /> All projects</a>
+
+    <div class="detail-grid">
+      <div class="detail-main">
+        <h1 class="detail-title">{project.title}</h1>
+        <p class="meta">
+          <span class="tag">{categoryLabel(project.category)}</span>
           <span>{project.year}</span>
           {project.type === 'coursework' && <span>Coursework</span>}
+          {project.links.demo && <span class="tag tag--play">Playable</span>}
         </p>
-        <h1 class="detail-title">{project.title}</h1>
         <p class="detail-lead">{project.description}</p>
         {links.length > 0 && (
           <div class="btn-row">
@@ -52,32 +55,69 @@ const chip = (tag) => {
             ))}
           </div>
         )}
-      </div>
-    </header>
 
-    <div class="detail-body">
-      {project.highlights?.length > 0 && (
-        <section>
-          <h2>Highlights</h2>
-          <ul class="highlights">
-            {project.highlights.map((h) => <li>{h}</li>)}
-          </ul>
-        </section>
-      )}
-      <aside class="detail-aside">
+        {project.process && (
+          <section aria-labelledby="process-title">
+            <h2 id="process-title">{project.process.title}</h2>
+            <ol class="steps">
+              {project.process.steps.map((step, i) => (
+                <li>
+                  <span class="step-n" aria-hidden="true">{i + 1}</span>
+                  <span class="step-title">{step.title}</span>
+                  <span class="step-text">{step.text}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {project.highlights?.length > 0 && (
+          <section aria-labelledby="highlights-title">
+            <h2 id="highlights-title">Highlights</h2>
+            <ul class="highlights">
+              {project.highlights.map((h) => <li>{h}</li>)}
+            </ul>
+          </section>
+        )}
+      </div>
+
+      <aside class="detail-aside" aria-label="Project details">
         {skillTags.length > 0 && (
           <section>
-            <h2>Skills</h2>
-            <ul class="chip-list">{skillTags.map((t) => { const c = chip(t); return <li><a class="chip" href={c.href}>{c.name}</a></li>; })}</ul>
+            <h2>Built with</h2>
+            <ul class="chips">{skillTags.map((t) => { const c = chip(t); return <li><a class="chip" href={c.href}>{c.name}</a></li>; })}</ul>
           </section>
         )}
         {softwareTags.length > 0 && (
           <section>
             <h2>Tools</h2>
-            <ul class="chip-list">{softwareTags.map((t) => { const c = chip(t); return <li><a class="chip" href={c.href}>{c.name}</a></li>; })}</ul>
+            <ul class="chips">{softwareTags.map((t) => { const c = chip(t); return <li><a class="chip" href={c.href}>{c.name}</a></li>; })}</ul>
+          </section>
+        )}
+        {project.status && (
+          <section>
+            <h2>Status</h2>
+            <p>{project.status}</p>
+          </section>
+        )}
+        {project.credit && (
+          <section>
+            <h2>About this project</h2>
+            <p>{project.credit}</p>
           </section>
         )}
       </aside>
     </div>
+
+    <nav class="pager" aria-label="More projects">
+      <a class="pager-link" href={`${base}projects/${prev.id}/`}>
+        <span class="pager-label"><span set:html={iconSvg('left', 12)} /> Previous project</span>
+        <span class="pager-title">{prev.title}</span>
+      </a>
+      <a class="pager-link pager-link--next" href={`${base}projects/${next.id}/`}>
+        <span class="pager-label">Next project <span set:html={iconSvg('right', 12)} /></span>
+        <span class="pager-title">{next.title}</span>
+      </a>
+    </nav>
   </article>
 </BaseLayout>
